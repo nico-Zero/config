@@ -131,7 +131,7 @@ bindkey '^ ' autosuggest-accept
 bindkey -s '^f' "fzf^M"
 bindkey -s '^[c' "ndir=\`fzf --walker=dir,hidden --walker-root=/ --reverse\` && cd \$ndir && clear || clear ^M"
 bindkey -s '^[n' "ndir=\`fzf --walker=dir,hidden --walker-root=/ --reverse\` && cd \$ndir && clear && nvim || clear ^M"
-bindkey -s '^g' "bash ~/gitacp.sh^M"
+bindkey -s '^g' "bash ~/.config/LSD/gitacp.sh^M"
 bindkey -s '^[[1;5P' "cd ~/.config/nvim && nvim^M"
 bindkey -s '^a' "bash ~/.config/LSD/harpoon_on_steroids.sh add^M"
 bindkey -s '^e' "bash ~/.config/LSD/harpoon_on_steroids.sh gotoW^M"
