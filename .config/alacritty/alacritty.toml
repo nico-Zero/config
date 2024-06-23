@@ -1,0 +1,13 @@
+import = [
+    "~/.config/alacritty/themes/themes/alabaster_dark.toml"
+]
+
+[shell]
+program = "/usr/bin/zsh"
+# args = ["-l", "-c", "tmux attach -t Moon || tmux new -s Moon"]
+
+
+[window]
+opacity = 0.8
+startup_mode = "Maximized"
+

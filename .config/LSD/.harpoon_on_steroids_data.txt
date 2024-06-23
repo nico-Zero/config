@@ -1,0 +1,8 @@
+/home/nico
+/home/nico/.config/nvim
+/home/nico/.config/tmux
+/home/nico/.config/alacritty
+/run/media/nico/Nova/Lab
+/run/media/nico/Nova/Lab/Python
+/run/media/nico/Nova/Lab/Python/mechine_learn
+/home/nico/.config/LSD
