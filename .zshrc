@@ -11,7 +11,7 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
+set preview_images_method ueberzug
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -126,9 +126,8 @@ alias cht="bash ~/.config/cht.sh"
 alias tls="tmux ls"
 alias asdf="~/.config/LSD/exit.sh && exit"
 
-
 bindkey '^ ' autosuggest-accept
-bindkey -s '^f' "fzf^M"
+bindkey -s '^f' "yazi && clear^M"
 bindkey -s '^[c' "ndir=\`fzf --walker=dir,hidden --walker-root=/ --reverse\` && cd \$ndir && clear || clear ^M"
 bindkey -s '^[n' "ndir=\`fzf --walker=dir,hidden --walker-root=/ --reverse\` && cd \$ndir && clear && nvim || clear ^M"
 bindkey -s '^g' "bash ~/.config/LSD/gitacp.sh^M"
@@ -136,7 +135,6 @@ bindkey -s '^[[1;5P' "cd ~/.config/nvim && nvim^M"
 bindkey -s '^a' "bash ~/.config/LSD/harpoon_on_steroids.sh add^M"
 bindkey -s '^e' "bash ~/.config/LSD/harpoon_on_steroids.sh gotoW^M"
 bindkey -s '^s' "bash ~/.config/LSD/harpoon_on_steroids.sh gotoS^M"
-bindkey -s '^t' "^b:new^M"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

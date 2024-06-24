@@ -13,8 +13,19 @@ in
         fi
         ;;
     gotoW)
-        if [ ! -z $TMUX ]; then
-            choice=$(cat "$data_file" | fzf --reverse) && tmux new-window -c "$choice"
+        choice=$(cat "$data_file" | fzf --reverse) && dirname="$(awk -F "/" '{print $NF}' <<< $choice)"
+        if [ ! -z $choice ]; then
+            tmux has-session -t "$dirname" > /dev/null 2>&1 
+            exitcode=$?
+            if [ ! -z $TMUX ]; then
+                tmux new-window -c "$choice"
+            else
+                if [ 0 -eq $exitcode ]; then
+                    tmux attach-session -t "$dirname"
+                else
+                    tmux new -s "$dirname" -c "$choice"
+                fi
+            fi
         fi
         clear
         ;;
