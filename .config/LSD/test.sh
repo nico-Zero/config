@@ -14,4 +14,3 @@ if [ 0 -eq $exitcode ]; then
 else
     echo "Session does not exist."
 fi
-

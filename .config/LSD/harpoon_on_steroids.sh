@@ -36,20 +36,28 @@ in
             exitcode=$?
             if [ ! -z $TMUX ]; then
                 if [ 0 -eq $exitcode ]; then
-                    tmux switch-client -t "$dirname" \; send-keys "nvim" C-m
+                    tmux switch-client -t "$dirname"
                 else
                     tmux new-window -c "$choice"
                 fi
             else
-                if [ 0 -eq $exitcode ]; then
-                    tmux attach-session -t "$dirname" \; send-keys "nvim" C-m
+                if [ "nvim" == "$2" ]; then
+                    if [ 0 -eq $exitcode ]; then
+                        tmux attach-session -t "$dirname" \; send-keys "nvim" C-m
+                    else
+                        tmux new -s "$dirname" -c "$choice" \; send-keys "nvim" C-m
+                    fi
                 else
-                    tmux new -s "$dirname" -c "$choice" \; send-keys "nvim" C-m
+                    if [ 0 -eq $exitcode ]; then
+                        tmux attach-session -t "$dirname"
+                    else
+                        tmux new -s "$dirname" -c "$choice"
+                    fi
                 fi
             fi
         fi
         clear
         ;;
     *)
-        echo "fuck you"
+        echo "Invalid command..."
 esac
