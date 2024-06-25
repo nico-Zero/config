@@ -13,7 +13,7 @@ in
         fi
         ;;
     gotoW)
-        choice=$(cat "$data_file" | fzf --reverse) && dirname="$(awk -F "/" '{print $NF}' <<< $choice)"
+        choice=$(cat "$data_file" | fzf --reverse) && dirname="$(awk -F "/" '{print $NF}' <<< $choice | tr "." "_")"
         if [ ! -z $choice ]; then
             tmux has-session -t "$dirname" > /dev/null 2>&1 
             exitcode=$?
@@ -27,10 +27,9 @@ in
                 fi
             fi
         fi
-        clear
         ;;
     gotoS)
-        choice=$(cat "$data_file" | fzf --reverse) && dirname="$(awk -F "/" '{print $NF}' <<< $choice)"
+        choice=$(cat "$data_file" | fzf --reverse) && dirname="$(awk -F "/" '{print $NF}' <<< $choice | tr "." "_")"
         if [ ! -z $choice ]; then
             tmux has-session -t "$dirname" > /dev/null 2>&1 
             exitcode=$?
