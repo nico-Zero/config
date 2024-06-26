@@ -18,6 +18,9 @@ curl https://raw.githubusercontent.com/nico-Zero/config/main/.config/LSD/.cht_la
 ```
 
 Sheet Search:
+
+![curl cht.sh](assets/img/curl_cht_sh.png)
+
 1.  Run the cht.sh file.
 
 ![run](assets/img/cht_sh_run.png)
