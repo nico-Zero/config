@@ -135,7 +135,7 @@ bindkey -s '^[[1;5P' "cd ~/.config/nvim && nvim^M"
 bindkey -s '^a' "bash ~/.config/LSD/harpoon_on_steroids.sh add^M"
 bindkey -s '^e' "bash ~/.config/LSD/harpoon_on_steroids.sh gotoW^M"
 bindkey -s '^s' "bash ~/.config/LSD/harpoon_on_steroids.sh gotoS^M"
-bindkey -s '^[h' "bash ~/.config/cht.sh^M"
+bindkey -s '^[h' "bash ~/.config/LSD/cht.sh^M"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

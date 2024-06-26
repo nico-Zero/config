@@ -8,7 +8,7 @@ if [ ! -z $TMUX ] && [ -z $NVIM ]; then
     # fi
 
 
-    if [ 1 -eq "$(tmux display-message -p "#I")" ]; then
+    if [ 1 -eq "$(tmux display-message -p "#I")" ] && [ 1 -eq "$(tmux display-message -p "#{pane_index}")" ]; then
         clear
         tmux detach
         exit 1
