@@ -1,15 +1,15 @@
-result=$(cat cht_language_list.txt | fzf --reverse --print-query)
+result=$(cat ~/.config/LSD/.cht_language_list.txt | fzf --reverse --print-query)
 search=$(echo "$result" | head -n 1)
 selected=$(echo "$result" | tail -n 1)
 
 if [ ! -z $search ] || [ ! -z $selected ]; then
-    if [[ "$search" == */ ]]; then
+    if [[ "$search" == */ ]] || [[ "$selected" == */ ]]; then
         read -p "query: " query
     fi
 
-    if [ ! -z $query ]; then
-        curl cht.sh/$selected/`echo $query | tr ' ' '+'` & while [ : ]; do sleep 1; done
+    if [ ! -z "$query" ]; then
+        curl cht.sh/$selected`echo $query | tr ' ' '+'` & while [ : ]; do sleep 1; done
     else
-        curl cht.sh/$selected
+        curl cht.sh/${selected%/}
     fi
 fi
