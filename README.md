@@ -44,6 +44,7 @@ Sheet Search:
     OR
    
     If want to query then just type '/' in the end of search query:
+
     ![Query Search](assets/img/cht_sh_query_search.png)
 
     You will get a Prompt asking for query:
