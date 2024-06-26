@@ -17,13 +17,50 @@ curl https://raw.githubusercontent.com/nico-Zero/config/main/.config/LSD/cht.sh 
 curl https://raw.githubusercontent.com/nico-Zero/config/main/.config/LSD/.cht_language_list.txt > .cht_language_list.txt
 ```
 
-Exit: Ctrl-c
-
 Sheet Search:
-```bash
-1. Run the cht.sh file.
-2. fzf will be open after that 
-```
+1.  Run the cht.sh file.
+
+![run](assets/img/cht_sh_run.png)
+
+2.  Search for Programming-language or Terminal-command:
+
+    Simply Type,
+
+    ![Simple Search](assets/img/cht_sh_search.png)
+
+    OR
+
+    Select,
+
+    ![Select Search](assets/img/cht_sh_search_by_select.png)
+
+    Result:
+
+    ![Simple Search Result](assets/img/cht_sh_search_result.png)
+
+    OR
+   
+    If want to query then just type '/' in the end of search query:
+    ![Query Search](assets/img/cht_sh_query_search.png)
+
+    You will get a Prompt asking for query:
+
+    ![Query](assets/img/cht_sh_query.png)
+    
+    For Query String:
+
+    ![Query String](assets/img/cht_sh_query_string.png)
+
+    Result:
+    ![Query Search Result](assets/img/cht_sh_query_search_result.png)
+
+    Note: If you type query then cht.sh will give result based on query.
+
+    OR
+
+    It will return default result without '/' one.
+
+3.  To Quit press Ctrl-c at any moment.
 
 
-Thank You For Heading...
+Thank You For Visiting...
