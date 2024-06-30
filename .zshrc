@@ -11,6 +11,7 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export FZF_DEFAULT_OPTS='--bind=alt-k:up,alt-j:down'
 set preview_images_method ueberzug
 
 # Set name of the theme to load --- if set to "random", it will
@@ -125,6 +126,8 @@ alias lsg="lsa | grep"
 alias cht="bash ~/.config/cht.sh"
 alias tls="tmux ls"
 alias asdf="~/.config/LSD/exit.sh && exit"
+alias cd="z"
+alias cat="bat"
 
 bindkey '^ ' autosuggest-accept
 bindkey -s '^f' "yazi && clear^M"
@@ -167,3 +170,7 @@ autoload -Uz _zi
 (( ${+_comps} )) && _comps[zi]=_zi
 # examples here -> https://wiki.zshell.dev/ecosystem/category/-annexes
 zicompinit # <- https://wiki.zshell.dev/docs/guides/commands
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+export PATH="/home/linuxbrew/.linuxbrew/opt/glibc/bin:$PATH"
+export PATH="/home/linuxbrew/.linuxbrew/opt/glibc/sbin:$PATH"
