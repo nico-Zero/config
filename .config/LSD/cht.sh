@@ -8,8 +8,8 @@ if [ ! -z $search ] || [ ! -z $selected ]; then
     fi
 
     if [ ! -z "$query" ]; then
-        curl cht.sh/$selected`echo $query | tr ' ' '+'` & while [ : ]; do sleep 1; done
+        curl cht.sh/$selected`echo $query | tr ' ' '+'` | less
     else
-        curl cht.sh/${selected%/}
+        curl cht.sh/${selected%/} | less
     fi
 fi

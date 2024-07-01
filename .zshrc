@@ -119,7 +119,7 @@ source <(fzf --zsh)
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ls="eza --icons --group-directories-first -l"
+alias ls="eza --icons --group-directories-first -l --hyperlink"
 alias android="bash /run/media/nico/Nova/android-studio-linux/bin/studio.sh"
 alias :q="exit"
 alias lsg="lsa | grep"
@@ -128,9 +128,16 @@ alias tls="tmux ls"
 alias asdf="~/.config/LSD/exit.sh && exit"
 alias cd="z"
 alias cat="bat"
+alias aic="ascii-image-converter"
+alias tl="trash-list"
+alias te="trash-empty"
+alias tp="trash-put"
+alias tr="trash-restore"
+alias trm="trash-rm"
+
 
 bindkey '^ ' autosuggest-accept
-bindkey -s '^f' "yazi && clear^M"
+bindkey -s '^f' "yy && clear^M"
 bindkey -s '^[c' "ndir=\`fzf --walker=dir,hidden --walker-root=/ --reverse\` && cd \$ndir && clear || clear ^M"
 bindkey -s '^[n' "ndir=\`fzf --walker=dir,hidden --walker-root=/ --reverse\` && cd \$ndir && clear && nvim || clear ^M"
 bindkey -s '^g' "bash ~/.config/LSD/gitacp.sh^M"
@@ -171,6 +178,24 @@ autoload -Uz _zi
 # examples here -> https://wiki.zshell.dev/ecosystem/category/-annexes
 zicompinit # <- https://wiki.zshell.dev/docs/guides/commands
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-export PATH="/home/linuxbrew/.linuxbrew/opt/glibc/bin:$PATH"
-export PATH="/home/linuxbrew/.linuxbrew/opt/glibc/sbin:$PATH"
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# export PATH="/home/linuxbrew/.linuxbrew/opt/glibc/bin:$PATH"
+# export PATH="/home/linuxbrew/.linuxbrew/opt/glibc/sbin:$PATH"
+
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/home/nico/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<

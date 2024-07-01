@@ -25,3 +25,18 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 . "$HOME/.cargo/env"
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+case ":$PATH:" in
+    *:/home/nico/.juliaup/bin:*)
+        ;;
+
+    *)
+        export PATH=/home/nico/.juliaup/bin${PATH:+:${PATH}}
+        ;;
+esac
+
+# <<< juliaup initialize <<<
