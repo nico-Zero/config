@@ -1,0 +1,16 @@
+/home/nico
+/home/nico/.config/LSD
+/home/nico/.config/alacritty
+/home/nico/.config/rofi
+/home/nico/.config
+/home/nico/.config/tmux
+/home/nico/.config/nvim
+/home/nico/.config/i3
+/home/nico/.config/polybar
+/home/nico/.config/picom
+/home/nico/.config/systemd
+/run/media/nico/Nova/Lab/Python/mechine_learn
+/run/media/nico/Nova/Lab/Python
+/run/media/nico/Nova/Lab
+/home/nico/.config/kitty
+/home/nico/.config/BraveSoftware
