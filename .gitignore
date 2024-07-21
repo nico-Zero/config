@@ -44,8 +44,8 @@
 !.config/tmux/*
 
 !.config/BraveSoftware/
-!.config/BraveSoftware/autostart.sh
+!.config/BraveSoftware/auto_start.sh
 
 !.config/Thunar/
-!.config/Thunar/autostart.sh
+!.config/Thunar/auto_start.sh
 
