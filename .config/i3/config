@@ -35,7 +35,7 @@ default_orientation horizontal
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango: Noto Sans Regular 10
+font pango: JetBrainsMono Regular 10
 
 # set the mod key to the winkey:
 set $mod Mod4
@@ -85,7 +85,7 @@ bindsym $mod+Shift+Tab workspace prev
 # switch to workspace
 bindsym $mod+i exec --no-startup-id ~/.config/alacritty/auto_start.sh
 bindsym $mod+o exec --no-startup-id ~/.config/BraveSoftware/auto_start.sh
-bindsym $mod+p    workspace  $ws3
+bindsym $mod+p exec --no-startup-id ~/.config/Thunar/auto_start.sh
 bindsym $mod+n    workspace  $ws4
 bindsym $mod+m    workspace  $ws5
 bindsym $mod+Shift+i    workspace  $ws6
@@ -174,7 +174,8 @@ mode "resize" {
 
 # back to normal: Enter or Escape
 	     bindsym Return mode "default"
-        bindsym Escape mode "default"
+	     bindsym $mod+r mode "default"
+         bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -315,12 +316,12 @@ bindsym Shift+Print exec --no-startup-id flameshot gui
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1:"
 set $ws2 "2:"
-set $ws3 "3:"
+set $ws3 "3:"
 set $ws4 "4:󰖣"
 set $ws5 "5:"
 set $ws6 "6:"
 set $ws7 "7:"
-set $ws8 "8:󰚾"
+set $ws8 "8:"
 set $ws9 "9:󰚾"
 set $ws10 "10:󰪴"
 
@@ -343,8 +344,7 @@ set $ws10 "10:󰪴"
 exec_always xinput set-prop 14 "libinput Natural Scrolling Enabled" 1
 exec_always xinput set-prop 14 "libinput Tapping Enabled" 1
 
-for_window [class="^((?!Alacritty|yad|kitty|Polkit-gnome-authentication-agent-1|Blueman-manager|Brave-browser|Navigator|Spotify|Whatsapp-for-linux|Signal|Gimp|obs|matplotlib|Thunar|Xdg-desktop-portal-gtk|vlc).)*$"] move container to workspace $ws10, workspace $ws10
-for_window [class="Thunar"] floating enable, resize set 1500 800, move position center
+for_window [class="^((?!Alacritty|yad|Shotwell|kitty|Polkit-gnome-authentication-agent-1|Blueman-manager|Brave-browser|Navigator|Spotify|Whatsapp-for-linux|Signal|Gimp|obs|matplotlib|Thunar|Xdg-desktop-portal-gtk|vlc).)*$"] move container to workspace $ws10, workspace $ws10
 for_window [class="Blueman-manager"] floating enable, resize set 1000 800
 
 # assign [class="Alacritty"] $ws1
@@ -371,17 +371,17 @@ for_window [workspace=$ws8 class="Brave-browser"] move container to workspace $w
 for_window [workspace=$ws9 class="Brave-browser"] move container to workspace $ws2, workspace $ws2
 for_window [workspace=$ws10 class="Brave-browser"] move container to workspace $ws10
 
-# assign [class="Spotify"] $ws3
-for_window [workspace=$ws1 class="Spotify"] move container to workspace $ws3, workspace $ws3
-for_window [workspace=$ws2 class="Spotify"] move container to workspace $ws3, workspace $ws3
-for_window [workspace=$ws3 class="Spotify"] move container to workspace $ws3, workspace $ws3
-for_window [workspace=$ws4 class="Spotify"] move container to workspace $ws3, workspace $ws3
-for_window [workspace=$ws5 class="Spotify"] move container to workspace $ws3, workspace $ws3
-for_window [workspace=$ws6 class="Spotify"] move container to workspace $ws3, workspace $ws3
-for_window [workspace=$ws7 class="Spotify"] move container to workspace $ws3, workspace $ws3
-for_window [workspace=$ws8 class="Spotify"] move container to workspace $ws3, workspace $ws3
-for_window [workspace=$ws9 class="Spotify"] move container to workspace $ws3, workspace $ws3
-for_window [workspace=$ws10 class="Spotify"] move container to workspace $ws10
+# assign [class="Thunar"] $ws3
+for_window [workspace=$ws1 class="Thunar"] move container to workspace $ws3, workspace $ws3
+for_window [workspace=$ws2 class="Thunar"] move container to workspace $ws3, workspace $ws3
+for_window [workspace=$ws3 class="Thunar"] move container to workspace $ws3, workspace $ws3
+for_window [workspace=$ws4 class="Thunar"] move container to workspace $ws3, workspace $ws3
+for_window [workspace=$ws5 class="Thunar"] move container to workspace $ws3, workspace $ws3
+for_window [workspace=$ws6 class="Thunar"] move container to workspace $ws3, workspace $ws3
+for_window [workspace=$ws7 class="Thunar"] move container to workspace $ws3, workspace $ws3
+for_window [workspace=$ws8 class="Thunar"] move container to workspace $ws3, workspace $ws3
+for_window [workspace=$ws9 class="Thunar"] move container to workspace $ws3, workspace $ws3
+for_window [workspace=$ws10 class="Thunar"] move container to workspace $ws10
 
 # assign [class="Whatsapp-for-linux"] $ws4
 for_window [workspace=$ws1 class="Whatsapp-for-linux"] move container to workspace $ws4, workspace $ws4
@@ -430,6 +430,18 @@ for_window [workspace=$ws7 class="obs"] move container to workspace $ws7, worksp
 for_window [workspace=$ws8 class="obs"] move container to workspace $ws7, workspace $ws7
 for_window [workspace=$ws9 class="obs"] move container to workspace $ws7, workspace $ws7
 for_window [workspace=$ws10 class="obs"] move container to workspace $ws7, workspace $ws7
+
+# assign [class="Spotify"] $ws8
+for_window [workspace=$ws1 class="Spotify"] move container to workspace $ws8, workspace $ws8
+for_window [workspace=$ws2 class="Spotify"] move container to workspace $ws8, workspace $ws8
+for_window [workspace=$ws3 class="Spotify"] move container to workspace $ws8, workspace $ws8
+for_window [workspace=$ws4 class="Spotify"] move container to workspace $ws8, workspace $ws8
+for_window [workspace=$ws5 class="Spotify"] move container to workspace $ws8, workspace $ws8
+for_window [workspace=$ws6 class="Spotify"] move container to workspace $ws8, workspace $ws8
+for_window [workspace=$ws7 class="Spotify"] move container to workspace $ws8, workspace $ws8
+for_window [workspace=$ws8 class="Spotify"] move container to workspace $ws8, workspace $ws8
+for_window [workspace=$ws9 class="Spotify"] move container to workspace $ws8, workspace $ws8
+for_window [workspace=$ws10 class="Spotify"] move container to workspace $ws10
 
 
 ##############
@@ -532,6 +544,7 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 # Autostart apps as you like
 exec --no-startup-id sleep 4 && alacritty
 exec --no-startup-id brave
+exec --no-startup-id thunar
 exec --no-startup-id spotify
 exec --no-startup-id whatsapp-for-linux
 exec --no-startup-id signal-desktop
