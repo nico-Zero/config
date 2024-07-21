@@ -545,7 +545,6 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id sleep 4 && alacritty
 exec --no-startup-id brave
 exec --no-startup-id thunar
-exec --no-startup-id spotify
 exec --no-startup-id whatsapp-for-linux
 exec --no-startup-id signal-desktop
 
