@@ -1,6 +1,0 @@
-2024/07/20-21:58:03.401 275cc Creating DB /home/nico/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_www.reddit.com_0.indexeddb.leveldb since it was missing.
-2024/07/20-21:58:03.412 275cc Reusing MANIFEST /home/nico/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_www.reddit.com_0.indexeddb.leveldb/MANIFEST-000001
-2024/07/20-21:58:35.440 275c7 Level-0 table #5: started
-2024/07/20-21:58:35.442 275c7 Level-0 table #5: 1429 bytes OK
-2024/07/20-21:58:35.445 275c7 Delete type=0 #3
-2024/07/20-21:58:35.445 275c7 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
