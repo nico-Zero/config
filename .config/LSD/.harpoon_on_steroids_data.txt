@@ -14,3 +14,8 @@
 /run/media/nico/Nova/Lab
 /home/nico/.config/kitty
 /home/nico/.config/BraveSoftware
+/usr/share/endeavouros/backgrounds
+/etc/lightdm
+/home/nico/.config/yay
+/home/nico/.config/yazi
+/home/nico/wallpaper
