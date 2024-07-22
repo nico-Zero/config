@@ -12,6 +12,7 @@ sudo pacman -Syu
 
 echo "Install Pre-Req..."
 echo "y" | sudo pacman -S alacritty
+echo "y" | sudo pacman -S btop
 echo "y" | sudo pacman -S neovim
 echo "y" | sudo pacman -S eza
 echo "y" | sudo pacman -S vim

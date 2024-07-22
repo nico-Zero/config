@@ -9,7 +9,7 @@
 
 current_profile=$(/usr/bin/powerprofilesctl get)
 if [ $current_profile == "balanced" ]; then
-    echo "%{F#4aa2f7}󰌪 %{F#C5C8C6}$current_profile"
+    echo "%{F#753aa5}󰌪 %{F#C5C8C6}$current_profile"
 elif [ $current_profile == "performance" ]; then
     echo "%{F#A54242}󱐋 %{F#C5C8C6}$current_profile"
 elif [ $current_profile == "power-saver" ]; then
