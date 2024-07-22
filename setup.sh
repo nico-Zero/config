@@ -158,6 +158,7 @@ if [ "${install_config,,}" == "y" ]; then
 
     rm -rf ~/.config/rofi/
     rm -rf ~/.config/i3/
+    rm -rf ~/.icons/
 
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
