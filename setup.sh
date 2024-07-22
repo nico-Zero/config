@@ -75,6 +75,10 @@ echo "y" | sudo pacman -S ripgrep
 echo "y" | sudo pacman -S nushell
 echo "y" | sudo pacman -S jq
 echo "y" | sudo pacman -S kitty
+echo "y" | sudo pacman -S man
+echo "y" | sudo pacman -S go
+echo "y" | sudo pacman -S nodejs
+echo "y" | sudo pacman -S zoxide
 
 read -p "Install Yay (Y|n)? " install_yay
 
@@ -108,7 +112,14 @@ read setup_ssh
 if [ "${setup_ssh,,}" == "y" ]; then
     ssh_add_function () {
         echo "Enter the absolute-dir-path and don't put '/' or '.' in the end of path."
-        read -p "Enter ssh-key dir path:- " path
+        take_path (){
+            read -p "Enter ssh-key dir path:- " path
+            read -p "Confirm '$path' this is the path(Y|n)? " confirm    
+            if [ "${confirm,,}" == "n" ]; then
+                take_path
+            fi
+        }
+        take_path
         ssh_dir="$HOME/.ssh"
         mkdir -p $ssh_dir
         cp -r "$path/." $ssh_dir 
@@ -144,6 +155,10 @@ read -p "Install config from github (y|N):- " install_config
 
 if [ "${install_config,,}" == "y" ]; then
     echo "Seting Up config..."
+
+    rm -rf ~/.config/rofi/
+    rm -rf ~/.config/i3/
+
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -157,9 +172,6 @@ if [ "${install_config,,}" == "y" ]; then
     git config --global user.name "nico-Zero"
     git remote add origin git@github.com:nico-Zero/config.git
     git pull git@github.com:nico-Zero/config.git main
-    mkdir /home/nico/.local/share/rofi/
-    mkdir /home/nico/.local/share/rofi/themes/
-    cp /home/nico/.config/rofi/rofi-themes-collection-master/themes/spotlight-dark.rasi /home/nico/.local/share/rofi/themes/
     git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
     git clone https://github.com/nico-Zero/nvim.git ~/.config/nvim/
 fi
@@ -171,17 +183,13 @@ bash ~/Downloads/Anaconda3-2024.06-1-Linux-x86_64.sh
 conda init
 
 echo "Installing Package from Pacman..."
-sudo pacman -S man
-sudo pacman -S go
-sudo pacman -S nodejs
 sudo pacman -S lua
 sudo pacman -S cargo
-sudo pacman -S zoxide
 sudo pacman -S java
 sudo pacman -S julia
 sudo pacman -S ruby
 
-echo "Install Package from Yay..."
+echo "Install Package from Yay...(Will have to do it manually.)"
 yay -S brave
 yay -S whatsapp-for-linux
 yay -S signal-desktop
