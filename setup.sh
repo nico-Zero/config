@@ -205,6 +205,7 @@ yay -S pywal
 yay -S spotify-adblock-git
 yay -S unicode
 yay -S autotiling-rs-git
+yay -S ascii-draw
 
 echo "Installing Fonts..."
 echo "1-67" | getnf
@@ -224,6 +225,7 @@ echo "conda install python=3.11"
 echo "conda install build"
 echo "pip install installer"
 echo "pip install neovim"
+echo "pip install PyGObject"
 echo "npm install -g neovim"
 echo "gem install neovim"
 echo "Add This line (UUID=A232F5EE32F5C6F7 /mnt/Nova ntfs defaults  0  2) in /etc/fstab"

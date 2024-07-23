@@ -48,6 +48,9 @@ export PAGER='less'
 export BAT_PAGER="less -R -S -X -K"
 export PATH="/home/$USER/.local/bin:/home/nico/.local/share/gem/ruby/3.0.0/bin:$PATH"
 export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin"
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
 
 # Options:
 set preview_images_method ueberzugpp
