@@ -81,6 +81,7 @@ echo "y" | sudo pacman -S man
 echo "y" | sudo pacman -S go
 echo "y" | sudo pacman -S nodejs
 echo "y" | sudo pacman -S zoxide
+echo "y" | sudo pacman -S viu
 
 read -p "Install Yay (Y|n)? " install_yay
 
