@@ -23,6 +23,9 @@
 !.config/nushell/
 !.config/nushell/**/*
 
+!.config/wezterm/
+!.config/wezterm/**/*
+
 !.config/picom/
 !.config/picom/**/*
 

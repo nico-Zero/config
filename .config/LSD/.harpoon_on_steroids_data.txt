@@ -19,3 +19,4 @@
 /home/nico/.config/yay
 /home/nico/.config/yazi
 /home/nico/wallpaper
+/home/nico/.config/wezterm

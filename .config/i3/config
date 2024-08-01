@@ -83,7 +83,7 @@ bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
 # switch to workspace
-bindsym $mod+i exec --no-startup-id ~/.config/alacritty/auto_start.sh
+bindsym $mod+i exec --no-startup-id ~/.config/wezterm/auto_start.sh
 bindsym $mod+o exec --no-startup-id ~/.config/BraveSoftware/auto_start.sh
 bindsym $mod+p exec --no-startup-id ~/.config/Thunar/auto_start.sh
 bindsym $mod+n    workspace  $ws4
@@ -185,7 +185,7 @@ bindsym $mod+r mode "resize"
 ######################################
 
 # start a terminal
-bindsym Mod1+Control+l exec --no-startup-id alacritty
+bindsym Mod1+Control+l exec --no-startup-id wezterm
 
 # kill focused window
 bindsym $mod+q kill
@@ -344,20 +344,20 @@ set $ws10 "10:󰪴"
 exec_always xinput set-prop 14 "libinput Natural Scrolling Enabled" 1
 exec_always xinput set-prop 14 "libinput Tapping Enabled" 1
 
-for_window [class="^((?!Alacritty|yad|Screenkey|Shotwell|kitty|Polkit-gnome-authentication-agent-1|Blueman-manager|Brave-browser|Brave|Navigator|Spotify|Whatsapp-for-linux|Signal|Gimp|obs|matplotlib|Thunar|Xdg-desktop-portal-gtk|vlc).)*$"] move container to workspace $ws10, workspace $ws10
+for_window [class="^((?!Alacritty|org.wezfurlong.wezterm|yad|Screenkey|Shotwell|kitty|Polkit-gnome-authentication-agent-1|Blueman-manager|Brave-browser|Brave|Navigator|Spotify|Whatsapp-for-linux|Signal|Gimp|obs|matplotlib|Thunar|Xdg-desktop-portal-gtk|vlc).)*$"] move container to workspace $ws10, workspace $ws10
 for_window [class="Blueman-manager"] floating enable, resize set 1000 800, move position center
 
 # assign [class="Alacritty"] $ws1
-for_window [workspace=$ws1 class="Alacritty"] move container to workspace $ws1, workspace $ws1
-for_window [workspace=$ws2 class="Alacritty"] move container to workspace $ws1, workspace $ws1
-for_window [workspace=$ws3 class="Alacritty"] move container to workspace $ws1, workspace $ws1
-for_window [workspace=$ws4 class="Alacritty"] move container to workspace $ws1, workspace $ws1
-for_window [workspace=$ws5 class="Alacritty"] move container to workspace $ws1, workspace $ws1
-for_window [workspace=$ws6 class="Alacritty"] move container to workspace $ws1, workspace $ws1
-for_window [workspace=$ws7 class="Alacritty"] move container to workspace $ws1, workspace $ws1
-for_window [workspace=$ws8 class="Alacritty"] move container to workspace $ws1, workspace $ws1
-for_window [workspace=$ws9 class="Alacritty"] move container to workspace $ws1, workspace $ws1
-for_window [workspace=$ws10 class="Alacritty"] move container to workspace $ws10
+for_window [workspace=$ws1 class="org.wezfurlong.wezterm"] move container to workspace $ws1, workspace $ws1
+for_window [workspace=$ws2 class="org.wezfurlong.wezterm"] move container to workspace $ws1, workspace $ws1
+for_window [workspace=$ws3 class="org.wezfurlong.wezterm"] move container to workspace $ws1, workspace $ws1
+for_window [workspace=$ws4 class="org.wezfurlong.wezterm"] move container to workspace $ws1, workspace $ws1
+for_window [workspace=$ws5 class="org.wezfurlong.wezterm"] move container to workspace $ws1, workspace $ws1
+for_window [workspace=$ws6 class="org.wezfurlong.wezterm"] move container to workspace $ws1, workspace $ws1
+for_window [workspace=$ws7 class="org.wezfurlong.wezterm"] move container to workspace $ws1, workspace $ws1
+for_window [workspace=$ws8 class="org.wezfurlong.wezterm"] move container to workspace $ws1, workspace $ws1
+for_window [workspace=$ws9 class="org.wezfurlong.wezterm"] move container to workspace $ws1, workspace $ws1
+for_window [workspace=$ws10 class="org.wezfurlong.wezterm"] move container to workspace $ws10
 
 # assign [class="Brave-browser"] $ws2
 for_window [workspace=$ws1 class="Brave-browser"] move container to workspace $ws2, workspace $ws2
