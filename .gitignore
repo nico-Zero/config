@@ -15,6 +15,9 @@
 !wallpaper/
 !wallpaper/**/*
 
+!gube_endeavouros/
+!gube_endeavouros/**/*
+
 !.config/
 
 !.config/nushell/
@@ -50,3 +53,5 @@
 !.config/Thunar/
 !.config/Thunar/auto_start.sh
 
+!.config/kitty/
+!.config/kitty/**/*
