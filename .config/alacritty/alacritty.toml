@@ -24,7 +24,7 @@ shape = "Block"
 save_to_clipboard = true
 
 [window]
-opacity = 0.8
+opacity = 0.78
 startup_mode = "Maximized"
 decorations = "none"
 dynamic_title = true
@@ -44,3 +44,23 @@ multiplier = 3
 [bell]
 animation = "Linear"
 duration = 0
+
+[colors.primary]
+background = "#000000"
+
+[colors]
+transparent_background_colors = true
+draw_bold_text_with_bright_colors = true
+
+[terminal]
+osc52 = "CopyPaste"
+
+[mouse]
+hide_when_typing = true
+
+[keyboard]
+bindings = [
+    {key = "J", mods ="Alt|Shift", action = "ScrollLineDown"},
+    {key = "K", mods ="Alt|Shift", action =  "ScrollLineUp" },
+]
+

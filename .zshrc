@@ -125,8 +125,8 @@ bindkey -s '^[g' "lazygit^M"
 bindkey -s '^[t' "toipe^M"
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-bindkey '^[K' history-substring-search-up
-bindkey '^[J' history-substring-search-down
+bindkey '^K' history-substring-search-up
+bindkey '^J' history-substring-search-down
 
 # Brew
 
