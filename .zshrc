@@ -106,6 +106,7 @@ alias emoji="rofi -show emoji"
 alias calc="rofi -show calc"
 alias j2p="/usr/bin/env bash ~/.config/LSD/jpg_to_png.sh"
 alias pp="pipes.sh"
+alias cdh="cd ~"
 
 
 # Bindkey:
