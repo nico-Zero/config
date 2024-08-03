@@ -82,6 +82,7 @@ echo "y" | sudo pacman -S go
 echo "y" | sudo pacman -S nodejs
 echo "y" | sudo pacman -S zoxide
 echo "y" | sudo pacman -S viu
+echo "y" | sudo pacman -S wezterm
 
 read -p "Install Yay (Y|n)? " install_yay
 
@@ -207,7 +208,6 @@ yay -S spotify-adblock-git
 yay -S unicode
 yay -S autotiling-rs-git
 yay -S ascii-draw
-yay -S wezterm-git
 
 echo "Installing Fonts..."
 echo "1-67" | getnf
