@@ -208,6 +208,7 @@ yay -S spotify-adblock-git
 yay -S unicode
 yay -S autotiling-rs-git
 yay -S ascii-draw
+yay -S aseprite
 
 echo "Installing Fonts..."
 echo "1-67" | getnf
