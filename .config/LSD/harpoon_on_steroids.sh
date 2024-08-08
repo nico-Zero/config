@@ -37,7 +37,8 @@ in
                 if [ 0 -eq $exitcode ]; then
                     tmux -u switch-client -t "$dirname"
                 else
-                    tmux -u new-window -c "$choice"
+                    tmux -u new -s "$dirname" -c "$choice" -d
+                    tmux -u switch-client -t "$dirname"
                 fi
             else
                 if [ "nvim" == "$2" ]; then
@@ -55,6 +56,10 @@ in
                 fi
             fi
         fi
+        ;;
+    killall)
+        tmux kill-session -a
+        tmux kill-session
         ;;
     *)
         echo "Invalid command..."

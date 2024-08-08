@@ -83,6 +83,7 @@ echo "y" | sudo pacman -S nodejs
 echo "y" | sudo pacman -S zoxide
 echo "y" | sudo pacman -S viu
 echo "y" | sudo pacman -S wezterm
+echo "y" | sudo pacman -S gcc clang libc++ cmake ninja libx11 libxcursor mesa-libgl fontconfig
 
 read -p "Install Yay (Y|n)? " install_yay
 
