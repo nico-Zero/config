@@ -211,6 +211,13 @@ yay -S autotiling-rs-git
 yay -S ascii-draw
 yay -S aseprite
 
+# Install betterlockscreen into system.
+git clone https://github.com/Raymo111/i3lock-color.git
+~/i3lock-color/./install-i3lock-color.sh
+rm -rf ~/i3lock-color
+wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | sudo bash -s system
+betterlockscreen -u ~/wallpaper/anime-girl-red-eye-tattoo-sword-4k-wallpaper-uhdpaper.com-310@0@j.jpg
+
 echo "Installing Fonts..."
 echo "1-67" | getnf
 
