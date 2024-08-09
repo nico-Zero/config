@@ -107,6 +107,7 @@ alias calc="rofi -show calc"
 alias j2p="/usr/bin/env bash ~/.config/LSD/jpg_to_png.sh"
 alias pp="pipes.sh"
 alias cdh="cd ~"
+alias p3="python3"
 
 
 # Bindkey:
@@ -129,8 +130,6 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey '^K' history-substring-search-up
 bindkey '^J' history-substring-search-down
-
-# Brew
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -171,10 +170,8 @@ function yy() {
 	rm -f -- "$tmp"
 }
 
-
 # Zoxide
 eval "$(zoxide init zsh)"
 
 eval $(thefuck --alias)
-
 export PATH="/home/nico/anaconda3/bin:$PATH"

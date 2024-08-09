@@ -114,7 +114,7 @@ typeset -A menu
 # Menu with keys/commands
 
 menu=(
-  [   Lock]="~/.config/i3/scripts/blur-lock"
+  [   Lock]="betterlockscreen -l blur"
   [   Shutdown]="systemctl poweroff"
   [   Reboot]="systemctl reboot"
   [   Suspend]="systemctl suspend"
