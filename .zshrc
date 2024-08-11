@@ -12,7 +12,7 @@ SAVEHIST=10000
 setopt autocd extendedglob notify
 unsetopt beep nomatch
 bindkey -e
-zstyle :compinstall filename '/home/nico/.zshrc'
+zstyle :compinstall filename '/home/zero/.zshrc'
 
 #Style
 autoload -Uz compinit
@@ -46,7 +46,7 @@ export SHELL="/usr/bin/zsh"
 export FZF_DEFAULT_OPTS='--bind=alt-k:up,alt-j:down'
 export PAGER='less'
 export BAT_PAGER="less -R -S -X -K"
-export PATH="/home/$USER/.local/bin:/home/nico/.local/share/gem/ruby/3.0.0/bin:$PATH"
+export PATH="/home/$USER/.local/bin:/home/zero/.local/share/gem/ruby/3.0.0/bin:$PATH"
 export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin"
 export GTK_IM_MODULE=ibus
 export QT_IM_MODULE=ibus
@@ -135,14 +135,14 @@ bindkey '^J' history-substring-search-down
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # >>> conda initialize >>>
-__conda_setup="$('/home/nico/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/zero/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/nico/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/nico/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/zero/anaconda3/etc/profile.d/conda.sh" ]; then
+# . "/home/zero/anaconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
     else
-        export PATH="/home/nico/anaconda3/bin:$PATH"
+# export PATH="/home/zero/anaconda3/bin:$PATH"  # commented out by conda initialize
     fi
 fi
 unset __conda_setup
@@ -174,4 +174,4 @@ function yy() {
 eval "$(zoxide init zsh)"
 
 eval $(thefuck --alias)
-export PATH="/home/nico/anaconda3/bin:$PATH"
+# export PATH="/home/zero/anaconda3/bin:$PATH" 

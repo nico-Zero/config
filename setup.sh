@@ -84,6 +84,7 @@ echo "y" | sudo pacman -S viu
 echo "y" | sudo pacman -S wezterm
 echo "y" | sudo pacman -S picom
 echo "y" | sudo pacman -S gcc clang libc++ cmake ninja libx11 libxcursor mesa-libgl fontconfig
+echo "y" | sudo pacman -Sy python-pluggy python-pycosat python-ruamel-yaml 
 
 read -p "Install Yay (Y|n)? " install_yay
 if [ -z $install_yay ] || [ "${install_yay,,}" == "y"]; then
@@ -172,7 +173,9 @@ if [ "${install_config,,}" == "y" ]; then
     git config --global user.email "zandaxheart955@gmail.com"
     git config --global user.name "nico-Zero"
     git remote add origin git@github.com:nico-Zero/config.git
-    git pull git@github.com:nico-Zero/config.git main
+    git fatch
+    git reset origin/main
+    git checkout -t origin/main
     git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
     git clone https://github.com/nico-Zero/nvim.git ~/.config/nvim/
 fi
@@ -207,8 +210,7 @@ yay -S ascii-draw
 yay -S aseprite
 
 # Install betterlockscreen into system.
-git clone https://github.com/Raymo111/i3lock-color.git
-~/i3lock-color/./install-i3lock-color.sh
+git clone https://github.com/Raymo111/i3lock-color.git; cd ~/i3lock-color/; ./install-i3lock-color.sh
 rm -rf ~/i3lock-color
 wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | sudo bash -s system
 betterlockscreen -u ~/wallpaper/anime-girl-red-eye-tattoo-sword-4k-wallpaper-uhdpaper.com-310@0@j.jpg
@@ -234,4 +236,6 @@ echo "npm install -g neovim"
 echo "gem install neovim"
 echo "Add This line (UUID=A232F5EE32F5C6F7 /mnt/Nova ntfs defaults  0  2) in /etc/fstab"
 echo "Add This line (SUBSYSTEM=='backlight', RUN+='/usr/bin/chmod 666 /sys/class/backlight/%k/brightness') in /etc/udev/rules.d/99-backlight.rules"
+echo "run 'sudo udevadm control --reload' and 'sudo udevadm trigger'"
+ehco "After grub setup run 'grub-mkconfig -o /path/to/grub.cfg'"
 echo "Restart the terminal."

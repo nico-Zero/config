@@ -9,9 +9,9 @@
 /home/zero/.config/polybar
 /home/zero/.config/picom
 /home/zero/.config/systemd
-/run/media/nico/Nova/Lab/Python/mechine_learn
-/run/media/nico/Nova/Lab/Python
-/run/media/nico/Nova/Lab
+/run/media/zero/Nova/Lab/Python/mechine_learn
+/run/media/zero/Nova/Lab/Python
+/run/media/zero/Nova/Lab
 /home/zero/.config/kitty
 /home/zero/.config/BraveSoftware
 /usr/share/endeavouros/backgrounds
@@ -20,5 +20,5 @@
 /home/zero/.config/yazi
 /home/zero/wallpaper
 /home/zero/.config/wezterm
-/run/media/nico/Nova/Lab/Python/curses
+/run/media/zero/Nova/Lab/Python/curses
 /home/zero/.config/Thunar
