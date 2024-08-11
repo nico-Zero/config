@@ -47,7 +47,6 @@ echo "y" | sudo pacman -S nitrogen
 echo "y" | sudo pacman -S bluez
 echo "y" | sudo pacman -S bluez-utils
 echo "y" | sudo pacman -S brightnessctl
-echo "y" | sudo pacman -S picom
 echo "y" | sudo pacman -S feh
 echo "y" | sudo pacman -S xorg-xinput
 echo "y" | sudo pacman -S blueman
@@ -85,8 +84,15 @@ echo "y" | sudo pacman -S viu
 echo "y" | sudo pacman -S wezterm
 echo "y" | sudo pacman -S gcc clang libc++ cmake ninja libx11 libxcursor mesa-libgl fontconfig
 
-read -p "Install Yay (Y|n)? " install_yay
+# Installing Picom
+git clone https://github.com/jonaburg/picom
+cd picom
+meson --buildtype=release . build
+ninja -C build
+# To install the binaries in /usr/local/bin (optional)
+sudo ninja -C build install
 
+read -p "Install Yay (Y|n)? " install_yay
 if [ -z $install_yay ] || [ "${install_yay,,}" == "y"]; then
     echo "Install Yay..."
     sudo pacman -S --needed base-devel git && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
@@ -107,7 +113,6 @@ echo "Installing package from Brew..."
 /home/linuxbrew/.linuxbrew/bin/brew install tree-sitter
 /home/linuxbrew/.linuxbrew/bin/brew install perl
 /home/linuxbrew/.linuxbrew/bin/brew install composer
-
 
 # Install SSH key in system.
 echo "If have the ssh-key setup the just press enter."
@@ -157,14 +162,11 @@ fi
 
 # Install config from github or not?
 read -p "Install config from github (y|N):- " install_config
-
 if [ "${install_config,,}" == "y" ]; then
     echo "Seting Up config..."
-
     rm -rf ~/.config/rofi/
     rm -rf ~/.config/i3/
     rm -rf ~/.icons/
-
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -220,7 +222,6 @@ betterlockscreen -u ~/wallpaper/anime-girl-red-eye-tattoo-sword-4k-wallpaper-uhd
 
 echo "Installing Fonts..."
 echo "1-67" | getnf
-
 echo "-------------------------------------------------------------------------------------------------------"
 echo "Do all this First..."
 echo "tmux source ~/.config/tmux/tmux.conf (inside tmux)"
@@ -229,7 +230,6 @@ echo "make a shortcut <Alt-Ctrl-l> to Lunch alacritty"
 echo "make a shortcut <Alt-Space> to Lunch rofi (command:- rofi -show drun)"
 echo "Open Nvim and Wait for it to config itself."
 echo "And then You are all done."
-
 echo "Run this command after terminal restart..."
 echo "conda update conda"
 echo "conda install python=3.11"
@@ -241,5 +241,4 @@ echo "npm install -g neovim"
 echo "gem install neovim"
 echo "Add This line (UUID=A232F5EE32F5C6F7 /mnt/Nova ntfs defaults  0  2) in /etc/fstab"
 echo "Add This line (SUBSYSTEM=='backlight', RUN+='/usr/bin/chmod 666 /sys/class/backlight/%k/brightness') in /etc/udev/rules.d/99-backlight.rules"
-
 echo "Restart the terminal."

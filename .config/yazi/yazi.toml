@@ -5,7 +5,14 @@ show_hidden = true
 edit = [
     { run = 'nvim "$@"', block = true },
 ]
-play =[
-    { run = 'vlc "$@"', block = true },
+play = [
+	{ run = 'vlc "$@"', orphan = true, for = "unix" },
 ]
-
+image=[
+    {run = 'shotwell "$@"', block = true}
+]
+[open]
+rules = [
+	{ name = "*.jpg", use = ["image"] },
+	{ name = "*.png", use = ["image"] },
+]
