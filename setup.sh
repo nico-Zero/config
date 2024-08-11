@@ -82,15 +82,8 @@ echo "y" | sudo pacman -S nodejs
 echo "y" | sudo pacman -S zoxide
 echo "y" | sudo pacman -S viu
 echo "y" | sudo pacman -S wezterm
+echo "y" | sudo pacman -S picom
 echo "y" | sudo pacman -S gcc clang libc++ cmake ninja libx11 libxcursor mesa-libgl fontconfig
-
-# Installing Picom
-git clone https://github.com/jonaburg/picom
-cd picom
-meson --buildtype=release . build
-ninja -C build
-# To install the binaries in /usr/local/bin (optional)
-sudo ninja -C build install
 
 read -p "Install Yay (Y|n)? " install_yay
 if [ -z $install_yay ] || [ "${install_yay,,}" == "y"]; then
