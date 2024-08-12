@@ -85,6 +85,8 @@ echo "y" | sudo pacman -S wezterm
 echo "y" | sudo pacman -S picom
 echo "y" | sudo pacman -S gcc clang libc++ cmake ninja libx11 libxcursor mesa-libgl fontconfig
 echo "y" | sudo pacman -Sy python-pluggy python-pycosat python-ruamel-yaml 
+echo "y" | sudo pacman -Sy mesa-demos
+echo "y" | sudo pacman -Sy intel-media-driver
 
 read -p "Install Yay (Y|n)? " install_yay
 if [ -z $install_yay ] || [ "${install_yay,,}" == "y"]; then
