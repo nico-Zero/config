@@ -210,6 +210,7 @@ yay -S unicode
 yay -S autotiling-rs-git
 yay -S ascii-draw
 yay -S aseprite
+yay -S kotatsu-dl-git
 
 # Install betterlockscreen into system.
 git clone https://github.com/Raymo111/i3lock-color.git; cd ~/i3lock-color/; ./install-i3lock-color.sh
