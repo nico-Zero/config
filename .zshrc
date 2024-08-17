@@ -89,6 +89,7 @@ gpt(){
 
 # Alias:
 alias ?=gpt
+alias pp="shotwell *"
 alias ls="eza --icons --group-directories-first -l --hyperlink"
 alias :q="exit"
 alias lsg="lsa | grep"
@@ -112,7 +113,6 @@ alias tt="toipe"
 alias emoji="rofi -show emoji"
 alias calc="rofi -show calc"
 alias j2p="/usr/bin/env bash ~/.config/LSD/jpg_to_png.sh"
-alias pp="pipes.sh"
 alias cdh="cd ~"
 alias p3="python3"
 alias cc="clear"
