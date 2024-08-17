@@ -82,8 +82,13 @@ function preexec(){
     fi
 }
 
+gpt(){
+    tgpt "$*"
+}
+
+
 # Alias:
-# alias ?=gpt
+alias ?=gpt
 alias ls="eza --icons --group-directories-first -l --hyperlink"
 alias :q="exit"
 alias lsg="lsa | grep"
