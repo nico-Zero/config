@@ -83,6 +83,7 @@ function preexec(){
 }
 
 gpt1(){
+    # (⢿ ⣻ ⣽ ⣾ ⣷ ⣯ ⣟ ⡿)  # Do animation here
     tgpt "$*"
 }
 
