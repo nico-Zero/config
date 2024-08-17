@@ -2,7 +2,7 @@
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 # Set Config
@@ -18,7 +18,7 @@ zstyle :compinstall filename '/home/zero/.zshrc'
 autoload -Uz compinit
 
 for dump in ~/.config/zsh/zcompdump(N.mh+24); do
-  compinit -d ~/.config/zsh/zcompdump
+    compinit -d ~/.config/zsh/zcompdump
 done
 
 compinit -C -d ~/.config/zsh/zcompdump
@@ -32,12 +32,12 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS} 'ma=48;5;197;1'
 zstyle ':completion:*' matcher-list \
-		'm:{a-zA-Z}={A-Za-z}' \
-		'+r:|[._-]=* r:|=*' \
-		'+l:|=*'
-zstyle ':completion:*:warnings' format "%B%F{red}No matches for:%f %F{magenta}%d%b"
-zstyle ':completion:*:descriptions' format '%F{yellow}[-- %d --]%f'
-zstyle ':vcs_info:*' formats ' %B%s-[%F{magenta}%f %F{yellow}%b%f]-'
+    'm:{a-zA-Z}={A-Za-z}' \
+    '+r:|[._-]=* r:|=*' \
+    '+l:|=*'
+    zstyle ':completion:*:warnings' format "%B%F{red}No matches for:%f %F{magenta}%d%b"
+    zstyle ':completion:*:descriptions' format '%F{yellow}[-- %d --]%f'
+    zstyle ':vcs_info:*' formats ' %B%s-[%F{magenta}%f %F{yellow}%b%f]-'
 
 # Exports
 export ZSH="$HOME/.oh-my-zsh"
@@ -51,13 +51,14 @@ export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbi
 export GTK_IM_MODULE=ibus
 export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
+export OPENAI_API_KEY=$(< /run/media/$USER/Nova/api/key.txt)
 
 # Options:
 set preview_images_method ueberzugpp
 
 plugins=(
-	git
-	zsh-autosuggestions
+    git
+    zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-history-substring-search
     z
@@ -82,6 +83,7 @@ function preexec(){
 }
 
 # Alias:
+# alias ?=gpt
 alias ls="eza --icons --group-directories-first -l --hyperlink"
 alias :q="exit"
 alias lsg="lsa | grep"
@@ -108,6 +110,7 @@ alias j2p="/usr/bin/env bash ~/.config/LSD/jpg_to_png.sh"
 alias pp="pipes.sh"
 alias cdh="cd ~"
 alias p3="python3"
+alias cc="clear"
 
 
 # Bindkey:
@@ -140,20 +143,20 @@ if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
     if [ -f "/home/zero/anaconda3/etc/profile.d/conda.sh" ]; then
-# . "/home/zero/anaconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
+        # . "/home/zero/anaconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
     else
-# export PATH="/home/zero/anaconda3/bin:$PATH"  # commented out by conda initialize
+        # export PATH="/home/zero/anaconda3/bin:$PATH"  # commented out by conda initialize
     fi
 fi
 unset __conda_setup
 
 # Zi:
 if [[ ! -f $HOME/.zi/bin/zi.zsh ]]; then
-  print -P "%F{33}▓▒░ %F{160}Installing (%F{33}z-shell/zi%F{160})…%f"
-  command mkdir -p "$HOME/.zi" && command chmod go-rwX "$HOME/.zi"
-  command git clone -q --depth=1 --branch "main" https://github.com/z-shell/zi "$HOME/.zi/bin" && \
-    print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-    print -P "%F{160}▓▒░ The clone has failed.%f%b"
+    print -P "%F{33}▓▒░ %F{160}Installing (%F{33}z-shell/zi%F{160})…%f"
+    command mkdir -p "$HOME/.zi" && command chmod go-rwX "$HOME/.zi"
+    command git clone -q --depth=1 --branch "main" https://github.com/z-shell/zi "$HOME/.zi/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
 source "$HOME/.zi/bin/zi.zsh"
 autoload -Uz _zi
@@ -162,12 +165,12 @@ zicompinit # <- https://wiki.zshell.dev/docs/guides/commands
 
 # Yazi Config:
 function yy() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
 }
 
 # Zoxide

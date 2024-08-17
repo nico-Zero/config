@@ -22,3 +22,4 @@
 /home/zero/.config/wezterm
 /run/media/zero/Nova/Lab/Python/curses
 /home/zero/.config/Thunar
+/run/media/zero/Nova/Lab/Java
