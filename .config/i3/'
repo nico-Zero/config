@@ -696,10 +696,7 @@ bindsym Mod1+space exec --no-startup-id rofi -modi drun -show drun \
 bindsym $mod+t exec --no-startup-id rofi -show window \
 		-config ~/.config/rofi/rofidmenu.rasi
 
-bindsym $mod+Shift+e exec --no-startup-id rofi -show emoji \
-		-config ~/.config/rofi/rofidmenu.rasi
-
-bindsym $mod+c exec --no-startup-id rofi -show calc \
+bindsym $mod+c exec --no-startup-id rofi -show window \
 		-config ~/.config/rofi/rofidmenu.rasi
 
 #bindsym F10 exec --no-startup-id rofi -show window \
