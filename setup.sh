@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 # Setup for Arch-linux...
 
 function ctrl_c() {
