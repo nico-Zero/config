@@ -48,6 +48,7 @@ export PAGER='less'
 export BAT_PAGER="less -R -S -X -K"
 export PATH="/home/$USER/.local/bin:/home/zero/.local/share/gem/ruby/3.0.0/bin:$PATH"
 export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin"
+export PATH="$HOME/.cargo/bin:$PATH"
 export GTK_IM_MODULE=ibus
 export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
@@ -122,6 +123,10 @@ alias j2p="/usr/bin/env bash ~/.config/LSD/jpg_to_png.sh"
 alias cdh="cd ~"
 alias p3="python3"
 alias cc="clear"
+alias nn="nvim"
+alias ee="exit"
+alias lsf="/usr/bin/ls | fzf"
+alias nc="nvim ~/.config/nvim/ +NvimTreeToggle"
 
 
 # Bindkey:

@@ -23,3 +23,5 @@
 /run/media/zero/Nova/Lab/Python/curses
 /home/zero/.config/Thunar
 /run/media/zero/Nova/Lab/Java
+/run/media/zero/Nova/Lab/Rust
+/run/media/zero/Nova/Lab/Python/chess

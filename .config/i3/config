@@ -70,7 +70,7 @@ gaps inner 2
 gaps outer 0
 
 # show window title bars (not officially supported with i3gaps)
-#default_border normal
+# default_border normal
 
 # window title alignment
 #title_align center
