@@ -13,7 +13,7 @@ if [ ! -z "$status" ]; then
     read -p "Confirm (y|N): " confirm
 
     if [[ "$confirm" == "y" ]] || [[ "$confirm" == "Y" ]]; then
-        git add . && status=$(git status -s) && git commit -m "$message" -m "$status" && git push
+        git add . && status=$(git status -s) && git commit -m "$message" -m "$status" && git push -u origin main
     else    
         echo "See Ya..."
     fi

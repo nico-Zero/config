@@ -127,6 +127,7 @@ alias nn="nvim"
 alias ee="exit"
 alias lsf="/usr/bin/ls | fzf"
 alias nc="nvim ~/.config/nvim/ +NvimTreeToggle"
+alias mp="mypy"
 
 
 # Bindkey:
