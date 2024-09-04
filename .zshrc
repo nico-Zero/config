@@ -1,8 +1,8 @@
-# nvimEnable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 # Set Config
@@ -15,18 +15,11 @@ bindkey -e
 zstyle :compinstall filename '/home/zero/.zshrc'
 
 #Style
-autoload -Uz compinit
-
-for dump in ~/.config/zsh/zcompdump(N.mh+24); do
-    compinit -d ~/.config/zsh/zcompdump
-done
-
-compinit -C -d ~/.config/zsh/zcompdump
-
-autoload -Uz add-zsh-hook
-autoload -Uz vcs_info
-precmd () { vcs_info }
-_comp_options+=(globdots)
+# autoload -Uz compinit
+# autoload -Uz add-zsh-hook
+# autoload -Uz vcs_info
+# precmd () { vcs_info }
+# _comp_options+=(globdots)
 
 zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:*:*:*' menu select
@@ -53,9 +46,6 @@ export GTK_IM_MODULE=ibus
 export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export OPENAI_API_KEY=$(< /run/media/$USER/Nova/api/key.txt)
-
-# Options:
-set preview_images_method ueberzugpp
 
 plugins=(
     git
@@ -151,9 +141,6 @@ bindkey '^[[B' history-substring-search-down
 bindkey '^K' history-substring-search-up
 bindkey '^J' history-substring-search-down
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # >>> conda initialize >>>
 __conda_setup="$('/home/zero/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
@@ -166,19 +153,6 @@ else
     fi
 fi
 unset __conda_setup
-
-# Zi:
-if [[ ! -f $HOME/.zi/bin/zi.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{160}Installing (%F{33}z-shell/zi%F{160})…%f"
-    command mkdir -p "$HOME/.zi" && command chmod go-rwX "$HOME/.zi"
-    command git clone -q --depth=1 --branch "main" https://github.com/z-shell/zi "$HOME/.zi/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
-fi
-source "$HOME/.zi/bin/zi.zsh"
-autoload -Uz _zi
-(( ${+_comps} )) && _comps[zi]=_zi
-zicompinit # <- https://wiki.zshell.dev/docs/guides/commands
 
 # Yazi Config:
 function yy() {
@@ -195,3 +169,6 @@ eval "$(zoxide init zsh)"
 
 eval $(thefuck --alias)
 # export PATH="/home/zero/anaconda3/bin:$PATH" 
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

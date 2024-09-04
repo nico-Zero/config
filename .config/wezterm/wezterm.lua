@@ -6,7 +6,7 @@ config.color_scheme = 'Tomorrow Night Bright (Gogh)'
 config.harfbuzz_features = { 'calt=1', 'clig=1', 'liga=1' }
 config.window_decorations = "NONE"
 config.enable_tab_bar = false
-config.font_size = 10.0
+config.font_size = 10.5
 config.window_padding = {
   left = 20,
   right = 0,

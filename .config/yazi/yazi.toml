@@ -9,7 +9,7 @@ play = [
 	{ run = 'vlc "$@"', orphan = true, for = "unix" },
 ]
 image=[
-    {run = 'shotwell "$@"', block = true}
+    {run = 'nsxiv "$@"', block = true}
 ]
 [open]
 rules = [
