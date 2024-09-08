@@ -33,6 +33,7 @@ zstyle ':completion:*' matcher-list \
     zstyle ':vcs_info:*' formats ' %B%s-[%F{magenta}%f %F{yellow}%b%f]-'
 
 # Exports
+export PYDEVD_DISABLE_FILE_VALIDATION=1
 export ZSH="$HOME/.oh-my-zsh"
 export TERMINAL="alacritty"
 export SHELL="/usr/bin/zsh"
@@ -118,7 +119,8 @@ alias ee="exit"
 alias lsf="/usr/bin/ls | fzf"
 alias nc="nvim ~/.config/nvim/ +NvimTreeToggle"
 alias mp="mypy"
-
+alias pd="bash ~/.config/LSD/fzf_pydocs.sh"
+alias update-pydoc-list="python3 -u /home/zero/.config/LSD/update_pydocs.py"
 
 # Bindkey:
 bindkey '^ ' autosuggest-accept
