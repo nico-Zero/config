@@ -32,8 +32,9 @@ def all_submodule():
             result.add(name)
         for name in sys.modules.keys():
             result.add(name)
-            for sub_name in dir(__import__(name)):
-                result.add(f"{name}.{sub_name}")
+            if not "." in name:
+                for sub_name in dir(__import__(name)):
+                    result.add(f"{name}.{sub_name}")
         for name in keyword.kwlist:
             result.add(name)
         for name in dir(builtins):
