@@ -1,11 +1,5 @@
 #!/usr/bin/env python3
 
-help_message = """-e <path-to-image> -m <message-to-encode>
--d <path-to-image>
--d <path-to-image> -o <path-to-text-file>
-inside <use "" if there is space in any args.>
-"""
-
 from PIL import Image
 import sys
 import os
@@ -14,6 +8,16 @@ import threading
 import time
 
 DONE = False
+
+
+def help():
+    help_message = """-e <path-to-image> -m <message-to-encode> :- Encode the text in image.
+-d <path-to-image> :- Decodes the Text from the Image and print it out in termianl.
+-d <path-to-image> -o <path-to-text-file> :- Decode the Text from the Image and output it in a text file given.
+-h or --help :- Prints out a help page in terminal.
+inside <use "" if there is space in any args.>
+"""
+    sys.stdout.write(f"\r{help_message}\n")
 
 
 def loading_animation():
@@ -25,7 +29,7 @@ def loading_animation():
         time.sleep(0.1)
 
 
-def to_bin(text):
+def to_bin(text: str):
     return "".join([format(ord(char), "08b") for char in text])
 
 
@@ -35,6 +39,7 @@ def encode(img_path, text, save_name, delimiter: str = "11111110"):
     image = Image.open(img_path)
     image = image.convert("RGB")
     pixels = list(image.getdata())  # type: ignore
+    pixel_len = len(pixels)
     message_len = len(message)
 
     if message_len > len(pixels):
@@ -69,6 +74,7 @@ def decode(img_path, delimiter: str = "11111110"):
     image = Image.open(img_path)
     image = image.convert("RGB")
     pixels = list(image.getdata())  # type: ignore
+    pixel_len = len(pixels)
     binary_message = ""
 
     for pixel in pixels:
@@ -113,9 +119,13 @@ def main():
                     sys.path
 
                 else:
-                    sys.exit("\rNo message.")
+                    sys.stdout.write("\rNo Message.")
+                    help()
+                    sys.exit()
             else:
-                sys.exit("\rThere is a missing Arg.")
+                sys.stdout.write("\rThere is a missing Arg.")
+                help()
+                sys.exit()
         elif args[0] == "-d":
             spinner_thred = threading.Thread(target=loading_animation, daemon=True)
             spinner_thred.start()
@@ -126,16 +136,20 @@ def main():
                     with open(args[3], "w") as file:
                         file.write(message)
                 else:
-                    sys.exit("\rError in Output command")
+                    sys.stdout.write("\rError in Output command.")
+                    help()
+                    sys.exit()
             else:
                 sys.stdout.write(f"\rDecoded Message:- {message}\n")
         elif args[0] in ("-h", "--help"):
-            sys.stdout.write("\r" + help_message)
+            help()
         else:
-            ...
+            help()
+            sys.exit()
 
     else:
-        ...
+        help()
+        sys.exit()
 
 
 main()
