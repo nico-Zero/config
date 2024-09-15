@@ -1,0 +1,141 @@
+#!/usr/bin/env python3
+
+help_message = """-e <path-to-image> -m <message-to-encode>
+-d <path-to-image>
+-d <path-to-image> -o <path-to-text-file>
+inside <use "" if there is space in any args.>
+"""
+
+from PIL import Image
+import sys
+import os
+import itertools
+import threading
+import time
+
+DONE = False
+
+
+def loading_animation():
+    global DONE
+    spinner = itertools.cycle(["⢿", "⣻", "⣽", "⣾", "⣷", "⣯", "⣟", "⡿"])
+    while not DONE:
+        sys.stdout.write("\r" + next(spinner) + " Loading")
+        sys.stdout.flush()
+        time.sleep(0.1)
+
+
+def to_bin(text):
+    return "".join([format(ord(char), "08b") for char in text])
+
+
+def encode(img_path, text, save_name, delimiter: str = "11111110"):
+    global DONE
+    message = to_bin(text) + delimiter
+    image = Image.open(img_path)
+    image = image.convert("RGB")
+    pixels = list(image.getdata())  # type: ignore
+    message_len = len(message)
+
+    if message_len > len(pixels):
+        raise ValueError("Image is too small for the message.")
+
+    new_pixels = list()
+    message_index = 0
+    for pixel in pixels:
+        if message_index >= message_len:
+            new_pixels.append(pixel)
+            continue
+        r, g, b = pixel
+        if message_index < message_len:
+            r = (r & ~1) | int(message[message_index])
+            message_index += 1
+        if message_index < message_len:
+            g = (g & ~1) | int(message[message_index])
+            message_index += 1
+        if message_index < message_len:
+            b = (b & ~1) | int(message[message_index])
+            message_index += 1
+        new_pixels.append((r, g, b))
+
+    image.putdata(new_pixels)
+    image.save(save_name)
+    image.close()
+    DONE = True
+
+
+def decode(img_path, delimiter: str = "11111110"):
+    global DONE
+    image = Image.open(img_path)
+    image = image.convert("RGB")
+    pixels = list(image.getdata())  # type: ignore
+    binary_message = ""
+
+    for pixel in pixels:
+        r, g, b = pixel
+        binary_message += str(r & 1)
+        binary_message += str(g & 1)
+        binary_message += str(b & 1)
+
+    binary_chars = [binary_message[i : i + 8] for i in range(0, len(binary_message), 8)]
+    message = ""
+    for binary_char in binary_chars:
+        if binary_char == delimiter:
+            break
+        message += chr(int(binary_char, 2))
+    image.close()
+
+    DONE = True
+    return message
+
+
+def main():
+    args = sys.argv[1:]
+    delimiter = "11111110"
+    if args:
+        if args[0] == "-e":
+            if len(args) >= 3:
+                img_path = args[1]
+                if args[2] == "-m":
+                    spinner_thred = threading.Thread(
+                        target=loading_animation, daemon=True
+                    )
+                    spinner_thred.start()
+                    message = args[3]
+                    save_name = "encode.png"
+                    encode(
+                        img_path, text=message, save_name=save_name, delimiter=delimiter
+                    )
+                    spinner_thred.join()
+                    sys.stdout.write(
+                        f"\rThe encoded Image saved at <{os.getcwd()+"/"+save_name}>.\n"
+                    )
+                    sys.path
+
+                else:
+                    sys.exit("\rNo message.")
+            else:
+                sys.exit("\rThere is a missing Arg.")
+        elif args[0] == "-d":
+            spinner_thred = threading.Thread(target=loading_animation, daemon=True)
+            spinner_thred.start()
+            message = decode(args[1], delimiter=delimiter)
+            spinner_thred.join()
+            if len(args) >= 3:
+                if args[2] == "-o":
+                    with open(args[3], "w") as file:
+                        file.write(message)
+                else:
+                    sys.exit("\rError in Output command")
+            else:
+                sys.stdout.write(f"\rDecoded Message:- {message}\n")
+        elif args[0] in ("-h", "--help"):
+            sys.stdout.write("\r" + help_message)
+        else:
+            ...
+
+    else:
+        ...
+
+
+main()
