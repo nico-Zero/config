@@ -42,7 +42,7 @@ def encode(img_path, text, save_name, delimiter: str = "11111110"):
     pixel_len = len(pixels)
     message_len = len(message)
 
-    if message_len > len(pixels):
+    if message_len > len(pixels) * 3:
         raise ValueError("Image is too small for the message.")
 
     new_pixels = list()
