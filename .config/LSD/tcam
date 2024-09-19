@@ -1,14 +1,49 @@
+#!/usr/bin/env python3
+
 import sys
 import inspect
+import time
+import threading
+import itertools
 
 
-def encode1(img_path, text, save_name="encode", delimiter: str = "11111110"):
-    print(inspect.currentframe().f_locals)  # type: ignore
-    print(f"Execution of {inspect.currentframe().f_code.co_name} -  OK")  # type: ignore
-    return None
+DONE = False
 
 
-def encode2(img_path, text, save_name="encode", delimiter: str = "11111110"):
+def loading_animation():
+    global DONE
+    spinner = itertools.cycle(["⢿", "⣻", "⣽", "⣾", "⣷", "⣯", "⣟", "⡿"])
+    while not DONE:
+        sys.stdout.write("\r" + next(spinner) + " Loading")
+        sys.stdout.flush()
+        time.sleep(0.1)
+    sys.stdout.write("\rDone.....\n")
+
+
+def decor(primery_thread):
+    def sub_thread(sub_thread):
+        def wrapper(*args, **kwargs):
+            global DONE
+            thread = threading.Thread(target=primery_thread)
+            thread.start()
+            sub_thread(*args, **kwargs)
+            DONE = True
+            thread.join()
+
+        return wrapper
+
+    return sub_thread
+
+
+# @decor(primery_thread=loading_animation)
+def count(t=3):
+    for i in range(1, t + 1):
+        sys.stdout.write(f" - {i}")
+        time.sleep(1)
+
+
+def encode(img_path, text, save_name="encode", delimiter: str = "11111110"):
+    count(3)
     print(inspect.currentframe().f_locals)  # type: ignore
     print(f"Execution of {inspect.currentframe().f_code.co_name} -  OK")  # type: ignore
     return None
@@ -23,84 +58,6 @@ def decode(img_path, file_path: str = str(), delimiter: str = "11111110"):
 def ff(_) -> None:
     print("Decorator function Exicuted.")
     return None
-
-
-struc = {
-    "-e": {
-        "alias": ["--encode"],
-        "input": True,
-        "input_type": {
-            "datatype": str,
-            "description": "path-to-image",
-            "parameter": "img_path",
-        },
-        "output": True,
-        "function": encode1,
-        "decorator_function": ff,
-        "default_args": {
-            "delimiter": "11111110",
-        },
-        "next": {
-            "-m": {
-                "alias": ["--message"],
-                "input": True,
-                "input_type": {
-                    "datatype": str,
-                    "description": "message-to-encode",
-                    "parameter": "text",
-                },
-                "output": True,
-                "function": encode2,
-                "next": None,
-            },
-            "-f": {
-                "alias": ["--file"],
-                "input": True,
-                "input_type": {
-                    "datatype": str,
-                    "description": "path-to-file",
-                    "parameter": "file_path",
-                },
-                "output": True,
-                "function": encode2,
-                "next": None,
-            },
-        },
-    },
-    "-d": {
-        "alias": ["--decode"],
-        "input": True,
-        "input_type": {
-            "datatype": str,
-            "description": "path-to-image",
-            "parameter": "img_path",
-        },
-        "output": True,
-        "function": decode,
-        "decorator_function": ff,
-        "next": {
-            "-o": {
-                "alias": ["--output"],
-                "optional": False,
-                "input": True,
-                "input_type": {
-                    "datatype": str,
-                    "description": "output-file-name",
-                    "parameter": "file_path",
-                },
-                "output": True,
-                "next": None,
-            }
-        },
-    },
-    "-h": {
-        "alias": ["--help"],
-        "input": False,
-        "output": True,
-        "function": help,
-        "next": None,
-    },
-}
 
 
 class Tcam:
@@ -124,7 +81,6 @@ class Tcam:
                                 "description": <description-of-input>,
                                 "parameter": <by-which-parameter-function-will-this-input>,
                             },
-                            "output" : <True | False>,
                             "function" : <function-reference>} | None,
                             "decorator_function": <function-instance-which-will-be-wrapped-around-"function">,
                             "next": {<next-flag-with-same-structure>} | None,
@@ -133,6 +89,10 @@ class Tcam:
         """
         self.structure: dict = structure
         self.args = sys.argv[1:]
+        if self.structure.get("all"):
+            self.all = self.structure.pop("all")
+        else:
+            self.all = None
 
     def run(self):
         """
@@ -141,66 +101,128 @@ class Tcam:
         """
         config = self.__run_config()
         print(config)
-        if config.get("decorator_function"):
-            config["decorator_function"](config["function"](**config["input_dict"]))
-        else:
-            config["function"](**config["input_dict"])
+        for function in config["function"]:
+            if config.get("decorator_function"):
+                if function in config["decorator_function"]:
+                    config["decorator_function"][function](function)(
+                        **(
+                            config["input_args"][function]
+                            if config["input_args"].get(function)
+                            else {}
+                        ),
+                        **(
+                            config["default_args"][function]
+                            if config["default_args"].get(function)
+                            else {}
+                        ),
+                    )
+                    continue
+            function(
+                **(
+                    config["input_args"][function]
+                    if config["input_args"].get(function)
+                    else {}
+                ),
+                **(
+                    config["default_args"][function]
+                    if config["default_args"].get(function)
+                    else {}
+                ),
+            )
 
     def __run_config(self):
         """
         Config for self.run function.
         """
         config_dict = {
-            "input_dict": {},
-            "default_args": {},
-            "function": None,
-            "decorator_function": None,
+            "input_args": dict(),
+            "default_args": dict(),
+            "function": set(),
+            "decorator_function": dict(),
         }
-        all_alias = self.alias()
+        alias = self.alias()
         current_flag = self.structure.copy()
         arg_index = 0
+        function = None
         current_arg = None
-        while True:
+        while arg_index < len(self.args):
             current_arg = self.args[arg_index]
+
             if current_arg in current_flag:
                 current_flag = current_flag[current_arg]
-            elif current_arg in all_alias:
-                current_arg = all_alias[current_arg]
-                current_flag = current_flag[all_alias[current_arg]]
+            elif current_arg in alias:
+                current_arg = alias[current_arg]
+                current_flag = current_flag[alias[current_arg]]
+            elif self.all:
+                all_alias = self.alias(self.all)
+                if current_arg in self.all:
+                    current_flag = self.all[current_arg]
+                elif current_arg in all_alias:
+                    current_flag = self.all[all_alias[current_arg]]
+                else:
+                    self.__error(
+                        ValueError,
+                        message="The commands goes like:-\n"
+                        + "\n".join(
+                            [value for value in self.commands(self.all) if self.args]
+                        ),
+                    )
             else:
-                raise ValueError(
-                    "The commands goes like:-\n"
-                    + "\n".join([value for value in self.commands() if self.args]),
-                )
+                self.__error(ValueError)
+
+            # print(current_flag)
+            # print("\n")
+            if current_flag.get("function"):
+                config_dict["function"].add(current_flag["function"])
+                function = current_flag["function"]
+
+            if current_flag.get("decorator_function"):
+                config_dict["decorator_function"][function] = current_flag[
+                    "decorator_function"
+                ]
+
             if current_flag.get("input") is True:
                 arg_index += 1
-                config_dict["input_dict"][current_flag["input_type"]["parameter"]] = (
-                    self.args[arg_index]
-                )
+                if not config_dict["input_args"].get(function):
+                    config_dict["input_args"][function] = {}
+                config_dict["input_args"][function][
+                    current_flag["input_type"]["parameter"]
+                ] = self.args[arg_index]
+
             if current_flag.get("default_args"):
-                config_dict["default_args"].update(current_flag["default_args"])
-            if current_flag.get("function"):
-                config_dict["function"] = current_flag["function"]
-            if current_flag.get("decorator_function"):
-                config_dict["decorator_function"] = current_flag["decorator_function"]
+                if not config_dict["default_args"].get(function):
+                    config_dict["default_args"][function] = {}
+                config_dict["default_args"][function].update(
+                    current_flag["default_args"]
+                )
+
             if current_flag.get("next"):
                 current_flag = current_flag["next"]
             else:
-                break
+                ...
             arg_index += 1
+
         return config_dict
 
-    def alias(self):
+    def alias(self, structure: dict | None = None):
         """
         It return all the alias in a dict formate.
             Ex:- { <alias>:<flag> }
         """
+        structure = structure if structure else self.structure
         return {
             value: key
-            for key, values in self.structure.items()
+            for key, values in structure.items()
             if values.get("alias")
             for value in values.get("alias")
         }
+
+    def __error(self, error_type, message: str | None = None):
+        errors = {
+            ValueError: "The commands goes like:-\n"
+            + "\n".join([value for value in self.commands() if self.args]),
+        }
+        raise error_type(errors[error_type] if not message else message)
 
     def commands(self, struc: dict | None = None):
         """
@@ -256,10 +278,86 @@ class Tcam:
         return f"{Tcam.__name__}({self.structure})"
 
 
+struc = {
+    "-e": {
+        "alias": ["--encode"],
+        "input": True,
+        "input_type": {
+            "datatype": str,
+            "description": "path-to-image",
+            "parameter": "img_path",
+        },
+        "function": encode,
+        "decorator_function": decor(loading_animation),
+        "default_args": {
+            "delimiter": "11111110",
+        },
+        "next": {
+            "-m": {
+                "alias": ["--message"],
+                "input": True,
+                "input_type": {
+                    "datatype": str,
+                    "description": "message-to-encode",
+                    "parameter": "text",
+                },
+                "function": encode,
+                "next": None,
+            },
+            "-f": {
+                "alias": ["--file"],
+                "input": True,
+                "input_type": {
+                    "datatype": str,
+                    "description": "path-to-file",
+                    "parameter": "file_path",
+                },
+                "function": encode,
+                "next": None,
+            },
+        },
+    },
+    "-d": {
+        "alias": ["--decode"],
+        "input": True,
+        "input_type": {
+            "datatype": str,
+            "description": "path-to-image",
+            "parameter": "img_path",
+        },
+        "function": decode,
+        "decorator_function": decor(loading_animation),
+        "next": {
+            "-o": {
+                "alias": ["--output"],
+                "optional": False,
+                "input": True,
+                "input_type": {
+                    "datatype": str,
+                    "description": "output-file-name",
+                    "parameter": "file_path",
+                },
+                "next": None,
+            }
+        },
+    },
+    "all": {
+        "-h": {
+            "alias": ["--help"],
+            "input": False,
+            "function": help,
+            "default_args": {
+                "request": Tcam,
+            },
+            "next": None,
+        },
+    },
+}
+
 x = Tcam(struc)
 
 # path = x.commands()
 # print(*path, sep="\n")
 
-# help(Tcam)
+# help(request=Tcam)
 x.run()
