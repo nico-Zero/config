@@ -7,13 +7,9 @@ import threading
 import itertools
 
 
-DONE = False
-
-
-def loading_animation():
-    global DONE
+def loading_animation(stop_flag):
     spinner = itertools.cycle(["⢿", "⣻", "⣽", "⣾", "⣷", "⣯", "⣟", "⡿"])
-    while not DONE:
+    while not stop_flag.is_set():
         sys.stdout.write("\r" + next(spinner) + " Loading")
         sys.stdout.flush()
         time.sleep(0.1)
@@ -23,11 +19,11 @@ def loading_animation():
 def decor(primery_thread):
     def sub_thread(sub_thread):
         def wrapper(*args, **kwargs):
-            global DONE
-            thread = threading.Thread(target=primery_thread)
+            stop_flag = threading.Event()
+            thread = threading.Thread(target=primery_thread, args=(stop_flag,))
             thread.start()
             sub_thread(*args, **kwargs)
-            DONE = True
+            stop_flag.set()
             thread.join()
 
         return wrapper
@@ -73,17 +69,18 @@ class Tcam:
                             in the EX are the default values.
                 Ex:-
                     {
-                        "<-some_flag>" : {
+                        "<-some-flag>" : {
                             "alias" : [<str>] | None,
                             "input" : <True | False>,
                             "input_type":{              # If input is True.
-                                "datatype" : <datatype-instance>,
-                                "description": <description-of-input>,
-                                "parameter": <by-which-parameter-function-will-this-input>,
+                                "datatype" : <datatype instance>,
+                                "description": <description of input>,
+                                "parameter": <by which parameter function will thisi nput>,
                             },
-                            "function" : <function-reference>} | None,
-                            "decorator_function": <function-instance-which-will-be-wrapped-around-"function">,
-                            "next": {<next-flag-with-same-structure>} | None,
+                            "default_args": [<list of default args for the function>] | None,
+                            "function" : <function reference>} | None,
+                            "decorator_function": <function instance which will be wrapped around "function">,
+                            "next": {<next flag with same structure>} | None,
                         }
                     }
         """
@@ -105,29 +102,13 @@ class Tcam:
             if config.get("decorator_function"):
                 if function in config["decorator_function"]:
                     config["decorator_function"][function](function)(
-                        **(
-                            config["input_args"][function]
-                            if config["input_args"].get(function)
-                            else {}
-                        ),
-                        **(
-                            config["default_args"][function]
-                            if config["default_args"].get(function)
-                            else {}
-                        ),
+                        **(config["input_args"].get(function) or {}),
+                        **(config["default_args"].get(function) or {}),
                     )
                     continue
             function(
-                **(
-                    config["input_args"][function]
-                    if config["input_args"].get(function)
-                    else {}
-                ),
-                **(
-                    config["default_args"][function]
-                    if config["default_args"].get(function)
-                    else {}
-                ),
+                **(config["input_args"].get(function) or {}),
+                **(config["default_args"].get(function) or {}),
             )
 
     def __run_config(self):
@@ -360,4 +341,4 @@ x = Tcam(struc)
 # print(*path, sep="\n")
 
 # help(request=Tcam)
-x.run()
+# x.run()

@@ -1,32 +1,9 @@
 #!/usr/bin/env python3
 
 from PIL import Image
-import sys
 import os
-import itertools
-import threading
-import time
-
-DONE = False
-
-
-def help():
-    help_message = """-e <path-to-image> -m <message-to-encode> :- Encode the text in image.
--d <path-to-image> :- Decodes the Text from the Image and print it out in termianl.
--d <path-to-image> -o <path-to-text-file> :- Decode the Text from the Image and output it in a text file given.
--h or --help :- Prints out a help page in terminal.
-inside <use "" if there is space in any args.>
-"""
-    sys.stdout.write(f"\r{help_message}\n")
-
-
-def loading_animation():
-    global DONE
-    spinner = itertools.cycle(["⢿", "⣻", "⣽", "⣾", "⣷", "⣯", "⣟", "⡿"])
-    while not DONE:
-        sys.stdout.write("\r" + next(spinner) + " Loading")
-        sys.stdout.flush()
-        time.sleep(0.1)
+import mimetypes
+from tcam import Tcam, loading_animation, decor
 
 
 def to_bin(text: str):
@@ -95,61 +72,74 @@ def decode(img_path, delimiter: str = "11111110"):
     return message
 
 
-def main():
-    args = sys.argv[1:]
-    delimiter = "11111110"
-    if args:
-        if args[0] == "-e":
-            if len(args) >= 3:
-                img_path = args[1]
-                if args[2] == "-m":
-                    spinner_thred = threading.Thread(
-                        target=loading_animation, daemon=True
-                    )
-                    spinner_thred.start()
-                    message = args[3]
-                    save_name = "encode.png"
-                    encode(
-                        img_path, text=message, save_name=save_name, delimiter=delimiter
-                    )
-                    spinner_thred.join()
-                    sys.stdout.write(
-                        f"\rThe encoded Image saved at <{os.getcwd()+"/"+save_name}>.\n"
-                    )
-                    sys.path
+class ED:
+    def __init__(self, file_path: str, delimiter: str = "11111110"):
+        if not os.path.isfile(file_path):
+            raise ValueError("file does not exist.")
+        self.file_path = file_path
+        file_split = [value[::-1] for value in self.file_path[::-1].split(".", 1)]
+        self.file_extension = file_split[0]
+        self.file_name = file_split[1]
+        self.delimiter = delimiter
 
-                else:
-                    sys.stdout.write("\rNo Message.")
-                    help()
-                    sys.exit()
-            else:
-                sys.stdout.write("\rThere is a missing Arg.")
-                help()
-                sys.exit()
-        elif args[0] == "-d":
-            spinner_thred = threading.Thread(target=loading_animation, daemon=True)
-            spinner_thred.start()
-            message = decode(args[1], delimiter=delimiter)
-            spinner_thred.join()
-            if len(args) >= 3:
-                if args[2] == "-o":
-                    with open(args[3], "w") as file:
-                        file.write(message)
-                else:
-                    sys.stdout.write("\rError in Output command.")
-                    help()
-                    sys.exit()
-            else:
-                sys.stdout.write(f"\rDecoded Message:- {message}\n")
-        elif args[0] in ("-h", "--help"):
-            help()
+    def __error(self, error_type, message: str = ""):
+        errors = {
+            ValueError: "There is a error.",
+        }
+        raise error_type(message or errors[error_type])
+
+    def __file_type(self, path: str = ""):
+        file_type, enocding = mimetypes.guess_type(self.file_path or path)
+        file_type, file_extension = file_type.split("/")  # type: ignore
+        return {
+            "file_type": file_type,
+            "file_extension": file_extension,
+            "encoding": enocding,
+        }
+
+    def __is_type(self, file_type, file_path: str | None = None):
+        if file_path:
+            if not os.path.isfile(file_path):
+                self.__error(ValueError, "File does not exist.")
         else:
-            help()
-            sys.exit()
+            file_path = self.file_path
+        if self.__file_type(file_path)["file_type"] == file_type:
+            return True
+        else:
+            self.__error(ValueError, "Not a image file.")
 
-    else:
-        help()
-        sys.exit()
+    def __to_bin(self, string, format_to: str = "08b", delimiter: str = "11111110"):
+        string = "".join([format(ord(chr), format_to) for chr in string]) + (
+            delimiter or self.delimiter
+        )
+        return string
+
+    def encode_in_image(
+        self,
+        message: str | None = None,
+        message_file: str | None = None,
+        encoded_file_name: str | None = None,
+    ):
+        self.__is_type("image")
+        if message_file:
+            if not os.path.isfile(message_file):
+                with open(message_file, "r") as file:
+                    message = file.read()
+        elif message:
+            pass
+        else:
+            self.__error(ValueError, "No message.")
+        message = self.__to_bin(message)
+        print(message)
+
+    def decode_from_image(self, img_path):
+        self.__is_type("image", file_path=img_path)
+
+    def encode_in_audio(self): ...
+    def decode_from_audio(self): ...
+    def encode_in_video(self): ...
+    def decode_from_video(self): ...
 
 
-main()
+x = ED("./anime-cat-girl-ai-art-4k-wallpaper-uhdpaper.com-726@1@l.jpg")
+x.encode_in_image(message="Hello, World!!!")
