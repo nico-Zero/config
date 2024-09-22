@@ -15,7 +15,7 @@ if [ ! -z "$status" ]; then
     if [[ "$confirm" == "y" ]] || [[ "$confirm" == "Y" ]] || [[ "$confirm" == "" ]]; then
         git add . && status=$(git status -s) && git commit -m "$message" -m "$status" && git push -u origin main
     else
-        echo "The git push process has been cancelled."
+        echo "Git push process has been cancelled."
         echo "See Ya..."
     fi
 
