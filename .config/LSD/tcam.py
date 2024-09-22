@@ -16,7 +16,7 @@ def loading_animation(stop_flag):
     sys.stdout.write("\rDone.....\n")
 
 
-def decor(primery_thread):
+def decor(primery_thread=loading_animation):
     def sub_thread(sub_thread):
         def wrapper(*args, **kwargs):
             stop_flag = threading.Event()
@@ -29,31 +29,6 @@ def decor(primery_thread):
         return wrapper
 
     return sub_thread
-
-
-# @decor(primery_thread=loading_animation)
-def count(t=3):
-    for i in range(1, t + 1):
-        sys.stdout.write(f" - {i}")
-        time.sleep(1)
-
-
-def encode(img_path, text, save_name="encode", delimiter: str = "11111110"):
-    count(3)
-    print(inspect.currentframe().f_locals)  # type: ignore
-    print(f"Execution of {inspect.currentframe().f_code.co_name} -  OK")  # type: ignore
-    return None
-
-
-def decode(img_path, file_path: str = str(), delimiter: str = "11111110"):
-    print(inspect.currentframe().f_locals)  # type: ignore
-    print(f"Execution of {inspect.currentframe().f_code.co_name} -  OK")  # type: ignore
-    return None
-
-
-def ff(_) -> None:
-    print("Decorator function Exicuted.")
-    return None
 
 
 class Tcam:
@@ -96,7 +71,7 @@ class Tcam:
         It runs the Terminal command and parces all the
         args and puts them all in the function.
         """
-        config = self.__run_config()
+        config = self.run_config()
         print(config)
         for function in config["function"]:
             if config.get("decorator_function"):
@@ -111,7 +86,7 @@ class Tcam:
                 **(config["default_args"].get(function) or {}),
             )
 
-    def __run_config(self):
+    def run_config(self):
         """
         Config for self.run function.
         """
@@ -259,86 +234,5 @@ class Tcam:
         return f"{Tcam.__name__}({self.structure})"
 
 
-struc = {
-    "-e": {
-        "alias": ["--encode"],
-        "input": True,
-        "input_type": {
-            "datatype": str,
-            "description": "path-to-image",
-            "parameter": "img_path",
-        },
-        "function": encode,
-        "decorator_function": decor(loading_animation),
-        "default_args": {
-            "delimiter": "11111110",
-        },
-        "next": {
-            "-m": {
-                "alias": ["--message"],
-                "input": True,
-                "input_type": {
-                    "datatype": str,
-                    "description": "message-to-encode",
-                    "parameter": "text",
-                },
-                "function": encode,
-                "next": None,
-            },
-            "-f": {
-                "alias": ["--file"],
-                "input": True,
-                "input_type": {
-                    "datatype": str,
-                    "description": "path-to-file",
-                    "parameter": "file_path",
-                },
-                "function": encode,
-                "next": None,
-            },
-        },
-    },
-    "-d": {
-        "alias": ["--decode"],
-        "input": True,
-        "input_type": {
-            "datatype": str,
-            "description": "path-to-image",
-            "parameter": "img_path",
-        },
-        "function": decode,
-        "decorator_function": decor(loading_animation),
-        "next": {
-            "-o": {
-                "alias": ["--output"],
-                "optional": False,
-                "input": True,
-                "input_type": {
-                    "datatype": str,
-                    "description": "output-file-name",
-                    "parameter": "file_path",
-                },
-                "next": None,
-            }
-        },
-    },
-    "all": {
-        "-h": {
-            "alias": ["--help"],
-            "input": False,
-            "function": help,
-            "default_args": {
-                "request": Tcam,
-            },
-            "next": None,
-        },
-    },
-}
-
-x = Tcam(struc)
-
-# path = x.commands()
-# print(*path, sep="\n")
-
-# help(request=Tcam)
+# x = Tcam(struc)
 # x.run()

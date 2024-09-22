@@ -121,6 +121,7 @@ alias nc="nvim ~/.config/nvim/ +NvimTreeToggle"
 alias mp="mypy"
 alias pd="bash ~/.config/LSD/fzf_pydocs.sh"
 alias update-pydoc-list="python3 -u /home/zero/.config/LSD/update_pydocs.py"
+alias bb="btop --utf-force"
 
 # Bindkey:
 bindkey '^ ' autosuggest-accept
@@ -142,6 +143,7 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey '^K' history-substring-search-up
 bindkey '^J' history-substring-search-down
+bindkey -s '^[b' "btop --utf-force^M"
 
 # >>> conda initialize >>>
 __conda_setup="$('/home/zero/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

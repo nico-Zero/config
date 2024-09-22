@@ -10,11 +10,12 @@ if [ ! -z "$status" ]; then
         git status | bat
     fi
     read -p "message: " message
-    read -p "Confirm (y|N): " confirm
+    read -p "Confirm (Y|n): " confirm
 
-    if [[ "$confirm" == "y" ]] || [[ "$confirm" == "Y" ]]; then
+    if [[ "$confirm" == "y" ]] || [[ "$confirm" == "Y" ]] || [[ "$confirm" == "" ]]; then
         git add . && status=$(git status -s) && git commit -m "$message" -m "$status" && git push -u origin main
-    else    
+    else
+        echo "The git push process has been cancelled."
         echo "See Ya..."
     fi
 

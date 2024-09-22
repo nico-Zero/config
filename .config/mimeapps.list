@@ -1,6 +1,7 @@
 [Added Associations]
 text/csv=nvim.desktop;
 video/webm=vlc.desktop;
+application/pdf=krita_pdf.desktop;xreader.desktop;gimp.desktop;libreoffice-draw.desktop;firefox.desktop;
 
 [Default Applications]
 text/plain=nvim.desktop
@@ -10,3 +11,4 @@ image/gif=nsxiv.desktop
 image/bmp=nsxiv.desktop
 image/tiff=nsxiv.desktop
 image/svg+xml=nsxiv.desktop
+application/pdf=firefox.desktop

@@ -3,7 +3,7 @@
 from PIL import Image
 import os
 import mimetypes
-from tcam import Tcam, loading_animation, decor
+from tcam import Tcam, decor
 
 
 def to_bin(text: str):
@@ -141,5 +141,84 @@ class ED:
     def decode_from_video(self): ...
 
 
-x = ED("./anime-cat-girl-ai-art-4k-wallpaper-uhdpaper.com-726@1@l.jpg")
-x.encode_in_image(message="Hello, World!!!")
+struc = {
+    "-e": {
+        "alias": ["--encode"],
+        "input": True,
+        "input_type": {
+            "datatype": str,
+            "description": "path-to-image",
+            "parameter": "img_path",
+        },
+        "function": encode,
+        "decorator_function": decor(),
+        "default_args": {
+            "delimiter": "11111110",
+        },
+        "next": {
+            "-m": {
+                "alias": ["--message"],
+                "input": True,
+                "input_type": {
+                    "datatype": str,
+                    "description": "message-to-encode",
+                    "parameter": "text",
+                },
+                "function": encode,
+                "next": None,
+            },
+            "-f": {
+                "alias": ["--file"],
+                "input": True,
+                "input_type": {
+                    "datatype": str,
+                    "description": "path-to-file",
+                    "parameter": "file_path",
+                },
+                "function": encode,
+                "next": None,
+            },
+        },
+    },
+    "-d": {
+        "alias": ["--decode"],
+        "input": True,
+        "input_type": {
+            "datatype": str,
+            "description": "path-to-image",
+            "parameter": "img_path",
+        },
+        "function": decode,
+        "decorator_function": decor(),
+        "next": {
+            "-o": {
+                "alias": ["--output"],
+                "input": True,
+                "input_type": {
+                    "datatype": str,
+                    "description": "output-file-name",
+                    "parameter": "file_path",
+                },
+                "next": None,
+            }
+        },
+    },
+    "all": {
+        "-h": {
+            "alias": ["--help"],
+            "input": False,
+            "function": help,
+            "default_args": {
+                "request": Tcam,
+            },
+            "next": None,
+        },
+    },
+}
+
+commands = Tcam(struc).run_config()
+print(commands)
+
+
+# x = ED("./anime-cat-girl-ai-art-4k-wallpaper-uhdpaper.com-726@1@l.jpg")
+# x.encode_in_image(message="Hello, World!!!")
