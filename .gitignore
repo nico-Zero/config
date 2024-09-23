@@ -22,6 +22,8 @@
 !.config/
 !.config/mimeapps.list
 
+!.config/BraveSoftware/Brave-Browser/Default/Bookmarks
+
 !.config/nushell/
 !.config/nushell/**/*
 
