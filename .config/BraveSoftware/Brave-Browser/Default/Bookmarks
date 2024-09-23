@@ -1,0 +1,234 @@
+{
+   "checksum": "92a18338541c078d226e4e6d4d0e1930",
+   "roots": {
+      "bookmark_bar": {
+         "children": [  ],
+         "date_added": "13369643435090829",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Bookmarks bar",
+         "type": "folder"
+      },
+      "other": {
+         "children": [ {
+            "date_added": "13369647292300572",
+            "date_last_used": "0",
+            "guid": "50e58679-4752-4cbb-b2af-ff296f883bc1",
+            "id": "5",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Tyler Vigen's personal website",
+            "type": "url",
+            "url": "https://tylervigen.com/"
+         }, {
+            "date_added": "13369647707487909",
+            "date_last_used": "0",
+            "guid": "7e799f6a-91f0-4294-ad1d-cc2b22ca5484",
+            "id": "6",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "xkcd: Sky Alarm",
+            "type": "url",
+            "url": "https://xkcd.com/"
+         }, {
+            "date_added": "13369651395626633",
+            "date_last_used": "0",
+            "guid": "fc853fec-cd45-4320-bd8c-25e1117175b8",
+            "id": "7",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Calligraphr - Draw your own fonts.",
+            "type": "url",
+            "url": "https://www.calligraphr.com/en/"
+         }, {
+            "date_added": "13369682975894846",
+            "date_last_used": "13370873639684770",
+            "guid": "963b3c1d-0d50-468b-a436-ec0878a4655c",
+            "id": "8",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Excalidraw",
+            "type": "url",
+            "url": "https://excalidraw.com/"
+         }, {
+            "date_added": "13369940405027349",
+            "date_last_used": "0",
+            "guid": "ac2a58a3-1356-4614-a13a-7ddb19c2c07b",
+            "id": "10",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "aw-junaid/Hacking-Tools: This Repository is a collection of different ethical hacking tools and malware's for penetration testing and research purpose written in python, ruby, rust, c++, go and c.",
+            "type": "url",
+            "url": "https://github.com/aw-junaid/Hacking-Tools"
+         }, {
+            "date_added": "13370070752637496",
+            "date_last_used": "0",
+            "guid": "8b629707-3b7b-4904-9365-599b334009d8",
+            "id": "12",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "(16) Pokimane REUNITES With JasonTheWeen.. - YouTube",
+            "type": "url",
+            "url": "https://www.youtube.com/watch?v=FZNg71SLFOA"
+         }, {
+            "date_added": "13370278207741165",
+            "date_last_used": "0",
+            "guid": "7894fc12-ced3-491a-9ed2-4853692f44dc",
+            "id": "14",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Pathfinding Visualizer",
+            "type": "url",
+            "url": "https://pathfindingvisualizer.net/"
+         }, {
+            "date_added": "13370278465960801",
+            "date_last_used": "0",
+            "guid": "a8553682-c662-4903-9d35-bdd46c63f8c5",
+            "id": "15",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "visualising data structures and algorithms through animation - VisuAlgo",
+            "type": "url",
+            "url": "https://visualgo.net/en"
+         }, {
+            "date_added": "13370278802795415",
+            "date_last_used": "0",
+            "guid": "28a0ffd0-3e42-4de1-a781-37d73c05024e",
+            "id": "16",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Algorithm Visualizer",
+            "type": "url",
+            "url": "https://algorithm-visualizer.net/"
+         }, {
+            "date_added": "13370347185108664",
+            "date_last_used": "0",
+            "guid": "a90746aa-5c0f-4a09-a83d-a2c9129b133a",
+            "id": "17",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "(22) Most unique Weapon inspection in Mw3 #mw3 #warzone #cod #callofduty - YouTube",
+            "type": "url",
+            "url": "https://www.youtube.com/shorts/fE3rggSwI3w"
+         }, {
+            "date_added": "13370351733856496",
+            "date_last_used": "0",
+            "guid": "7e6be132-ce81-4c1e-81fb-a554a54f9b45",
+            "id": "18",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Course: Complete 2022 Data Science & Machine Learning Bootcamp | Udemy",
+            "type": "url",
+            "url": "https://www.udemy.com/course/python-data-science-machine-learning-bootcamp/learn/lecture/14845108#overview"
+         }, {
+            "date_added": "13370862123840498",
+            "date_last_used": "0",
+            "guid": "e4b00f49-d388-4b1e-b1cb-28dc1c5ff0f5",
+            "id": "20",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "GENRAGE | Streetwear Fashion India",
+            "type": "url",
+            "url": "https://genrage.com/"
+         }, {
+            "date_added": "13370973977831008",
+            "date_last_used": "0",
+            "guid": "f3bc34de-068f-4a84-a078-f32cceeedeca",
+            "id": "22",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Download the latest indie games - itch.io",
+            "type": "url",
+            "url": "https://itch.io/"
+         }, {
+            "date_added": "13371140934472073",
+            "date_last_used": "0",
+            "guid": "c465e27a-a9bc-4fd7-bc02-c4c781399678",
+            "id": "24",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "book.hacktricks.xyz",
+            "type": "url",
+            "url": "https://book.hacktricks.xyz/"
+         }, {
+            "date_added": "13371143057709486",
+            "date_last_used": "0",
+            "guid": "31a5a91a-8d80-43aa-ab70-afb5533ac98a",
+            "id": "25",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Obtainium",
+            "type": "url",
+            "url": "https://obtainium.imranr.dev/"
+         }, {
+            "date_added": "13371143605796668",
+            "date_last_used": "0",
+            "guid": "523ac5a2-dbee-49ab-94ae-d06584fe5a7d",
+            "id": "26",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "deniscerri/ytdlnis: Android Video/Audio Downloader app using yt-dlp",
+            "type": "url",
+            "url": "https://github.com/deniscerri/ytdlnis?tab=readme-ov-file"
+         }, {
+            "date_added": "13371149364203801",
+            "date_last_used": "0",
+            "guid": "3454e56d-b662-40d1-9459-0020ef424239",
+            "id": "27",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Google Scholar",
+            "type": "url",
+            "url": "https://scholar.google.com/"
+         }, {
+            "date_added": "13371561170365655",
+            "date_last_used": "0",
+            "guid": "e9c24c08-75a1-4c99-86b7-60127dfc7dfd",
+            "id": "29",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Apache SpamAssassin: Welcome",
+            "type": "url",
+            "url": "https://spamassassin.apache.org/"
+         } ],
+         "date_added": "13369643435090832",
+         "date_last_used": "0",
+         "date_modified": "13371561170365655",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "Other bookmarks",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13369643435090833",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "Mobile bookmarks",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}

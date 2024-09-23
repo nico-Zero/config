@@ -22,7 +22,6 @@
 !.config/
 !.config/mimeapps.list
 
-!.config/BraveSoftware/Brave-Browser/Default/Bookmarks
 
 !.config/nushell/
 !.config/nushell/**/*
@@ -56,6 +55,9 @@
 
 !.config/BraveSoftware/
 !.config/BraveSoftware/auto_start.sh
+!.config/BraveSoftware/Brave-Browser/
+!.config/BraveSoftware/Brave-Browser/Default/
+!.config/BraveSoftware/Brave-Browser/Default/Bookmarks
 
 !.config/Thunar/
 !.config/Thunar/auto_start.sh
