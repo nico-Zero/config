@@ -1,5 +1,5 @@
 {
-   "checksum": "92a18338541c078d226e4e6d4d0e1930",
+   "checksum": "ce283a17892e726195b6d9d656016c20",
    "roots": {
       "bookmark_bar": {
          "children": [  ],
@@ -210,10 +210,21 @@
             "name": "Apache SpamAssassin: Welcome",
             "type": "url",
             "url": "https://spamassassin.apache.org/"
+         }, {
+            "date_added": "13371561896461409",
+            "date_last_used": "0",
+            "guid": "53659a1d-73ee-4e67-8edb-df4b80c4af5b",
+            "id": "30",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Index of /old",
+            "type": "url",
+            "url": "https://spamassassin.apache.org/old/"
          } ],
          "date_added": "13369643435090832",
          "date_last_used": "0",
-         "date_modified": "13371561170365655",
+         "date_modified": "13371561896461409",
          "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
          "id": "2",
          "name": "Other bookmarks",
