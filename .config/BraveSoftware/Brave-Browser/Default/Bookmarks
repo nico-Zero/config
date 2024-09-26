@@ -1,5 +1,5 @@
 {
-   "checksum": "3fcf51cadc9da7ed17021da98e718acd",
+   "checksum": "be1b081f5c1006b5c2e5d5f0d51653a1",
    "roots": {
       "bookmark_bar": {
          "children": [  ],
@@ -309,10 +309,21 @@
             "name": "Hikari Hikari",
             "type": "url",
             "url": "https://watch.hikaritv.xyz/"
+         }, {
+            "date_added": "13371840837994732",
+            "date_last_used": "0",
+            "guid": "6fe183c6-a03d-473b-aa00-c147abf2f43f",
+            "id": "40",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Nerd Fonts - Iconic font aggregator, glyphs/icons collection, & fonts patcher",
+            "type": "url",
+            "url": "https://www.nerdfonts.com/cheat-sheet"
          } ],
          "date_added": "13369643435090832",
          "date_last_used": "0",
-         "date_modified": "13371662588899792",
+         "date_modified": "13371840837994732",
          "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
          "id": "2",
          "name": "Other bookmarks",
