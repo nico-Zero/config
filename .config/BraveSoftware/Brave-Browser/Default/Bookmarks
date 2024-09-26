@@ -1,5 +1,5 @@
 {
-   "checksum": "be1b081f5c1006b5c2e5d5f0d51653a1",
+   "checksum": "6882c7cbb52b758e9498ba0db054a6a6",
    "roots": {
       "bookmark_bar": {
          "children": [  ],
@@ -320,10 +320,21 @@
             "name": "Nerd Fonts - Iconic font aggregator, glyphs/icons collection, & fonts patcher",
             "type": "url",
             "url": "https://www.nerdfonts.com/cheat-sheet"
+         }, {
+            "date_added": "13371857199656053",
+            "date_last_used": "0",
+            "guid": "4adfb7b6-95b5-424b-8a69-9e640d42dd3f",
+            "id": "41",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Palettes | Flat UI Colors 🎨 280 handpicked colors ready for COPY & PASTE",
+            "type": "url",
+            "url": "https://flatuicolors.com/"
          } ],
          "date_added": "13369643435090832",
          "date_last_used": "0",
-         "date_modified": "13371840837994732",
+         "date_modified": "13371857199656053",
          "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
          "id": "2",
          "name": "Other bookmarks",
