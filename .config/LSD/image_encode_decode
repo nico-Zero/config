@@ -13,6 +13,7 @@ def to_bin(text: str):
 
 
 def encode(img_path, text, save_name, delimiter: str = "11111110"):
+
     global DONE
     message = to_bin(text) + delimiter
     image = Image.open(img_path)
