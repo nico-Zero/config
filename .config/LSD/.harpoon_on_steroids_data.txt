@@ -26,3 +26,4 @@
 /run/media/zero/Nova/Lab/Rust
 /run/media/zero/Nova/Lab/Python/chess
 /home/zero/.librewolf/qb4vu4rm.default-default
+/home/zero/.oh-my-zsh
