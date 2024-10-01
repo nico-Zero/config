@@ -1,5 +1,5 @@
 {
-   "checksum": "6882c7cbb52b758e9498ba0db054a6a6",
+   "checksum": "250e611942d8b1a77b1fee9173e21847",
    "roots": {
       "bookmark_bar": {
          "children": [  ],
@@ -331,10 +331,21 @@
             "name": "Palettes | Flat UI Colors 🎨 280 handpicked colors ready for COPY & PASTE",
             "type": "url",
             "url": "https://flatuicolors.com/"
+         }, {
+            "date_added": "13372263152298135",
+            "date_last_used": "0",
+            "guid": "526bf673-881b-4c83-be9d-a1231759ac01",
+            "id": "43",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "bash keyboard shortcuts - Linux - SS64.com",
+            "type": "url",
+            "url": "https://ss64.com/bash/syntax-keyboard.html"
          } ],
          "date_added": "13369643435090832",
          "date_last_used": "0",
-         "date_modified": "13371857199656053",
+         "date_modified": "13372263152298135",
          "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
          "id": "2",
          "name": "Other bookmarks",
