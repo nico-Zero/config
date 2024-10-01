@@ -2,6 +2,18 @@
 
 data_file=~/.config/LSD/.harpoon_on_steroids_data.txt
 
+new_session_attach() {
+    tmux -u new -s "$1" -c "$2" -d
+    tmux -u new-window -t "$1" -n "$(echo $SHELL | awk -F '/' '{print $NF}')" -c "$2" -d 
+    tmux -u attach-session -t "$1"
+}
+
+new_session_switch() {
+    tmux -u new -s "$1" -c "$2" -d
+    tmux -u new-window -t "$1" -n "$(echo $SHELL | awk -F '/' '{print $NF}')" -c "$2" -d
+    tmux -u switch-client -t "$dirname"
+}
+
 case "$1"
 in
     add)
@@ -23,13 +35,13 @@ in
                 if [ 0 -eq $exitcode ]; then
                     tmux -u attach-session -t "$dirname"
                 else
-                    tmux -u new -s "$dirname" -c "$choice"
+                    new_session_attach $dirname $choice
                 fi
             fi
         fi
         ;;
     gotoS)
-        choice=$(cat "$data_file" | fzf --reverse) && dirname="$(awk -F "/" '{print $NF}' <<< $choice | tr "." "_")"
+        choice=$(cat "$data_file" | fzf --reverse) && dirname="$(awk -F '/' '{print $NF}' <<< $choice | tr "." "_")"
         if [ ! -z $choice ]; then
             tmux has-session -t "$dirname" > /dev/null 2>&1 
             exitcode=$?
@@ -37,21 +49,20 @@ in
                 if [ 0 -eq $exitcode ]; then
                     tmux -u switch-client -t "$dirname"
                 else
-                    tmux -u new -s "$dirname" -c "$choice" -d
-                    tmux -u switch-client -t "$dirname"
+                    new_session_switch $dirname $choice
                 fi
             else
                 if [ "nvim" == "$2" ]; then
                     if [ 0 -eq $exitcode ]; then
                         tmux -u attach-session -t "$dirname" \; send-keys "nvim" C-m
                     else
-                        tmux -u new -s "$dirname" -c "$choice" \; send-keys "nvim" C-m
+                        new_session_attach $dirname $choice
                     fi
                 else
                     if [ 0 -eq $exitcode ]; then
                         tmux -u attach-session -t "$dirname"
                     else
-                        tmux -u new -s "$dirname" -c "$choice"
+                        new_session_attach $dirname $choice
                     fi
                 fi
             fi
