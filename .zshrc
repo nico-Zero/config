@@ -122,6 +122,7 @@ alias mp="mypy"
 alias pd="bash ~/.config/LSD/fzf_pydocs.sh"
 alias update-pydoc-list="python3 -u /home/zero/.config/LSD/update_pydocs.py"
 alias bb="btop --utf-force"
+alias srm="nvim ~/.config/LSD/.harpoon_on_steroids_data.txt"
 
 # Bindkey:
 bindkey '^ ' autosuggest-accept

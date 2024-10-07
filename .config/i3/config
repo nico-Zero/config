@@ -184,8 +184,12 @@ bindsym $mod+r mode "resize"
 # keybindings for different actions: #
 ######################################
 
+
 # start a terminal
 bindsym Mod1+Control+l exec --no-startup-id alacritty
+
+# Toggle Polybar
+bindsym $mod+b exec --no-startup-id ~/.config/polybar/launch.sh
 
 # kill focused window
 bindsym $mod+q kill
@@ -329,7 +333,7 @@ set $ws10 "10:󰪴"
 # where you have to replace VGA-0/HDMI-0 with the names for your displays
 # you can get from xrandr command
 #workspace $ws1 output VGA-0
-#workspace $ws2 output VGA-0
+# workspace $ws2 output HDMI-1
 #workspace $ws3 output HDMI-0
 #workspace $ws4 output HDMI-0
 #workspace $ws5 output HDMI-0
@@ -344,104 +348,115 @@ set $ws10 "10:󰪴"
 exec_always xinput set-prop 14 "libinput Natural Scrolling Enabled" 1
 exec_always xinput set-prop 14 "libinput Tapping Enabled" 1
 
-for_window [class="^((?!Alacritty|nsxiv|Nsxiv| |Navigator|firefox|flameshot|org.wezfurlong.wezterm|yad|Screenkey|Shotwell|kitty|Polkit-gnome-authentication-agent-1|Blueman-manager|Brave-browser|Brave|Navigator|Spotify|Whatsapp-for-linux|Signal|Gimp|obs|matplotlib|Thunar|Xdg-desktop-portal-gtk|vlc).)*$"] move container to workspace $ws10, workspace $ws10
+for_window [class="^((?!Alacritty|Xarchiver|xarchiver|nsxiv|Nsxiv| |Navigator|firefox|flameshot|org.wezfurlong.wezterm|yad|Screenkey|Shotwell|kitty|Polkit-gnome-authentication-agent-1|Blueman-manager|Brave-browser|Brave|Navigator|Spotify|Whatsapp-for-linux|Signal|Gimp|obs|matplotlib|Thunar|Xdg-desktop-portal-gtk|vlc).)*$"] move container to workspace $ws10, workspace $ws10
 for_window [class="Blueman-manager"] floating enable, resize set 1000 800, move position center
 
+assign [class="Alacritty"] $ws1
+assign [class="Brave-browser"] $ws2
+assign [class="Thunar"] $ws3
+assign [class="Whatsapp-for-linux"] $ws4
+assign [class="Signal"] $ws5
+assign [class="Gimp"] $ws6
+assign [class="OBS"] $ws7
+assign [class="Spotify"] $ws8
+for_window [class="Alacritty"] move container to workspace $ws1, workspace $ws1
+for_window [class="Brave-browser"] move container to workspace $ws2, workspace $ws2
+for_window [class="Thunar"] move container to workspace $ws3, workspace $ws3
+for_window [class="Whatsapp-for-linux"] move container to workspace $ws4, workspace $ws4
+for_window [class="Signal"] move container to workspace $ws5, workspace $ws5
+for_window [class="Gimp"] move container to workspace $ws6, workspace $ws6
+for_window [class="obs"] move container to workspace $ws7, workspace $ws7
+for_window [class="Spotify"] move container to workspace $ws8, workspace $ws8
+
 # assign [class="Alacritty"] $ws1
-for_window [workspace=$ws1 class="Alacritty"] move container to workspace $ws1, workspace $ws1
-for_window [workspace=$ws2 class="Alacritty"] move container to workspace $ws1, workspace $ws1
-for_window [workspace=$ws3 class="Alacritty"] move container to workspace $ws1, workspace $ws1
-for_window [workspace=$ws4 class="Alacritty"] move container to workspace $ws1, workspace $ws1
-for_window [workspace=$ws5 class="Alacritty"] move container to workspace $ws1, workspace $ws1
-for_window [workspace=$ws6 class="Alacritty"] move container to workspace $ws1, workspace $ws1
-for_window [workspace=$ws7 class="Alacritty"] move container to workspace $ws1, workspace $ws1
-for_window [workspace=$ws8 class="Alacritty"] move container to workspace $ws1, workspace $ws1
-for_window [workspace=$ws9 class="Alacritty"] move container to workspace $ws1, workspace $ws1
-for_window [workspace=$ws10 class="Alacritty"] move container to workspace $ws10
-
+# # for_window [workspace=$ws1 class="Alacritty"] move container to workspace $ws1, workspace $ws1
+# for_window [workspace=$ws2 class="Alacritty"] move container to workspace $ws1, workspace $ws1
+# for_window [workspace=$ws3 class="Alacritty"] move container to workspace $ws1, workspace $ws1
+# for_window [workspace=$ws4 class="Alacritty"] move container to workspace $ws1, workspace $ws1
+# for_window [workspace=$ws5 class="Alacritty"] move container to workspace $ws1, workspace $ws1
+# for_window [workspace=$ws6 class="Alacritty"] move container to workspace $ws1, workspace $ws1
+# for_window [workspace=$ws7 class="Alacritty"] move container to workspace $ws1, workspace $ws1
+# for_window [workspace=$ws8 class="Alacritty"] move container to workspace $ws1, workspace $ws1
+# for_window [workspace=$ws9 class="Alacritty"] move container to workspace $ws1, workspace $ws1
+# for_window [workspace=$ws10 class="Alacritty"] move container to workspace $ws10
 # assign [class="Brave-browser"] $ws2
-for_window [workspace=$ws1 class="Brave-browser"] move container to workspace $ws2, workspace $ws2
-for_window [workspace=$ws2 class="Brave-browser"] move container to workspace $ws2, workspace $ws2
-for_window [workspace=$ws3 class="Brave-browser"] move container to workspace $ws2, workspace $ws2
-for_window [workspace=$ws4 class="Brave-browser"] move container to workspace $ws2, workspace $ws2
-for_window [workspace=$ws5 class="Brave-browser"] move container to workspace $ws2, workspace $ws2
-for_window [workspace=$ws6 class="Brave-browser"] move container to workspace $ws2, workspace $ws2
-for_window [workspace=$ws7 class="Brave-browser"] move container to workspace $ws2, workspace $ws2
-for_window [workspace=$ws8 class="Brave-browser"] move container to workspace $ws2, workspace $ws2
-for_window [workspace=$ws9 class="Brave-browser"] move container to workspace $ws2, workspace $ws2
-for_window [workspace=$ws10 class="Brave-browser"] move container to workspace $ws10
-
+# for_window [workspace=$ws1 class="Brave-browser"] move container to workspace $ws2, workspace $ws2
+# # for_window [workspace=$ws2 class="Brave-browser"] move container to workspace $ws2, workspace $ws2
+# for_window [workspace=$ws3 class="Brave-browser"] move container to workspace $ws2, workspace $ws2
+# for_window [workspace=$ws4 class="Brave-browser"] move container to workspace $ws2, workspace $ws2
+# for_window [workspace=$ws5 class="Brave-browser"] move container to workspace $ws2, workspace $ws2
+# for_window [workspace=$ws6 class="Brave-browser"] move container to workspace $ws2, workspace $ws2
+# for_window [workspace=$ws7 class="Brave-browser"] move container to workspace $ws2, workspace $ws2
+# for_window [workspace=$ws8 class="Brave-browser"] move container to workspace $ws2, workspace $ws2
+# for_window [workspace=$ws9 class="Brave-browser"] move container to workspace $ws2, workspace $ws2
+# for_window [workspace=$ws10 class="Brave-browser"] move container to workspace $ws10
 # assign [class="Thunar"] $ws3
-for_window [workspace=$ws1 class="Thunar"] move container to workspace $ws3, workspace $ws3
-for_window [workspace=$ws2 class="Thunar"] move container to workspace $ws3, workspace $ws3
-for_window [workspace=$ws3 class="Thunar"] move container to workspace $ws3, workspace $ws3
-for_window [workspace=$ws4 class="Thunar"] move container to workspace $ws3, workspace $ws3
-for_window [workspace=$ws5 class="Thunar"] move container to workspace $ws3, workspace $ws3
-for_window [workspace=$ws6 class="Thunar"] move container to workspace $ws3, workspace $ws3
-for_window [workspace=$ws7 class="Thunar"] move container to workspace $ws3, workspace $ws3
-for_window [workspace=$ws8 class="Thunar"] move container to workspace $ws3, workspace $ws3
-for_window [workspace=$ws9 class="Thunar"] move container to workspace $ws3, workspace $ws3
-for_window [workspace=$ws10 class="Thunar"] move container to workspace $ws10
-
+# for_window [workspace=$ws1 class="Thunar"] move container to workspace $ws3, workspace $ws3
+# for_window [workspace=$ws2 class="Thunar"] move container to workspace $ws3, workspace $ws3
+# # for_window [workspace=$ws3 class="Thunar"] move container to workspace $ws3, workspace $ws3
+# for_window [workspace=$ws4 class="Thunar"] move container to workspace $ws3, workspace $ws3
+# for_window [workspace=$ws5 class="Thunar"] move container to workspace $ws3, workspace $ws3
+# for_window [workspace=$ws6 class="Thunar"] move container to workspace $ws3, workspace $ws3
+# for_window [workspace=$ws7 class="Thunar"] move container to workspace $ws3, workspace $ws3
+# for_window [workspace=$ws8 class="Thunar"] move container to workspace $ws3, workspace $ws3
+# for_window [workspace=$ws9 class="Thunar"] move container to workspace $ws3, workspace $ws3
+# for_window [workspace=$ws10 class="Thunar"] move container to workspace $ws10
 # assign [class="Whatsapp-for-linux"] $ws4
-for_window [workspace=$ws1 class="Whatsapp-for-linux"] move container to workspace $ws4, workspace $ws4
-for_window [workspace=$ws2 class="Whatsapp-for-linux"] move container to workspace $ws4, workspace $ws4
-for_window [workspace=$ws3 class="Whatsapp-for-linux"] move container to workspace $ws4, workspace $ws4
-for_window [workspace=$ws4 class="Whatsapp-for-linux"] move container to workspace $ws4, workspace $ws4
-for_window [workspace=$ws5 class="Whatsapp-for-linux"] move container to workspace $ws4, workspace $ws4
-for_window [workspace=$ws6 class="Whatsapp-for-linux"] move container to workspace $ws4, workspace $ws4
-for_window [workspace=$ws7 class="Whatsapp-for-linux"] move container to workspace $ws4, workspace $ws4
-for_window [workspace=$ws8 class="Whatsapp-for-linux"] move container to workspace $ws4, workspace $ws4
-for_window [workspace=$ws9 class="Whatsapp-for-linux"] move container to workspace $ws4, workspace $ws4
-for_window [workspace=$ws10 class="Whatsapp-for-linux"] move container to workspace $ws10
-
+# for_window [workspace=$ws1 class="Whatsapp-for-linux"] move container to workspace $ws4, workspace $ws4
+# for_window [workspace=$ws2 class="Whatsapp-for-linux"] move container to workspace $ws4, workspace $ws4
+# for_window [workspace=$ws3 class="Whatsapp-for-linux"] move container to workspace $ws4, workspace $ws4
+# # for_window [workspace=$ws4 class="Whatsapp-for-linux"] move container to workspace $ws4, workspace $ws4
+# for_window [workspace=$ws5 class="Whatsapp-for-linux"] move container to workspace $ws4, workspace $ws4
+# for_window [workspace=$ws6 class="Whatsapp-for-linux"] move container to workspace $ws4, workspace $ws4
+# for_window [workspace=$ws7 class="Whatsapp-for-linux"] move container to workspace $ws4, workspace $ws4
+# for_window [workspace=$ws8 class="Whatsapp-for-linux"] move container to workspace $ws4, workspace $ws4
+# for_window [workspace=$ws9 class="Whatsapp-for-linux"] move container to workspace $ws4, workspace $ws4
+# for_window [workspace=$ws10 class="Whatsapp-for-linux"] move container to workspace $ws10
 # assign [class="Signal"] $ws5
-for_window [workspace=$ws1 class="Signal"] move container to workspace $ws5, workspace $ws5
-for_window [workspace=$ws2 class="Signal"] move container to workspace $ws5, workspace $ws5
-for_window [workspace=$ws3 class="Signal"] move container to workspace $ws5, workspace $ws5
-for_window [workspace=$ws4 class="Signal"] move container to workspace $ws5, workspace $ws5
-for_window [workspace=$ws5 class="Signal"] move container to workspace $ws5, workspace $ws5
-for_window [workspace=$ws6 class="Signal"] move container to workspace $ws5, workspace $ws5
-for_window [workspace=$ws7 class="Signal"] move container to workspace $ws5, workspace $ws5
-for_window [workspace=$ws8 class="Signal"] move container to workspace $ws5, workspace $ws5
-for_window [workspace=$ws9 class="Signal"] move container to workspace $ws5, workspace $ws5
-for_window [workspace=$ws10 class="Signal"] move container to workspace $ws10
-
+# for_window [workspace=$ws1 class="Signal"] move container to workspace $ws5, workspace $ws5
+# for_window [workspace=$ws2 class="Signal"] move container to workspace $ws5, workspace $ws5
+# for_window [workspace=$ws3 class="Signal"] move container to workspace $ws5, workspace $ws5
+# for_window [workspace=$ws4 class="Signal"] move container to workspace $ws5, workspace $ws5
+# # for_window [workspace=$ws5 class="Signal"] move container to workspace $ws5, workspace $ws5
+# for_window [workspace=$ws6 class="Signal"] move container to workspace $ws5, workspace $ws5
+# for_window [workspace=$ws7 class="Signal"] move container to workspace $ws5, workspace $ws5
+# for_window [workspace=$ws8 class="Signal"] move container to workspace $ws5, workspace $ws5
+# for_window [workspace=$ws9 class="Signal"] move container to workspace $ws5, workspace $ws5
+# for_window [workspace=$ws10 class="Signal"] move container to workspace $ws10
 # assign [class="Gimp"] $ws6
-for_window [workspace=$ws1 class="Gimp"] move container to workspace $ws6, workspace $ws6
-for_window [workspace=$ws2 class="Gimp"] move container to workspace $ws6, workspace $ws6
-for_window [workspace=$ws3 class="Gimp"] move container to workspace $ws6, workspace $ws6
-for_window [workspace=$ws4 class="Gimp"] move container to workspace $ws6, workspace $ws6
-for_window [workspace=$ws5 class="Gimp"] move container to workspace $ws6, workspace $ws6
-for_window [workspace=$ws6 class="Gimp"] move container to workspace $ws6, workspace $ws6
-for_window [workspace=$ws7 class="Gimp"] move container to workspace $ws6, workspace $ws6
-for_window [workspace=$ws8 class="Gimp"] move container to workspace $ws6, workspace $ws6
-for_window [workspace=$ws9 class="Gimp"] move container to workspace $ws6, workspace $ws6
-for_window [workspace=$ws10 class="Gimp"] move container to workspace $ws10
-
+# for_window [workspace=$ws1 class="Gimp"] move container to workspace $ws6, workspace $ws6
+# for_window [workspace=$ws2 class="Gimp"] move container to workspace $ws6, workspace $ws6
+# for_window [workspace=$ws3 class="Gimp"] move container to workspace $ws6, workspace $ws6
+# for_window [workspace=$ws4 class="Gimp"] move container to workspace $ws6, workspace $ws6
+# for_window [workspace=$ws5 class="Gimp"] move container to workspace $ws6, workspace $ws6
+# # for_window [workspace=$ws6 class="Gimp"] move container to workspace $ws6, workspace $ws6
+# for_window [workspace=$ws7 class="Gimp"] move container to workspace $ws6, workspace $ws6
+# for_window [workspace=$ws8 class="Gimp"] move container to workspace $ws6, workspace $ws6
+# for_window [workspace=$ws9 class="Gimp"] move container to workspace $ws6, workspace $ws6
+# for_window [workspace=$ws10 class="Gimp"] move container to workspace $ws10
 # assign [class="OBS"] $ws7
-for_window [workspace=$ws1 class="obs"] move container to workspace $ws7, workspace $ws7
-for_window [workspace=$ws2 class="obs"] move container to workspace $ws7, workspace $ws7
-for_window [workspace=$ws3 class="obs"] move container to workspace $ws7, workspace $ws7
-for_window [workspace=$ws4 class="obs"] move container to workspace $ws7, workspace $ws7
-for_window [workspace=$ws5 class="obs"] move container to workspace $ws7, workspace $ws7
-for_window [workspace=$ws6 class="obs"] move container to workspace $ws7, workspace $ws7
-for_window [workspace=$ws7 class="obs"] move container to workspace $ws7, workspace $ws7
-for_window [workspace=$ws8 class="obs"] move container to workspace $ws7, workspace $ws7
-for_window [workspace=$ws9 class="obs"] move container to workspace $ws7, workspace $ws7
-for_window [workspace=$ws10 class="obs"] move container to workspace $ws7, workspace $ws7
-
+# for_window [workspace=$ws1 class="obs"] move container to workspace $ws7, workspace $ws7
+# for_window [workspace=$ws2 class="obs"] move container to workspace $ws7, workspace $ws7
+# for_window [workspace=$ws3 class="obs"] move container to workspace $ws7, workspace $ws7
+# for_window [workspace=$ws4 class="obs"] move container to workspace $ws7, workspace $ws7
+# for_window [workspace=$ws5 class="obs"] move container to workspace $ws7, workspace $ws7
+# for_window [workspace=$ws6 class="obs"] move container to workspace $ws7, workspace $ws7
+# # for_window [workspace=$ws7 class="obs"] move container to workspace $ws7, workspace $ws7
+# for_window [workspace=$ws8 class="obs"] move container to workspace $ws7, workspace $ws7
+# for_window [workspace=$ws9 class="obs"] move container to workspace $ws7, workspace $ws7
+# for_window [workspace=$ws10 class="obs"] move container to workspace $ws7, workspace $ws7
 # assign [class="Spotify"] $ws8
-for_window [workspace=$ws1 class="Spotify"] move container to workspace $ws8, workspace $ws8
-for_window [workspace=$ws2 class="Spotify"] move container to workspace $ws8, workspace $ws8
-for_window [workspace=$ws3 class="Spotify"] move container to workspace $ws8, workspace $ws8
-for_window [workspace=$ws4 class="Spotify"] move container to workspace $ws8, workspace $ws8
-for_window [workspace=$ws5 class="Spotify"] move container to workspace $ws8, workspace $ws8
-for_window [workspace=$ws6 class="Spotify"] move container to workspace $ws8, workspace $ws8
-for_window [workspace=$ws7 class="Spotify"] move container to workspace $ws8, workspace $ws8
-for_window [workspace=$ws8 class="Spotify"] move container to workspace $ws8, workspace $ws8
-for_window [workspace=$ws9 class="Spotify"] move container to workspace $ws8, workspace $ws8
-for_window [workspace=$ws10 class="Spotify"] move container to workspace $ws10
+# for_window [workspace=$ws1 class="Spotify"] move container to workspace $ws8, workspace $ws8
+# for_window [workspace=$ws2 class="Spotify"] move container to workspace $ws8, workspace $ws8
+# for_window [workspace=$ws3 class="Spotify"] move container to workspace $ws8, workspace $ws8
+# for_window [workspace=$ws4 class="Spotify"] move container to workspace $ws8, workspace $ws8
+# for_window [workspace=$ws5 class="Spotify"] move container to workspace $ws8, workspace $ws8
+# for_window [workspace=$ws6 class="Spotify"] move container to workspace $ws8, workspace $ws8
+# for_window [workspace=$ws7 class="Spotify"] move container to workspace $ws8, workspace $ws8
+# # for_window [workspace=$ws8 class="Spotify"] move container to workspace $ws8, workspace $ws8
+# for_window [workspace=$ws9 class="Spotify"] move container to workspace $ws8, workspace $ws8
+# for_window [workspace=$ws10 class="Spotify"] move container to workspace $ws10
+
 
 
 ##############
@@ -469,6 +484,10 @@ for_window [workspace=$ws10 class="Spotify"] move container to workspace $ws10
 # install picom package (yay -S picom)
 # start using default config 
 exec_always --no-startup-id picom -b
+
+
+# speed up the cursor
+exec --no-startup-id xset r rate 300 40
 
 # for custom config:
 #exec_always --no-startup-id picom --config  ~/.config/picom.conf
@@ -538,14 +557,16 @@ exec --no-startup-id /usr/bin/dunst
 # `yay -S autotiling-rs-git ;) (it is in AUR)
 exec_always --no-startup-id autotiling-rs
 
-# Polybar
-exec_always --no-startup-id ~/.config/polybar/launch.sh
-
 # Autostart apps as you like
 exec --no-startup-id brave
 exec --no-startup-id thunar
 exec --no-startup-id whatsapp-for-linux
 exec --no-startup-id sleep 2 && alacritty
+
+# run xrandr for mirroring the screen to the HDMI-1 port
+exec --no-startup-id xrandr --output HDMI-1 --same-as eDP-1 --auto
+# exec --no-startup-id xrandr --output HDMI-1 --right-of eDP-1 --auto
+
 
 ###############
 # system tray #
