@@ -95,6 +95,8 @@ echo "y" | sudo pacman -S bc
 echo "y" | sudo pacman -S materia-gtk-theme
 echo "y" | sudo pacman -S papirus-icon-theme
 echo "y" | sudo pacman -S python-pywal
+echo "y" | sudo pacman -S xfce4-clipman-plugin
+echo "y" | sudo pacman -S blueberry
 
 read -p "Install Yay (Y|n)? " install_yay
 if [ -z $install_yay ] || [ "${install_yay,,}" == "y"]; then
@@ -219,7 +221,8 @@ yay -S autotiling-rs-git
 yay -S ascii-draw
 yay -S aseprite
 yay -S kotatsu-dl-git
-yay -S tgpt-bin
+yay -S rofi-greenclip
+yay -S tokyonight-gtk-theme-git
 
 # Install betterlockscreen into system.
 git clone https://github.com/Raymo111/i3lock-color.git && cd ~/i3lock-color/ && ./install-i3lock-color.sh

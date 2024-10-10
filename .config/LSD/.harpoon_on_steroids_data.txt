@@ -30,3 +30,4 @@
 /home/zero/nltk_data
 /home/zero/.mozilla
 /home/zero/~.config
+/home/zero/.config/dunst

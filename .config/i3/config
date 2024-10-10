@@ -185,6 +185,12 @@ bindsym $mod+r mode "resize"
 ######################################
 
 
+# pulseaudio controller
+bindsym $mod+F1 exec --no-startup-id pavucontrol
+
+# bluetooth controller
+bindsym $mod+F2 exec --no-startup-id blueman-manager
+
 # start a terminal
 bindsym Mod1+Control+l exec --no-startup-id alacritty
 
@@ -204,13 +210,12 @@ bindsym $mod+Escape exec --no-startup-id ~/.config/i3/scripts/powermenu
 bindsym $mod+Control+Shift+l exec --no-startup-id betterlockscreen -l blur
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+Mod1+r reload
 
 # restart i3 inplace (preserves your layout/session, can be used to update i3)
 bindsym $mod+Shift+r restart
 
 # keybinding in fancy rofi (automated):
-bindsym F1 exec --no-startup-id ~/.config/i3/scripts/keyhint-2
 # alternative
 # keybinding list in editor:
 # bindsym $mod+F1 exec --no-startup-id xed ~/.config/i3/keybindings
@@ -348,7 +353,7 @@ set $ws10 "10:󰪴"
 exec_always xinput set-prop 14 "libinput Natural Scrolling Enabled" 1
 exec_always xinput set-prop 14 "libinput Tapping Enabled" 1
 
-for_window [class="^((?!Alacritty|Blueman-applet|Xarchiver|xarchiver|nsxiv|Nsxiv| |Navigator|firefox|flameshot|org.wezfurlong.wezterm|yad|Screenkey|Shotwell|kitty|Polkit-gnome-authentication-agent-1|Blueman-manager|Brave-browser|Brave|Navigator|Spotify|Whatsapp-for-linux|Signal|Gimp|obs|matplotlib|Thunar|Xdg-desktop-portal-gtk|vlc).)*$"] move container to workspace $ws10, workspace $ws10
+for_window [class="^((?!Alacritty|Blueberry.py|pavucontrol|Blueman-applet|Xarchiver|xarchiver|nsxiv|Nsxiv| |Navigator|firefox|flameshot|org.wezfurlong.wezterm|yad|Screenkey|Shotwell|kitty|Polkit-gnome-authentication-agent-1|Blueman-manager|Brave-browser|Brave|Navigator|Spotify|Whatsapp-for-linux|Signal|Gimp|obs|matplotlib|Thunar|Xdg-desktop-portal-gtk|vlc).)*$"] move container to workspace $ws10, workspace $ws10
 for_window [class="Blueman-manager"] floating enable, resize set 1000 800, move position center
 for_window [class="^.*"] border pixel 0
 
@@ -484,6 +489,8 @@ for_window [class="Spotify"] move container to workspace $ws8, workspace $ws8
 # The default configuration is available in /etc/xdg/picom.conf 
 # For modifications, it can be copied to ~/.config/picom/picom.conf or ~/.config/picom.conf
 # install picom package (yay -S picom)
+# start rofi-greenclip
+
 # start using default config 
 exec_always --no-startup-id picom -b
 
@@ -579,10 +586,10 @@ exec --no-startup-id xrandr --output HDMI-1 --same-as eDP-1 --auto
 #exec --no-startup-id blueberry-tray
 
 # networkmanager-applet
-#exec --no-startup-id nm-applet
+exec --no-startup-id nm-applet
 
 # clipman-applet
-#exec --no-startup-id xfce4-clipman
+exec --no-startup-id xfce4-clipman
 
 ##################
 # floating rules #
@@ -595,9 +602,8 @@ for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
 
 # set floating (nontiling) for special apps
 for_window [class="Xsane" instance="xsane"] floating enable
-for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
+# for_window [class="pavucontrol" instance="pavucontrol"] floating enable
 for_window [class="qt5ct" instance="qt5ct"] floating enable
-for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
 for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
 for_window [class="Pamac-manager"] floating enable
 for_window [window_role="About"] floating enable
@@ -718,13 +724,12 @@ bindsym $mod+t exec --no-startup-id rofi -show window
 
 bindsym $mod+Shift+e exec --no-startup-id rofi -show emoji
 
-bindsym $mod+c exec --no-startup-id rofi -show calc
+bindsym $mod+Shift+c exec --no-startup-id rofi -show calc
 
 #bindsym F10 exec --no-startup-id rofi -show window \
 #		-config ~/.config/rofi/rofidmenu.rasi
 
-## rofi bindings to manage clipboard (install rofi-greenclip from the AUR)
+# rofi bindings to manage clipboard (install rofi-greenclip from the AUR)
+exec --no-startup-id greenclip daemon>/dev/null
 
-#exec --no-startup-id greenclip daemon>/dev/null
-#bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard \
-#		-config ~/.config/rofi/rofidmenu.rasi
+bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard
