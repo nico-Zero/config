@@ -227,36 +227,40 @@ rm -rf ~/i3lock-color
 wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | sudo bash -s system
 betterlockscreen -u ~/wallpaper/anime-girl-red-eye-tattoo-sword-4k-wallpaper-uhdpaper.com-310@0@j.jpg
 
-echo "Installing Fonts..."
-echo "1-67" | getnf
-echo "-------------------------------------------------------------------------------------------------------"
-echo "Do all this First..."
-echo "tmux source ~/.config/tmux/tmux.conf (inside tmux)"
-echo "Run <Ctrl-b I> inside tmux."
-echo "make a shortcut <Alt-Ctrl-l> to Lunch alacritty"
-echo "make a shortcut <Alt-Space> to Lunch rofi (command:- rofi -show drun)"
-echo "Open Nvim and Wait for it to config itself."
-echo "And then You are all done."
-echo "Run this command after terminal restart..."
-echo "conda update conda"
-echo "conda install python=3.11"
-echo "conda install build"
-echo "pip install installer"
-echo "pip install neovim"
-echo "pip install PyGObject"
-echo "npm install -g neovim"
-echo "gem install neovim"
-echo "conda install -c conda-forge libstdcxx-ng libffi"
-echo "Add This line (UUID=A232F5EE32F5C6F7 /mnt/Nova ntfs defaults  0  2) in /etc/fstab"
-echo "Add This line (SUBSYSTEM=='backlight', RUN+='/usr/bin/chmod 666 /sys/class/backlight/%k/brightness') in /etc/udev/rules.d/99-backlight.rules"
-echo "run 'sudo udevadm control --reload' and 'sudo udevadm trigger'"
-ehco "After grub setup run 'grub-mkconfig -o /path/to/grub.cfg'"
-echo "Restart the terminal."
-echo "sudo pacman -S dbus libappindicator-gtk3"
-echo "sudo pacman -S xdg-desktop-portal"
-echo "sudo pacman -S ibus"
-echo "sudo pacman -S xscreensaver"
-echo "sudo pacman -S --needed gobject-introspection"
+# installing fonts...
+# 1-67" | getnf
+# -------------------------------------------------------------------------------------------------------
+# do all this first...
+# tmux source ~/.config/tmux/tmux.conf (inside tmux)
+# Run <Ctrl-b I> inside tmux.
+# make a shortcut <Alt-Ctrl-l> to Lunch alacritty
+# make a shortcut <Alt-Space> to Lunch rofi (command:- rofi -show drun)
+# Open Nvim and Wait for it to config itself.
+# And then You are all done.
+# Run this command after terminal restart...
+# conda update conda
+# conda install python=3.11
+# conda install build
+# pip install installer
+# pip install neovim
+# pip install PyGObject
+# npm install -g neovim
+# gem install neovim
+# conda install -c conda-forge libstdcxx-ng libffi
+# Add This line (UUID=A232F5EE32F5C6F7 /mnt/Nova ntfs defaults  0  2) in /etc/fstab
+# Add This line (SUBSYSTEM=='backlight', RUN+='/usr/bin/chmod 666 /sys/class/backlight/%k/brightness') in /etc/udev/rules.d/99-backlight.rules
+# run 'sudo udevadm control --reload' and 'sudo udevadm trigger'
+# ehco "After grub setup run 'grub-mkconfig -o /path/to/grub.cfg'
+# Restart the terminal.
+# sudo pacman -S dbus libappindicator-gtk3
+# sudo pacman -S xdg-desktop-portal
+# sudo pacman -S ibus
+# sudo pacman -S xscreensaver
+# sudo pacman -S --needed gobject-introspection
+
+# sudo pacman -S lightdm-webkit2-greeter
+# yay -S lightdm-webkit-theme-litarvan
+
 
 # Dark mode in i3wm.
 # ~/.config/gtk-3.0/settings.ini)
