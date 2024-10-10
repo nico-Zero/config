@@ -19,6 +19,9 @@
 !wallpaper/
 !wallpaper/**/*
 
+!sddm_themes/
+!sddm_themes/**/*
+
 !gube_endeavouros/
 !gube_endeavouros/**/*
 

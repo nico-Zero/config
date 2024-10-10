@@ -97,6 +97,7 @@ echo "y" | sudo pacman -S papirus-icon-theme
 echo "y" | sudo pacman -S python-pywal
 echo "y" | sudo pacman -S xfce4-clipman-plugin
 echo "y" | sudo pacman -S blueberry
+echo "y" | sudo pacman -S sddm
 
 read -p "Install Yay (Y|n)? " install_yay
 if [ -z $install_yay ] || [ "${install_yay,,}" == "y"]; then
