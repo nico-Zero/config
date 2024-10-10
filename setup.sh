@@ -258,8 +258,7 @@ betterlockscreen -u ~/wallpaper/anime-girl-red-eye-tattoo-sword-4k-wallpaper-uhd
 # sudo pacman -S xscreensaver
 # sudo pacman -S --needed gobject-introspection
 
-# sudo pacman -S lightdm-webkit2-greeter
-# yay -S lightdm-webkit-theme-litarvan
+# sudo pacman -S arc-gtk-theme
 
 
 # Dark mode in i3wm.
