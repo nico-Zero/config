@@ -224,6 +224,7 @@ yay -S aseprite
 yay -S kotatsu-dl-git
 yay -S rofi-greenclip
 yay -S tokyonight-gtk-theme-git
+yay -S qt5-graphicaleffects
 
 # Install betterlockscreen into system.
 git clone https://github.com/Raymo111/i3lock-color.git && cd ~/i3lock-color/ && ./install-i3lock-color.sh
