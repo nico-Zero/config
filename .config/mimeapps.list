@@ -1,5 +1,5 @@
 [Added Associations]
-text/csv=nvim.desktop;
+text/csv=vim.desktop;nvim.desktop;
 video/webm=vlc.desktop;
 application/pdf=libreoffice-impress.desktop;krita_pdf.desktop;xreader.desktop;gimp.desktop;libreoffice-draw.desktop;firefox.desktop;
 application/json=nvim.desktop;

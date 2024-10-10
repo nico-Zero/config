@@ -29,6 +29,9 @@
 !.config/nushell/
 !.config/nushell/**/*
 
+!.config/dunst/
+!.config/dunst/**/*
+
 !.config/wezterm/
 !.config/wezterm/**/*
 

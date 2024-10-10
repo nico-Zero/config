@@ -259,6 +259,7 @@ betterlockscreen -u ~/wallpaper/anime-girl-red-eye-tattoo-sword-4k-wallpaper-uhd
 # sudo pacman -S --needed gobject-introspection
 
 # sudo pacman -S arc-gtk-theme
+# sudo pacman -S pavucontrol
 
 
 # Dark mode in i3wm.
