@@ -91,6 +91,10 @@ echo "y" | sudo pacman -Sy mesa-demos
 echo "y" | sudo pacman -Sy intel-media-driver
 echo "y" | sudo pacman -S nsxiv
 echo "y" | sudo pacman -S grafana
+echo "y" | sudo pacman -S bc
+echo "y" | sudo pacman -S materia-gtk-theme
+echo "y" | sudo pacman -S papirus-icon-theme
+echo "y" | sudo pacman -S python-pywal
 
 read -p "Install Yay (Y|n)? " install_yay
 if [ -z $install_yay ] || [ "${install_yay,,}" == "y"]; then
@@ -218,7 +222,7 @@ yay -S kotatsu-dl-git
 yay -S tgpt-bin
 
 # Install betterlockscreen into system.
-git clone https://github.com/Raymo111/i3lock-color.git; cd ~/i3lock-color/; ./install-i3lock-color.sh
+git clone https://github.com/Raymo111/i3lock-color.git && cd ~/i3lock-color/ && ./install-i3lock-color.sh
 rm -rf ~/i3lock-color
 wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | sudo bash -s system
 betterlockscreen -u ~/wallpaper/anime-girl-red-eye-tattoo-sword-4k-wallpaper-uhdpaper.com-310@0@j.jpg
@@ -253,3 +257,25 @@ echo "sudo pacman -S xdg-desktop-portal"
 echo "sudo pacman -S ibus"
 echo "sudo pacman -S xscreensaver"
 echo "sudo pacman -S --needed gobject-introspection"
+
+# Dark mode in i3wm.
+# ~/.config/gtk-3.0/settings.ini)
+# [Settings]
+# gtk-theme-name = Materia-dark
+# gtk-icon-theme-name = Papirus-Dark
+# gtk-cursor-theme-name = Jingyuan
+# gtk-cursor-theme-size = 16
+
+# coursor gtk-cursor-theme-name
+# ~/.Xresources
+# Xcursor.theme: Jingyuan
+
+# This is for netural scrolling in i3wm-arch-linux.
+# /etc/X11/xorg.conf.d/40-libinput.conf
+# Section "InputClass"
+#     Identifier "libinput touchpad catchall"
+#     MatchIsTouchpad "on"
+#     Driver "libinput"
+#     Option "Tapping" "on"
+#     Option "NaturalScrolling" "true"  # Optional, if you want natural scrolling
+# EndSection

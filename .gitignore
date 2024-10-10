@@ -52,6 +52,8 @@
 
 !.config/tmux/
 !.config/tmux/*
+!.config/tmux/scripts/
+!.config/tmux/scripts/**/*
 
 !.config/BraveSoftware/
 !.config/BraveSoftware/auto_start.sh
