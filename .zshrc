@@ -5,6 +5,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+GITSTATUS_LOG_LEVEL=DEBUG
+
 # Set Config
 HISTFILE=~/.histfile
 HISTSIZE=10000
@@ -40,13 +42,19 @@ export SHELL="/usr/bin/zsh"
 export FZF_DEFAULT_OPTS='--bind=alt-k:up,alt-j:down'
 export PAGER='less'
 export BAT_PAGER="less -R -S -X -K"
+export PATH="/home/$USER/anaconda3/bin/:$PATH"
 export PATH="/home/$USER/.local/bin:/home/zero/.local/share/gem/ruby/3.0.0/bin:$PATH"
 export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin"
 export PATH="$HOME/.cargo/bin:$PATH"
 export GTK_IM_MODULE=ibus
 export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
-export OPENAI_API_KEY=$(< /run/media/$USER/Nova/api/key.txt)
+eval $(dbus-launch)
+export DBUS_SESSION_BUS_ADDRESS
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+
 
 plugins=(
     git

@@ -66,7 +66,7 @@ new_window pixel 1
 # hide_edge_borders both
 
 # Set inner/outer gaps
-gaps inner 2
+gaps inner 0
 gaps outer 0
 
 # show window title bars (not officially supported with i3gaps)
@@ -350,6 +350,8 @@ exec_always xinput set-prop 14 "libinput Tapping Enabled" 1
 
 for_window [class="^((?!Alacritty|Xarchiver|xarchiver|nsxiv|Nsxiv| |Navigator|firefox|flameshot|org.wezfurlong.wezterm|yad|Screenkey|Shotwell|kitty|Polkit-gnome-authentication-agent-1|Blueman-manager|Brave-browser|Brave|Navigator|Spotify|Whatsapp-for-linux|Signal|Gimp|obs|matplotlib|Thunar|Xdg-desktop-portal-gtk|vlc).)*$"] move container to workspace $ws10, workspace $ws10
 for_window [class="Blueman-manager"] floating enable, resize set 1000 800, move position center
+for_window [class="^.*"] border pixel 0
+
 
 assign [class="Alacritty"] $ws1
 assign [class="Brave-browser"] $ws2

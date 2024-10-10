@@ -248,3 +248,8 @@ echo "Add This line (SUBSYSTEM=='backlight', RUN+='/usr/bin/chmod 666 /sys/class
 echo "run 'sudo udevadm control --reload' and 'sudo udevadm trigger'"
 ehco "After grub setup run 'grub-mkconfig -o /path/to/grub.cfg'"
 echo "Restart the terminal."
+echo "sudo pacman -S dbus libappindicator-gtk3"
+echo "sudo pacman -S xdg-desktop-portal"
+echo "sudo pacman -S ibus"
+echo "sudo pacman -S xscreensaver"
+echo "sudo pacman -S --needed gobject-introspection"
