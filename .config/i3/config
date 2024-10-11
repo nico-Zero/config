@@ -191,6 +191,9 @@ bindsym $mod+F1 exec --no-startup-id pavucontrol
 # bluetooth controller
 bindsym $mod+F2 exec --no-startup-id blueman-manager
 
+# Toggle screenkey.
+bindsym $mod+F3 exec --no-startup-id ~/.config/i3/scripts/screenkey_toggle
+
 # start a terminal
 bindsym Mod1+Control+l exec --no-startup-id alacritty
 
