@@ -4,5 +4,5 @@ if pgrep -x "screenkey" > /dev/null
 then
     killall screenkey
 else
-    screenkey --geometry 600x80-10-10 --font-size medium --persist --opacity 0.2 --key-mode translated --position fixed &
+    screenkey --geometry 600x80-10-10 --font-size medium --persist --opacity 0.3 --key-mode translated --position fixed &
 fi
