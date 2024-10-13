@@ -82,19 +82,7 @@ function preexec(){
     fi
 }
 
-gpt1(){
-    # (⢿ ⣻ ⣽ ⣾ ⣷ ⣯ ⣟ ⡿)  # Do animation here
-    tgpt "$*"
-}
-
-gpt2(){
-    tgpt -img "$*"
-}
-
 # Alias:
-alias ?=gpt1
-alias ?i=gpt2
-alias ??="tgpt -m"
 alias pp="shotwell *"
 alias ls="eza --icons --group-directories-first -l --hyperlink"
 alias :q="exit"
