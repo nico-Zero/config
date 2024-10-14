@@ -82,9 +82,60 @@ in
             fi
         fi
         ;;
+    tmuxall)
+        mapfile -t data < "$data_file"
+        for path in ${data[@]}; do
+            dirname="$(awk -F '/' '{print $NF}' <<< $path | tr "." "_")"
+            tmux has-session -t "$dirname" > /dev/null 2>&1 
+            exitcode=$?
+            if [ 0 -eq $exitcode ]; then
+                echo "Already session :- $dirname at $path"
+            else
+                tmux -u new -s "$dirname" -c "$path" -d
+                tmux -u new-window -t "$dirname" -n "$(echo $SHELL | awk -F '/' '{print $NF}')" -c "$path" -d
+                echo "Created session :- $dirname at $path"
+            fi
+        done
+        ;;
+    tmuxselect)
+        choices=$(cat "$data_file" | fzf --reverse -m)
+        readarray -t data <<< "$choices"
+        for path in ${data[@]}; do
+            dirname="$(awk -F '/' '{print $NF}' <<< $path | tr "." "_")"
+            tmux has-session -t "$dirname" > /dev/null 2>&1 
+            exitcode=$?
+            if [ 0 -eq $exitcode ]; then
+                echo "Already session :- $dirname at $path"
+            else
+                tmux -u new -s "$dirname" -c "$path" -d
+                tmux -u new-window -t "$dirname" -n "$(echo $SHELL | awk -F '/' '{print $NF}')" -c "$path" -d
+                echo "Created session :- $dirname at $path"
+            fi
+        done
+        ;;
     killall)
         tmux kill-session -a
         tmux kill-session
+        ;;
+    killselect)
+        mapfile -t filedata < "$data_file"
+        preview=("Sessions :-")
+        for path in ${filedata[@]}; do
+            dirname="$(awk -F '/' '{print $NF}' <<< $path | tr "." "_")"
+            tmux has-session -t "$dirname" > /dev/null 2>&1 
+            exitcode=$?
+            if [ 0 -eq $exitcode ]; then
+                preview+=("\n$path")
+            fi
+        done
+        IFS=""
+        choices=$(cat "$data_file" | fzf --reverse -m --preview "echo '${preview[*]}'")
+        readarray -t data <<< "$choices"
+        for path in ${data[@]}; do
+            dirname="$(awk -F '/' '{print $NF}' <<< $path | tr "." "_")"
+            tmux kill-session -t "$dirname"
+            echo "Killed session :- $dirname at $path"
+        done
         ;;
     *)
         echo "Invalid command..."

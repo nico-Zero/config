@@ -119,6 +119,9 @@ alias pd="bash ~/.config/LSD/fzf_pydocs.sh"
 alias update-pydoc-list="python3 -u /home/zero/.config/LSD/update_pydocs.py"
 alias bb="btop --utf-force"
 alias srm="nvim ~/.config/LSD/.harpoon_on_steroids_data.txt"
+alias tmuxall="sh ~/.config/LSD/harpoon_on_steroids.sh tmuxall"
+alias tmuxselect="sh ~/.config/LSD/harpoon_on_steroids.sh tmuxselect"
+alias tmuxkill="sh ~/.config/LSD/harpoon_on_steroids.sh killselect"
 
 # Bindkey:
 bindkey '^ ' autosuggest-accept
