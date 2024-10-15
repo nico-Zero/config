@@ -207,6 +207,7 @@ sudo pacman -S julia
 sudo pacman -S ruby
 
 echo "Install Package from Yay...(Will have to do it manually.)"
+yay -S iriunwebcam-bin
 yay -S brave
 yay -S whatsapp-for-linux
 yay -S signal-desktop

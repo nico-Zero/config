@@ -1,5 +1,5 @@
 {
-   "checksum": "0e54435f18a24da780a09a1fc85359d3",
+   "checksum": "afc57b1c2b9c2a7181334cdbc1b71265",
    "roots": {
       "bookmark_bar": {
          "children": [  ],
@@ -386,10 +386,32 @@
             "name": "All-Time Top Film Franchises - Box-Office",
             "type": "url",
             "url": "https://www.filmsite.org/series-boxoffice.html"
+         }, {
+            "date_added": "13373429137375467",
+            "date_last_used": "0",
+            "guid": "a9ea23d0-dd8e-4582-b464-6f64b421f23d",
+            "id": "52",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "HiAnime Free Anime Streaming Homepage",
+            "type": "url",
+            "url": "https://hianime.to/home"
+         }, {
+            "date_added": "13373447294546837",
+            "date_last_used": "0",
+            "guid": "5cbe18df-2907-43d2-9d39-ff105f79ae01",
+            "id": "53",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Color Lisa - Color palette masterpieces of the world’s greatest artists.",
+            "type": "url",
+            "url": "https://colorlisa.com/"
          } ],
          "date_added": "13369643435090832",
          "date_last_used": "0",
-         "date_modified": "13373322670971519",
+         "date_modified": "13373447294546837",
          "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
          "id": "2",
          "name": "Other bookmarks",

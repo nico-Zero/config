@@ -313,7 +313,7 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 ## App shortcuts
 bindsym Mod1+Control+k exec --no-startup-id /usr/bin/brave
-bindsym Mod1+Control+a exec --no-startup-id /usr/bin/thunar
+bindsym Mod1+Control+j exec --no-startup-id /usr/bin/thunar
 bindsym Print exec --no-startup-id flameshot full
 bindsym Shift+Print exec --no-startup-id flameshot gui
 
