@@ -1,12 +1,12 @@
 #!/use/bin/bash
 
-data_file=~/.config/LSD/.harpoon_on_steroids_data.txt
+data_file_path=~/.config/LSD/.harpoon_on_steroids_data.txt
 
 fzf_path_highlight() {
     local values=("$@")
     while ifs= read -r line; do
         if [[ " ${values[*]} " == *" $line "* ]]; then
-            echo -e "\e[1;32m$line\e[0m"  # highlight in green
+            echo -e "\e[1;32m$line\e[0m"
         else
             echo "$line"
         fi
@@ -14,8 +14,22 @@ fzf_path_highlight() {
 }
 
 get_active_fzf_session(){
-    local active_session="$(tmux list-sessions -F '#{pane_current_path}')"
-    echo "$active_session"
+    local active_session="$(tmux list-sessions -F '#{pane_current_path}' 2>/dev/null)"
+    readarray -t data <<< "$active_session"
+    echo "${active_session[@]}"
+}
+
+fzf_multi_select(){
+    local active_paths=($(get_active_fzf_session))
+    local choices=$(cat "$data_file_path" | fzf_path_highlight "${active_paths[@]}" | fzf --ansi --reverse -m)
+    readarray -t choices_array <<< "$choices"
+    echo "${choices_array[@]}"
+}
+
+fzf_select(){
+    local active_paths=($(get_active_fzf_session))
+    local choices=$(cat "$data_file_path" | fzf_path_highlight "${active_paths[@]}" | fzf --ansi --reverse)
+    echo "$choices"
 }
 
 new_session_attach() {
@@ -30,7 +44,6 @@ new_session_switch() {
     tmux -u switch-client -t "$dirname"
 }
 
-
 nvim_new_session_attach() {
     tmux -u new -s "$1" -c "$2" -d 'nvim'
     tmux -u new-window -t "$1" -n "$(echo $SHELL | awk -F '/' '{print $NF}')" -c "$2" -d 
@@ -43,19 +56,20 @@ nvim_new_session_switch() {
     tmux -u switch-client -t "$dirname"
 }
 
-
 case "$1"
 in
     add)
-        if grep -Fxq "$(pwd)" "$data_file"; then
+        if grep -Fxq "$(pwd)" "$data_file_path"; then
             echo "Already exists..."
         else
-            echo "$(pwd)" >> "$data_file"
+            echo "$(pwd)" >> "$data_file_path"
             echo "Added: $(pwd) -> List..."
         fi
         ;;
+
     gotoW)
-        choice=$(cat "$data_file" | fzf --reverse) && dirname="$(awk -F "/" '{print $NF}' <<< $choice | tr "." "_")"
+        choice=($(fzf_select))
+        dirname="$(awk -F "/" '{print $NF}' <<< $choice | tr "." "_")"
         if [ ! -z $choice ]; then
             tmux has-session -t "$dirname" > /dev/null 2>&1 
             exitcode=$?
@@ -70,8 +84,10 @@ in
             fi
         fi
         ;;
+
     gotoS)
-        choice=$(cat "$data_file" | fzf --reverse) && dirname="$(awk -F '/' '{print $NF}' <<< $choice | tr "." "_")"
+        choice=($(fzf_select))
+        dirname="$(awk -F '/' '{print $NF}' <<< $choice | tr "." "_")"
         if [ ! -z $choice ]; then
             tmux has-session -t "$dirname" > /dev/null 2>&1 
             exitcode=$?
@@ -98,10 +114,10 @@ in
             fi
         fi
         ;;
+
     tmuxselect)
-        choices=$(cat "$data_file" | fzf --reverse -m)
-        readarray -t data <<< "$choices"
-        for path in ${data[@]}; do
+        choices=($(fzf_multi_select))
+        for path in ${choices[@]}; do
             dirname="$(awk -F '/' '{print $NF}' <<< $path | tr "." "_")"
             tmux has-session -t "$dirname" > /dev/null 2>&1 
             exitcode=$?
@@ -114,8 +130,9 @@ in
             fi
         done
         ;;
+
     tmuxall)
-        mapfile -t data < "$data_file"
+        mapfile -t data < "$data_file_path"
         for path in ${data[@]}; do
             dirname="$(awk -F '/' '{print $NF}' <<< $path | tr "." "_")"
             tmux has-session -t "$dirname" > /dev/null 2>&1 
@@ -129,30 +146,22 @@ in
             fi
         done
         ;;
+
     killselect)
-        data=$(get_active_fzf_session)
-        echo "$data"
-
-        # mapfile -t filedata < "$data_file"
-        # preview=()
-        # for path in ${filedata[@]}; do
-        #     dirname="$(awk -F '/' '{print $NF}' <<< $path | tr "." "_")"
-        #     tmux has-session -t "$dirname" > /dev/null 2>&1 
-        #     exitcode=$?
-        #     if [ 0 -eq $exitcode ]; then
-        #         preview+=("$path")
-        #     fi
-        # done
-        # IFS=""
-        choices=$(cat "$data_file" | fzf_path_highlight "${preview[@]}" | fzf --ansi --reverse -m)
-        readarray -t data <<< "$choices"
-        for path in ${data[@]}; do
-            dirname="$(awk -F '/' '{print $NF}' <<< $path | tr "." "_")"
-            tmux kill-session -t "$dirname"
-            echo "Killed session :- $dirname at $path"
+        active_paths=($(get_active_fzf_session))
+        choices=$(cat "$data_file_path" | fzf_path_highlight "${active_paths[@]}" | fzf --ansi --reverse -m)
+        readarray -t choices_array <<< "$choices"
+        for path in ${choices_array[@]}; do
+            if [[ " ${active_paths[*]} " == *" $path "* ]]; then
+                dirname="$(awk -F '/' '{print $NF}' <<< $path | tr "." "_")"
+                tmux kill-session -t "$dirname"
+                echo "Killed session :- $dirname at $path"
+            else
+                echo "Not session :- $dirname at $path"
+            fi
         done
-
         ;;
+
     killall)
         tmux kill-session -a
         tmux kill-session

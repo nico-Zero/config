@@ -14,7 +14,6 @@
 /run/media/zero/Nova/Lab
 /home/zero/.config/kitty
 /home/zero/.config/BraveSoftware
-/usr/share/endeavouros/backgrounds
 /etc/lightdm
 /home/zero/.config/yay
 /home/zero/.config/yazi
@@ -25,9 +24,6 @@
 /run/media/zero/Nova/Lab/Java
 /run/media/zero/Nova/Lab/Rust
 /run/media/zero/Nova/Lab/Python/chess
-/home/zero/.librewolf/qb4vu4rm.default-default
 /home/zero/.oh-my-zsh
-/home/zero/nltk_data
 /home/zero/.mozilla
-/home/zero/~.config
 /home/zero/.config/dunst

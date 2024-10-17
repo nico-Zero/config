@@ -1,5 +1,5 @@
 {
-   "checksum": "afc57b1c2b9c2a7181334cdbc1b71265",
+   "checksum": "7b5ad36d8cfd6bc148ddb4c19c497186",
    "roots": {
       "bookmark_bar": {
          "children": [  ],
@@ -408,10 +408,32 @@
             "name": "Color Lisa - Color palette masterpieces of the world’s greatest artists.",
             "type": "url",
             "url": "https://colorlisa.com/"
+         }, {
+            "date_added": "13373586174611241",
+            "date_last_used": "0",
+            "guid": "73e7f7fe-461c-49c3-a11b-b7a6a12ecd21",
+            "id": "55",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "API — Mimesis 17.1.0 documentation",
+            "type": "url",
+            "url": "https://mimesis.name/master/api.html#mimesis.Person.email"
+         }, {
+            "date_added": "13373682300218842",
+            "date_last_used": "0",
+            "guid": "c49b4050-8b98-47c3-9bd5-6aa8ccdd2a0f",
+            "id": "57",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Model Zoo - Deep learning code and pretrained models for transfer learning, educational purposes, and more",
+            "type": "url",
+            "url": "https://www.modelzoo.co/"
          } ],
          "date_added": "13369643435090832",
          "date_last_used": "0",
-         "date_modified": "13373447294546837",
+         "date_modified": "13373682300218842",
          "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
          "id": "2",
          "name": "Other bookmarks",
