@@ -232,6 +232,7 @@ yay -S tokyonight-gtk-theme-git
 yay -S qt5-graphicaleffects
 yay -S geogebra-6-electron
 yay -S tensorrt
+yay -S apvlv
 
 # Install betterlockscreen into system.
 git clone https://github.com/Raymo111/i3lock-color.git && cd ~/i3lock-color/ && ./install-i3lock-color.sh
@@ -254,6 +255,7 @@ betterlockscreen -u ~/wallpaper/anime-girl-red-eye-tattoo-sword-4k-wallpaper-uhd
 # conda install python=3.11
 # conda install build
 # pip install installer
+# pip install jupyterlab-vim
 # pip install neovim
 # pip install PyGObject
 # npm install -g neovim

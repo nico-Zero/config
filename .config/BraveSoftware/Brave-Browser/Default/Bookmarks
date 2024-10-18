@@ -1,5 +1,5 @@
 {
-   "checksum": "7b5ad36d8cfd6bc148ddb4c19c497186",
+   "checksum": "310f8d10d40858cd183a8b7dd9c44f36",
    "roots": {
       "bookmark_bar": {
          "children": [  ],
@@ -430,10 +430,21 @@
             "name": "Model Zoo - Deep learning code and pretrained models for transfer learning, educational purposes, and more",
             "type": "url",
             "url": "https://www.modelzoo.co/"
+         }, {
+            "date_added": "13373694937001104",
+            "date_last_used": "13373700061492657",
+            "guid": "320760b8-d45e-4e99-8012-fd58c3ee1595",
+            "id": "59",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "erikw/vim-keybindings-everywhere-the-ultimate-list: The ultimate list of which programs support Vim-like keybindings natively, or how they can be added with extensions. A collaborative project.",
+            "type": "url",
+            "url": "https://github.com/erikw/vim-keybindings-everywhere-the-ultimate-list"
          } ],
          "date_added": "13369643435090832",
          "date_last_used": "0",
-         "date_modified": "13373682300218842",
+         "date_modified": "13373694937001104",
          "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
          "id": "2",
          "name": "Other bookmarks",

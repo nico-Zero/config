@@ -1,7 +1,7 @@
 [Added Associations]
 text/csv=vim.desktop;nvim.desktop;
 video/webm=vlc.desktop;
-application/pdf=libreoffice-impress.desktop;krita_pdf.desktop;xreader.desktop;gimp.desktop;libreoffice-draw.desktop;firefox.desktop;
+application/pdf=libreoffice-impress.desktop;krita_pdf.desktop;xreader.desktop;gimp.desktop;libreoffice-draw.desktop;firefox.desktop;apvlv.desktop;
 application/json=nvim.desktop;
 video/x-matroska=vlc.desktop;
 video/mp4=mpv.desktop;vlc.desktop;
@@ -15,7 +15,7 @@ image/gif=nsxiv.desktop
 image/bmp=nsxiv.desktop
 image/tiff=nsxiv.desktop
 image/svg+xml=nsxiv.desktop
-application/pdf=firefox.desktop
+application/pdf=apvlv.desktop
 video/x-matroska=vlc.desktop
 video/mp4=vlc.desktop
 text/html=brave-browser.desktop
