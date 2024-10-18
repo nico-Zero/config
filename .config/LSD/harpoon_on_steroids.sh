@@ -135,7 +135,7 @@ in
         mapfile -t data < "$data_file_path"
         for path in ${data[@]}; do
             dirname="$(awk -F '/' '{print $NF}' <<< $path | tr "." "_")"
-            tmux has-session -t "$dirname" > /dev/null 2>&1 
+            tmux has-session -t "$dirname" > /dev/null 2>&1
             exitcode=$?
             if [ 0 -eq $exitcode ]; then
                 echo "Already session :- $dirname at $path"
@@ -163,8 +163,14 @@ in
         ;;
 
     killall)
-        tmux kill-session -a
-        tmux kill-session
+        tmux kill-session -a > /dev/null 2>&1
+        tmux kill-session > /dev/null 2>&1
+        exitcode=$?
+        if [ 1 -eq $exitcode ]; then
+            echo "No Sessions"
+        else
+            echo "Killed all Sessions"
+        fi
         ;;
     *)
         echo "Invalid command..."

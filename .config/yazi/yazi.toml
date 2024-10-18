@@ -6,13 +6,21 @@ edit = [
     { run = 'nvim "$@"', block = true },
 ]
 play = [
-	{ run = 'vlc "$@"', orphan = true, for = "unix" },
+{ run = 'vlc "$@"', orphan = true, for = "unix" },
 ]
 image=[
     {run = 'nsxiv "$@"', block = true}
 ]
 [open]
 rules = [
-	{ name = "*.jpg", use = ["image"] },
-	{ name = "*.png", use = ["image"] },
+{ name = "*.jpg", use = ["image"] },
+{ name = "*.png", use = ["image"] },
+{ name = "*.txt", use = ["edit"] },
+{ name = "*.py", use = ["edit"] },
+{ name = "*.r", use = ["edit"] },
+{ name = "*.ru", use = ["edit"] },
+{ name = "*.cp", use = ["edit"] },
+{ name = "*.cpp", use = ["edit"] },
+{ name = "*.c", use = ["edit"] },
+{ name = "*.sh", use = ["edit"] },
 ]

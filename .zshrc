@@ -54,6 +54,11 @@ export DBUS_SESSION_BUS_ADDRESS
 export GTK_IM_MODULE=ibus
 export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
+export TF_ENABLE_ONEDNN_OPTS=0
+export TF_CPP_MIN_LOG_LEVEL=2
+export TF_FORCE_GPU_ALLOW_GROWTH=true
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+export PATH=/usr/local/cuda/bin:$PATH
 
 
 plugins=(

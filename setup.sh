@@ -101,6 +101,7 @@ echo "y" | sudo pacman -S sddm
 echo "y" | sudo pacman -S gvfs
 echo "y" | sudo pacman -S gvfs-mtp gvfs-afc
 echo "y" | sudo pacman -S thunar-volman
+echo "y" | sudo pacman -S cuda cudnn
 
 read -p "Install Yay (Y|n)? " install_yay
 if [ -z $install_yay ] || [ "${install_yay,,}" == "y"]; then
@@ -230,6 +231,7 @@ yay -S rofi-greenclip
 yay -S tokyonight-gtk-theme-git
 yay -S qt5-graphicaleffects
 yay -S geogebra-6-electron
+yay -S tensorrt
 
 # Install betterlockscreen into system.
 git clone https://github.com/Raymo111/i3lock-color.git && cd ~/i3lock-color/ && ./install-i3lock-color.sh
