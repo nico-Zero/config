@@ -1,5 +1,5 @@
 {
-   "checksum": "310f8d10d40858cd183a8b7dd9c44f36",
+   "checksum": "920839487dda58d9ae2cd281426a22d3",
    "roots": {
       "bookmark_bar": {
          "children": [  ],
@@ -441,10 +441,21 @@
             "name": "erikw/vim-keybindings-everywhere-the-ultimate-list: The ultimate list of which programs support Vim-like keybindings natively, or how they can be added with extensions. A collaborative project.",
             "type": "url",
             "url": "https://github.com/erikw/vim-keybindings-everywhere-the-ultimate-list"
+         }, {
+            "date_added": "13373798247409548",
+            "date_last_used": "0",
+            "guid": "dc99d511-a899-4437-85b2-a32f1d95120d",
+            "id": "61",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "CIFAR – Convening extraordinary minds to address the most important questions facing science and humanity.",
+            "type": "url",
+            "url": "https://cifar.ca/"
          } ],
          "date_added": "13369643435090832",
          "date_last_used": "0",
-         "date_modified": "13373694937001104",
+         "date_modified": "13373798247409548",
          "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
          "id": "2",
          "name": "Other bookmarks",

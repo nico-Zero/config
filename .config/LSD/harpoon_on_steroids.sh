@@ -34,25 +34,25 @@ fzf_select(){
 
 new_session_attach() {
     tmux -u new -s "$1" -c "$2" -d
-    tmux -u new-window -t "$1" -n "$(echo $SHELL | awk -F '/' '{print $NF}')" -c "$2" -d 
+    tmux -u new-window -t "$1" -n "Terminal" -c "$2" -d 
     tmux -u attach-session -t "$1"
 }
 
 new_session_switch() {
     tmux -u new -s "$1" -c "$2" -d
-    tmux -u new-window -t "$1" -n "$(echo $SHELL | awk -F '/' '{print $NF}')" -c "$2" -d
+    tmux -u new-window -t "$1" -n "Termianl" -c "$2" -d
     tmux -u switch-client -t "$dirname"
 }
 
 nvim_new_session_attach() {
     tmux -u new -s "$1" -c "$2" -d 'nvim'
-    tmux -u new-window -t "$1" -n "$(echo $SHELL | awk -F '/' '{print $NF}')" -c "$2" -d 
+    tmux -u new-window -t "$1" -n "Termianl" -c "$2" -d 
     tmux -u attach-session -t "$1"
 }
 
 nvim_new_session_switch() {
     tmux -u new -s "$1" -c "$2" -d 'nvim'
-    tmux -u new-window -t "$1" -n "$(echo $SHELL | awk -F '/' '{print $NF}')" -c "$2" -d
+    tmux -u new-window -t "$1" -n "Termianl" -c "$2" -d
     tmux -u switch-client -t "$dirname"
 }
 

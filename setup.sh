@@ -102,6 +102,9 @@ echo "y" | sudo pacman -S gvfs
 echo "y" | sudo pacman -S gvfs-mtp gvfs-afc
 echo "y" | sudo pacman -S thunar-volman
 echo "y" | sudo pacman -S cuda cudnn
+echo "y" | sudo pacman -S numactl
+echo "y" | sudo pacman -S ark
+
 
 read -p "Install Yay (Y|n)? " install_yay
 if [ -z $install_yay ] || [ "${install_yay,,}" == "y"]; then
