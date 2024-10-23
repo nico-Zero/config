@@ -1,11 +1,5 @@
-import = [
-    # "~/.config/alacritty/themes/themes/alabaster_dark.toml",
-    # "~/.config/alacritty/catppuccin-mocha.toml",
-    # "~/.config/alacritty/tokyo-night.toml",
-    "~/.config/alacritty/fonts.toml",
-]
 
-[shell]
+[terminal.shell]
 program = "/usr/bin/zsh"
 # args = ["-l", "-c", "tmux attach -t Moon || tmux new -s Moon"]
 
@@ -64,5 +58,13 @@ bindings = [
     {key = "K", mods ="Alt|Shift", action =  "ScrollLineUp" },
     {key = "9", mods ="Control", action =  "ToggleViMode" },
     {key = "Space", mods ="Control|Shift", action =  "None" },
+]
+
+[general]
+import = [
+    # "~/.config/alacritty/themes/themes/alabaster_dark.toml",
+    # "~/.config/alacritty/catppuccin-mocha.toml",
+    # "~/.config/alacritty/tokyo-night.toml",
+    "~/.config/alacritty/fonts.toml",
 ]
 

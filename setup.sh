@@ -104,7 +104,7 @@ echo "y" | sudo pacman -S thunar-volman
 echo "y" | sudo pacman -S cuda cudnn
 echo "y" | sudo pacman -S numactl
 echo "y" | sudo pacman -S ark
-
+echo "y" | sudo pacman -S reflector
 
 read -p "Install Yay (Y|n)? " install_yay
 if [ -z $install_yay ] || [ "${install_yay,,}" == "y"]; then
@@ -300,3 +300,15 @@ betterlockscreen -u ~/wallpaper/anime-girl-red-eye-tattoo-sword-4k-wallpaper-uhd
 #     Option "Tapping" "on"
 #     Option "NaturalScrolling" "true"  # Optional, if you want natural scrolling
 # EndSection
+# Rorgrongku
+#
+#
+#
+#
+# sudo vim /etc/xdg/reflector/reflector.conf
+# sudo systemctl enable reflector.service reflector.timer
+# sudo systemctl start reflector.service reflector.timer
+#
+# this in /etc/X11/xorg.conf.d/40-libinput.conf
+#    Option "DisableWhileTyping" "off"
+
