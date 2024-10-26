@@ -105,6 +105,8 @@ echo "y" | sudo pacman -S cuda cudnn
 echo "y" | sudo pacman -S numactl
 echo "y" | sudo pacman -S ark
 echo "y" | sudo pacman -S reflector
+echo "y" | sudo pacman -S  vkd3d
+
 
 read -p "Install Yay (Y|n)? " install_yay
 if [ -z $install_yay ] || [ "${install_yay,,}" == "y"]; then
@@ -236,6 +238,7 @@ yay -S qt5-graphicaleffects
 yay -S geogebra-6-electron
 yay -S tensorrt
 yay -S apvlv
+yay -S dxvk-bin
 
 # Install betterlockscreen into system.
 git clone https://github.com/Raymo111/i3lock-color.git && cd ~/i3lock-color/ && ./install-i3lock-color.sh
@@ -311,4 +314,13 @@ betterlockscreen -u ~/wallpaper/anime-girl-red-eye-tattoo-sword-4k-wallpaper-uhd
 #
 # this in /etc/X11/xorg.conf.d/40-libinput.conf
 #    Option "DisableWhileTyping" "off"
+
+# run this to setup dxvk-bin config for wine:-
+# export WINEPREFIX=~/.wine  # Change to your Wine prefix
+# setup_dxvk install
+
+
+
+
+
 

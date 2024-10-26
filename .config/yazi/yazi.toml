@@ -23,4 +23,5 @@ rules = [
 { name = "*.cpp", use = ["edit"] },
 { name = "*.c", use = ["edit"] },
 { name = "*.sh", use = ["edit"] },
+{ name = "*.json", use = ["edit"] },
 ]
