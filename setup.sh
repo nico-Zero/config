@@ -319,8 +319,6 @@ betterlockscreen -u ~/wallpaper/anime-girl-red-eye-tattoo-sword-4k-wallpaper-uhd
 # export WINEPREFIX=~/.wine  # Change to your Wine prefix
 # setup_dxvk install
 
-
-
-
-
-
+# winetricks directx9
+# winetricks corefonts
+# winetricks vcrun2015
