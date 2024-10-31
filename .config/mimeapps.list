@@ -8,6 +8,8 @@ video/mp4=mpv.desktop;vlc.desktop;
 application/x-desktop=libreoffice-impress.desktop;
 application/zip=org.kde.ark.desktop;
 application/x-pak=nvim.desktop;
+application/vnd.adobe.flash.movie=brave-browser.desktop;firefox.desktop;rs.ruffle.Ruffle.desktop;
+application/xml=vim.desktop;rs.ruffle.Ruffle.desktop;
 
 [Default Applications]
 text/plain=nvim.desktop
@@ -28,3 +30,5 @@ x-scheme-handler/unknown=brave-browser.desktop
 application/zip=org.kde.ark.desktop
 application/json=nvim.desktop
 application/x-pak=nvim.desktop
+application/vnd.adobe.flash.movie=rs.ruffle.Ruffle.desktop
+application/xml=rs.ruffle.Ruffle.desktop
