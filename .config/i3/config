@@ -331,7 +331,7 @@ set $ws2 "2:"
 set $ws3 "3:"
 set $ws4 "4:󰖣"
 set $ws5 "5:"
-set $ws6 "6:"
+set $ws6 "6:"
 set $ws7 "7:"
 set $ws8 "8:"
 set $ws9 "9:"
@@ -356,7 +356,7 @@ set $ws10 "10:󰪴"
 exec_always xinput set-prop 14 "libinput Natural Scrolling Enabled" 1
 exec_always xinput set-prop 14 "libinput Tapping Enabled" 1
 
-for_window [class="^((?!Alacritty|ark|Apvlv|qBittorrent|qbittorrent|Blueberry.py|pavucontrol|Blueman-applet|Xarchiver|xarchiver|nsxiv|Nsxiv| |Navigator|firefox|flameshot|org.wezfurlong.wezterm|yad|Screenkey|Shotwell|kitty|Polkit-gnome-authentication-agent-1|Blueman-manager|Brave-browser|Brave|Navigator|Spotify|Whatsapp-for-linux|Signal|Gimp|obs|matplotlib|Thunar|Xdg-desktop-portal-gtk|vlc).)*$"] move container to workspace $ws10, workspace $ws10
+for_window [class="^((?!Alacritty|mpv|feh|ark|Apvlv|kdenlive|qBittorrent|qbittorrent|Blueberry.py|pavucontrol|Blueman-applet|Xarchiver|xarchiver|nsxiv|Nsxiv| |Navigator|firefox|flameshot|org.wezfurlong.wezterm|yad|Screenkey|Shotwell|kitty|Polkit-gnome-authentication-agent-1|Blueman-manager|Brave-browser|Brave|Navigator|Spotify|Whatsapp-for-linux|Signal|Gimp|obs|matplotlib|Thunar|Xdg-desktop-portal-gtk|vlc).)*$"] move container to workspace $ws10, workspace $ws10
 for_window [class="Blueman-manager"] floating enable, resize set 1000 800, move position center
 for_window [class="^.*"] border pixel 0
 
@@ -366,7 +366,7 @@ assign [class="Brave-browser"] $ws2
 assign [class="Thunar"] $ws3
 assign [class="Whatsapp-for-linux"] $ws4
 assign [class="Signal"] $ws5
-assign [class="Gimp"] $ws6
+assign [class="kdenlive"] $ws6
 assign [class="OBS"] $ws7
 assign [class="Spotify"] $ws8
 assign [class="qBittorrent"] $ws9
@@ -375,7 +375,7 @@ for_window [class="Brave-browser"] move container to workspace $ws2, workspace $
 for_window [class="Thunar"] move container to workspace $ws3, workspace $ws3
 for_window [class="Whatsapp-for-linux"] move container to workspace $ws4, workspace $ws4
 for_window [class="Signal"] move container to workspace $ws5, workspace $ws5
-for_window [class="Gimp"] move container to workspace $ws6, workspace $ws6
+for_window [class="kdenlive"] move container to workspace $ws6, workspace $ws6
 for_window [class="obs"] move container to workspace $ws7, workspace $ws7
 for_window [class="Spotify"] move container to workspace $ws8, workspace $ws8
 for_window [class="qBittorrent"] move container to workspace $ws9, workspace $ws9

@@ -10,6 +10,8 @@ application/zip=org.kde.ark.desktop;
 application/x-pak=nvim.desktop;
 application/vnd.adobe.flash.movie=brave-browser.desktop;firefox.desktop;rs.ruffle.Ruffle.desktop;
 application/xml=vim.desktop;rs.ruffle.Ruffle.desktop;
+image/webp=nsxiv.desktop;feh.desktop;
+audio/x-opus+ogg=mpv.desktop;
 
 [Default Applications]
 text/plain=nvim.desktop
