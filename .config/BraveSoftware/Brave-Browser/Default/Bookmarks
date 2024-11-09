@@ -1,5 +1,5 @@
 {
-   "checksum": "514454fb7b201a99dd16f2330990f4d0",
+   "checksum": "3265c7558e7a118207386dc409a863a1",
    "roots": {
       "bookmark_bar": {
          "children": [  ],
@@ -496,10 +496,21 @@
             "name": "Where to find and unlock all of the Runes - Dead Cells Walkthrough - Neoseeker",
             "type": "url",
             "url": "https://www.neoseeker.com/dead-cells/Basics/Runes"
+         }, {
+            "date_added": "13375174649814300",
+            "date_last_used": "0",
+            "guid": "c391533c-adcc-44d1-9ea3-21b69d5b29a8",
+            "id": "70",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "ChatGPT",
+            "type": "url",
+            "url": "https://chatgpt.com/"
          } ],
          "date_added": "13369643435090832",
          "date_last_used": "0",
-         "date_modified": "13374425189312537",
+         "date_modified": "13375174649814300",
          "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
          "id": "2",
          "name": "Other bookmarks",

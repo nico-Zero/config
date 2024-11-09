@@ -90,6 +90,7 @@ function preexec(){
 # Alias:
 alias pp="shotwell *"
 alias ls="eza --icons --group-directories-first -l --hyperlink"
+alias lss="eza --icons --group-directories-first -l --hyperlink --total-size"
 alias :q="exit"
 alias lsg="lsa | grep"
 alias cht="bash ~/.config/LSD/cht.sh"

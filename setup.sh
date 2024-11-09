@@ -322,3 +322,14 @@ betterlockscreen -u ~/wallpaper/anime-girl-red-eye-tattoo-sword-4k-wallpaper-uhd
 # winetricks directx9
 # winetricks corefonts
 # winetricks vcrun2015
+# winetricks corefonts cjkfonts vcrun2019 dxdx9 dxvk ole32 dotnet35 dotnet48
+# winetricks --force d3d11
+# winetricks --force dxvk
+# winetricks --force vcrun2017
+
+# run this to setup dxvk-bin config for wine:-
+# export WINEPREFIX=~/.wine  # Change to your Wine prefix
+# setup_dxvk install
+#
+# git clone https://github.com/Fumasu/mf-install
+# WINEPREFIX="/home/gaben/.local/share/Steam/steamapps/compatdata/751440/pfx" ./install-mf.sh
