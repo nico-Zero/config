@@ -87,7 +87,7 @@ def decode_data_msb(image, data_length):
     return secret_data_bytes
 
 
-image = np.array(Image.open("image.png"))
+image = np.array(Image.open("./fairycore-misty-forest-desktop-wallpaper.png"))
 secret_data = "Hello World"
 secret_data_bits = secret_data_to_bits(secret_data)
 half_length = len(secret_data_bits) // 2

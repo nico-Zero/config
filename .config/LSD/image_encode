@@ -75,69 +75,16 @@ def encode_image_msb_prediction(image_path, secret_data, output_path):
     encoded_img.save(output_path)
 
 
-def decode_image_msb_prediction(image_path, output_path):
-    """
-    Decode secret data from an image encoded using MSB prediction and save the reversed image.
-    """
-    try:
-        img = Image.open(image_path)
-    except IOError:
-        print("Error: Unable to open image file.")
-        return None
-
-    secret_data_bin = ""
-    width, height = img.size
-    original_img = img.copy()  # Create a copy of the original image
-
-    for y in range(height):
-        for x in range(width):
-            pixel = img.getpixel((x, y))
-            secret_data_bin += str((pixel[2] >> 7) & 1)  # Extract MSB
-            if secret_data_bin[-8:] == "11111111":  # Check for delimiter
-                break
-        else:
-            continue
-        break
-
-    # Convert binary data to string
-    secret_data = "".join(
-        chr(int(secret_data_bin[i : i + 8], 2))
-        for i in range(0, len(secret_data_bin) - 8, 8)
-    )
-
-    # Restore the original image by resetting the MSB of the blue channel
-    data_index = 0
-    for y in range(height):
-        for x in range(width):
-            pixel = list(original_img.getpixel((x, y)))
-            if data_index < len(secret_data_bin):
-                # Reset the MSB to its original state
-                pixel[2] = (pixel[2] & ~128) | (0 << 7)  # Clear MSB for original image
-                original_img.putpixel((x, y), tuple(pixel))
-                data_index += 1
-
-    # Save the restored image
-    original_img.save(output_path)
-
-    return secret_data
-
-
 # Example usage
 if __name__ == "__main__":
-    input_image = "./fairycore-misty-forest-desktop-wallpaper.png"
-    secret_message = "laksdjflkasd fjlk asldkfj las jdflkj aslkdfj"
-    encoded_image_file_path = "encoded_image_msb_prediction.png"
-    recovered_image_file_path = "recovered_image.png"
+    input_image = str(input("Enter the file path:- "))
+    secret_message = str(input("Enter the Secret message:- "))
+    encoded_image_file_path = (
+        str(input("Enter the output file path:- ")) or "encoded_image.png"
+    )
     encode_image_msb_prediction(
         input_image,
         secret_message,
         encoded_image_file_path,
     )
-
-    # Decoding
-    hidden_message = decode_image_msb_prediction(
-        encoded_image_file_path,
-        recovered_image_file_path,
-    )
-    if hidden_message:
-        print(f"Hidden Message: {hidden_message}")
+    print(f'The encoded image is saved at "{encoded_image_file_path}"')

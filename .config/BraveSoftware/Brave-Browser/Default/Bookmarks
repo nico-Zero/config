@@ -1,5 +1,5 @@
 {
-   "checksum": "3265c7558e7a118207386dc409a863a1",
+   "checksum": "0337776785cad30eb9aca65c91e44dd1",
    "roots": {
       "bookmark_bar": {
          "children": [  ],
@@ -507,10 +507,21 @@
             "name": "ChatGPT",
             "type": "url",
             "url": "https://chatgpt.com/"
+         }, {
+            "date_added": "13375631840731738",
+            "date_last_used": "0",
+            "guid": "ad954621-8e4f-40f1-b9ec-c42c0fa9b619",
+            "id": "72",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Claude",
+            "type": "url",
+            "url": "https://claude.ai/login"
          } ],
          "date_added": "13369643435090832",
          "date_last_used": "0",
-         "date_modified": "13375174649814300",
+         "date_modified": "13375631840731738",
          "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
          "id": "2",
          "name": "Other bookmarks",

@@ -28,5 +28,6 @@
 /home/zero/.mozilla
 /home/zero/.config/dunst
 /run/media/zero/Nova/games
-/run/media/zero/Nova/games/The.Secret.Atelier/game
 /run/media/zero/Nova/Lab/Python/nueral_network
+/run/media/zero/Nova/Lab/ASM
+/run/media/zero/Nova/Lab/ec_councile

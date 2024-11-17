@@ -1,0 +1,67 @@
+#!/usr/bin/python3
+
+from PIL import Image
+
+
+def decode_image_msb_prediction(image_path, output_path):
+    """
+    Decode secret data from an image encoded using MSB prediction and save the reversed image.
+    """
+    try:
+        img = Image.open(image_path)
+    except IOError:
+        print("Error: Unable to open image file.")
+        return None
+
+    secret_data_bin = ""
+    width, height = img.size
+    original_img = img.copy()  # Create a copy of the original image
+
+    for y in range(height):
+        for x in range(width):
+            pixel = img.getpixel((x, y))
+            secret_data_bin += str((pixel[2] >> 7) & 1)  # Extract MSB
+            if secret_data_bin[-8:] == "11111111":  # Check for delimiter
+                break
+        else:
+            continue
+        break
+
+    # Convert binary data to string
+    secret_data = "".join(
+        chr(int(secret_data_bin[i : i + 8], 2))
+        for i in range(0, len(secret_data_bin) - 8, 8)
+    )
+
+    # Restore the original image by resetting the MSB of the blue channel
+    data_index = 0
+    for y in range(height):
+        for x in range(width):
+            pixel = list(original_img.getpixel((x, y)))
+            if data_index < len(secret_data_bin):
+                # Reset the MSB to its original state
+                pixel[2] = (pixel[2] & ~128) | (0 << 7)  # Clear MSB for original image
+                original_img.putpixel((x, y), tuple(pixel))
+                data_index += 1
+
+    # Save the restored image
+    original_img.save(output_path)
+
+    return secret_data
+
+
+if __name__ == "__main__":
+    encoded_image_file_path = (
+        str(input("Enter the encoded file path:- ")) or "encoded_image.png"
+    )
+    recovered_image_file_path = (
+        str(input("Enter the decoded file path:- ")) or "decoded_image.png"
+    )
+    # Decoding
+    hidden_message = decode_image_msb_prediction(
+        encoded_image_file_path,
+        recovered_image_file_path,
+    )
+    if hidden_message:
+        print(f"Hidden Message: {hidden_message}")
+    print(f'The recovered image is saved at "{recovered_image_file_path}"')

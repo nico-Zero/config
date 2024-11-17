@@ -11,6 +11,12 @@ play = [
 image=[
     {run = 'nsxiv "$@"', block = true}
 ]
+pdf=[
+    {run = 'apvlv "$@"', block = true}
+]
+html=[
+    {run = 'brave "$@"', block = true}
+]
 [open]
 rules = [
 { name = "*.jpg", use = ["image"] },
@@ -24,4 +30,7 @@ rules = [
 { name = "*.c", use = ["edit"] },
 { name = "*.sh", use = ["edit"] },
 { name = "*.json", use = ["edit"] },
+{ name = "*.pdf", use = ["pdf"] },
+{ name = "*.html", use = ["html"] },
+{ name = "*.mp4", use = ["play"] },
 ]
