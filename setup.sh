@@ -310,3 +310,5 @@ betterlockscreen -u ~/wallpaper/anime-girl-red-eye-tattoo-sword-4k-wallpaper-uhd
 #
 # git clone https://github.com/Fumasu/mf-install
 # WINEPREFIX="/home/gaben/.local/share/Steam/steamapps/compatdata/751440/pfx" ./install-mf.sh
+# xwinwrap -fs -ni -s -st -sp -b -nf -ov -- mpv --no-border --wid=%WID --loop /path/to/your/video.mp4
+
