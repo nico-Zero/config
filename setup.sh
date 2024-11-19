@@ -42,7 +42,6 @@ echo "y" | sudo pacman -S vlc
 echo "y" | sudo pacman -S libreoffice-still
 echo "y" | sudo pacman -S ddgr
 echo "y" | sudo pacman -S progress
-echo "y" | sudo pacman -S i3-gaps
 echo "y" | sudo pacman -S polybar
 echo "y" | sudo pacman -S nitrogen
 echo "y" | sudo pacman -S bluez
@@ -105,7 +104,7 @@ echo "y" | sudo pacman -S cuda cudnn
 echo "y" | sudo pacman -S numactl
 echo "y" | sudo pacman -S ark
 echo "y" | sudo pacman -S reflector
-echo "y" | sudo pacman -S  vkd3d
+echo "y" | sudo pacman -S vkd3d
 
 
 read -p "Install Yay (Y|n)? " install_yay
@@ -216,29 +215,7 @@ sudo pacman -S julia
 sudo pacman -S ruby
 
 echo "Install Package from Yay...(Will have to do it manually.)"
-yay -S iriunwebcam-bin
-yay -S brave
-yay -S whatsapp-for-linux
-yay -S signal-desktop
-yay -S ascii-image-converter
-yay -S ani-cli
-yay -S getnf
-yay -S rxvt-unicode
-yay -S also-utils
-yay -S pywal
-yay -S spotify-adblock-git
-yay -S unicode
-yay -S autotiling-rs-git
-yay -S ascii-draw
-yay -S aseprite
-yay -S kotatsu-dl-git
-yay -S rofi-greenclip
-yay -S tokyonight-gtk-theme-git
-yay -S qt5-graphicaleffects
-yay -S geogebra-6-electron
-yay -S tensorrt
-yay -S apvlv
-yay -S dxvk-bin
+yay -S iriunwebcam-bin brave whatsapp-for-linux signal-desktop ascii-image-converter ani-cli getnf rxvt-unicode also-utils pywal spotify-adblock-git unicode autotiling-rs-git ascii-draw aseprite kotatsu-dl-git rofi-greenclip tokyonight-gtk-theme-git qt5-graphicaleffects geogebra-6-electron tensorrt apvlv dxvk-bin
 
 # Install betterlockscreen into system.
 git clone https://github.com/Raymo111/i3lock-color.git && cd ~/i3lock-color/ && ./install-i3lock-color.sh
