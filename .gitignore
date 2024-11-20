@@ -11,6 +11,9 @@
 !.icons/
 !.icons/**/*
 
+!down-wallset/
+!down-wallset/**/*
+
 !hacks/
 !hacks/**/*
 
