@@ -386,11 +386,6 @@ for_window [class="Spotify"] move container to workspace $ws8, workspace $ws8
 for_window [class="qBittorrent"] move container to workspace $ws9, workspace $ws9
 for_window [class="ghidra-Ghidra"] move container to workspace $ws11, workspace $ws11
 
-for_window [class="^mpv$"] floating enable
-for_window [class="^mpv$"] border none
-for_window [class="^mpv$"] focus disable
-
-
 # assign [class="Alacritty"] $ws1
 # # for_window [workspace=$ws1 class="Alacritty"] move container to workspace $ws1, workspace $ws1
 # for_window [workspace=$ws2 class="Alacritty"] move container to workspace $ws1, workspace $ws1
