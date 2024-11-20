@@ -547,7 +547,7 @@ exec --no-startup-id ~/.screenlayout/monitor.sh
 # exec --no-startup-id sleep 2 && nitrogen --restore
 # exec --no-startup-id sleep 1 && feh --bg-fill ~/wallpaper/anime-girl-red-eye-tattoo-sword-4k-wallpaper-uhdpaper.com-310@0@j.jpg
 
-exec --no-startup-id sleep 1 && wallset -V ~/wallpaper/LiveWallpaperPC.com-Hanee-Baram-3072x1728.mp4
+exec --no-startup-id sleep 1 && wallset -I 1
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
