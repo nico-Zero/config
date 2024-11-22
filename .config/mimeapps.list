@@ -4,7 +4,7 @@ video/webm=vlc.desktop;mpv.desktop;
 application/pdf=org.pwmt.zathura.desktop;brave-browser.desktop;libreoffice-impress.desktop;krita_pdf.desktop;xreader.desktop;gimp.desktop;libreoffice-draw.desktop;firefox.desktop;apvlv.desktop;
 application/json=nvim.desktop;vim.desktop;Alacritty.desktop;
 video/x-matroska=vlc.desktop;
-video/mp4=vlc.desktop;mpv.desktop;
+video/mp4=mpv.desktop;vlc.desktop;
 application/x-desktop=libreoffice-impress.desktop;
 application/zip=org.kde.ark.desktop;
 application/x-pak=org.kde.ark.desktop;nvim.desktop;
@@ -14,7 +14,7 @@ image/webp=nsxiv.desktop;feh.desktop;
 audio/x-opus+ogg=mpv.desktop;
 application/octet-stream=org.kde.ark.desktop;
 text/javascript=brave-browser.desktop;
-application/vnd.rar=org.kde.ark.desktop;
+application/vnd.rar=wine-extension-rar.desktop;org.kde.ark.desktop;
 video/ogg=mpv.desktop;
 
 [Default Applications]
@@ -27,7 +27,7 @@ image/tiff=nsxiv.desktop
 image/svg+xml=nsxiv.desktop
 application/pdf=apvlv.desktop
 video/x-matroska=vlc.desktop
-video/mp4=vlc.desktop
+video/mp4=mpv.desktop
 text/html=brave-browser.desktop
 x-scheme-handler/http=brave-browser.desktop
 x-scheme-handler/https=brave-browser.desktop
