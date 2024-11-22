@@ -86,49 +86,50 @@ in
         ;;
 
     gotoS)
-        choice=($(fzf_select))
-        dirname="$(awk -F '/' '{print $NF}' <<< $choice | tr "." "_")"
-        if [ ! -z $choice ]; then
-            tmux has-session -t "$dirname" > /dev/null 2>&1 
-            exitcode=$?
-            if [ ! -z $TMUX ]; then
-                if [ 0 -eq $exitcode ]; then
-                    tmux -u switch-client -t "$dirname"
-                else
-                    new_session_switch $dirname $choice
-                fi
-            else
-                if [ "nvim" == "$2" ]; then
-                    if [ 0 -eq $exitcode ]; then
-                        tmux -u attach-session -t "$dirname"
-                    else
-                        nvim_new_session_attach $dirname $choice
-                    fi
-                else
-                    if [ 0 -eq $exitcode ]; then
-                        tmux -u attach-session -t "$dirname"
-                    else
-                        new_session_attach $dirname $choice
-                    fi
-                fi
-            fi
-        fi
-        ;;
-
-    tmuxselect)
         choices=($(fzf_multi_select))
-        for path in ${choices[@]}; do
-            dirname="$(awk -F '/' '{print $NF}' <<< $path | tr "." "_")"
-            tmux has-session -t "$dirname" > /dev/null 2>&1 
-            exitcode=$?
-            if [ 0 -eq $exitcode ]; then
-                echo "Already session :- $dirname at $path"
-            else
-                tmux -u new -s "$dirname" -c "$path" -d
-                tmux -u new-window -t "$dirname" -n "$(echo $SHELL | awk -F '/' '{print $NF}')" -c "$path" -d
-                echo "Created session :- $dirname at $path"
+        echo "${choices[@]}"
+        choice_count=${#choices[@]}
+        if [[ $choice_count -eq 1 ]]; then
+            dirname="$(awk -F '/' '{print $NF}' <<< $choices | tr "." "_")"
+            if [ ! -z $choices ]; then
+                tmux has-session -t "$dirname" > /dev/null 2>&1 
+                exitcode=$?
+                if [ ! -z $TMUX ]; then
+                    if [ 0 -eq $exitcode ]; then
+                        tmux -u switch-client -t "$dirname"
+                    else
+                        new_session_switch $dirname $choices
+                    fi
+                else
+                    if [ "nvim" == "$2" ]; then
+                        if [ 0 -eq $exitcode ]; then
+                            tmux -u attach-session -t "$dirname"
+                        else
+                            nvim_new_session_attach $dirname $choices
+                        fi
+                    else
+                        if [ 0 -eq $exitcode ]; then
+                            tmux -u attach-session -t "$dirname"
+                        else
+                            new_session_attach $dirname $choices
+                        fi
+                    fi
+                fi
             fi
-        done
+        else
+            for path in ${choices[@]}; do
+                dirname="$(awk -F '/' '{print $NF}' <<< $path | tr "." "_")"
+                tmux has-session -t "$dirname" > /dev/null 2>&1 
+                exitcode=$?
+                if [ 0 -eq $exitcode ]; then
+                    echo "Already session :- $dirname at $path"
+                else
+                    tmux -u new -s "$dirname" -c "$path" -d
+                    tmux -u new-window -t "$dirname" -n "$(echo $SHELL | awk -F '/' '{print $NF}')" -c "$path" -d
+                    echo "Created session :- $dirname at $path"
+                fi
+            done
+        fi
         ;;
 
     tmuxall)
@@ -145,6 +146,30 @@ in
                 echo "Created session :- $dirname at $path"
             fi
         done
+        ;;
+
+    deleteline)
+        cp "$data_file_path" "${data_file_path}.bak"
+        choice=($(fzf_multi_select))
+        if [[ ${#choice[@]} -eq 0 ]]; then
+            echo "No lines selected."
+            exit
+        fi
+        echo "Deleted lines:"
+        for line in "${choice[@]}"; do
+            echo "$line"
+        done
+        line_numbers=()
+        for selected_line in "${choice[@]}"; do
+            line_number=$(grep -Fnx "$selected_line" "$data_file_path" | cut -d: -f1)
+            if [[ -n $line_number ]]; then
+                line_numbers+=($line_number)
+            fi
+        done
+        for line in $(printf "%s\n" "${line_numbers[@]}" | sort -nr); do
+            sed -i "${line}d" "$data_file_path"
+        done
+        echo "Lines have been deleted."
         ;;
 
     killselect)
