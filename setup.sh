@@ -105,6 +105,8 @@ echo "y" | sudo pacman -S numactl
 echo "y" | sudo pacman -S ark
 echo "y" | sudo pacman -S reflector
 echo "y" | sudo pacman -S vkd3d
+echo "y" | sudo pacman -S man
+echo "y" | sudo pacman -S man-pages
 
 
 read -p "Install Yay (Y|n)? " install_yay
