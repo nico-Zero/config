@@ -222,21 +222,20 @@ in
         ;;
 
     killall)
-        active_session=$(tmux list-sessions)
-        echo "Active Sessions:-"
-        echo "$active_session"
-        read -p "Confirm(Y|n):- " confirm
-        if [[ "$confirm" == "y" ]] || [[ "$confirm" == "y" ]] || [[ "$confirm" == "" ]]; then
-            tmux kill-session -a > /dev/null 2>&1
-            tmux kill-session > /dev/null 2>&1
-            exitcode=$?
-            if [ 1 -eq $exitcode ]; then
-                echo "NO SESSIONS"
-            else
+        active_session="$(tmux list-sessions 2>/dev/null)"
+        if [[ ${#active_session} -ne 0 ]]; then
+            echo "Active Sessions:-"
+            echo "$active_session"
+            read -p "Confirm(Y|n):- " confirm
+            if [[ "$confirm" == "y" ]] || [[ "$confirm" == "y" ]] || [[ "$confirm" == "" ]]; then
+                tmux kill-session -a > /dev/null 2>&1
+                tmux kill-session > /dev/null 2>&1
                 echo "KILLING PROCESS COMPLETE"
+            else
+                echo "CANCELING THE KILLING PROCESS..."
             fi
         else
-            echo "CANCELING THE KILLING PROCESS..."
+            echo "No Active Sessions"
         fi
         exit
         ;;
