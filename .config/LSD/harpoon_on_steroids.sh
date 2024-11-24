@@ -21,14 +21,22 @@ get_active_fzf_session(){
 
 fzf_multi_select(){
     local active_paths=($(get_active_fzf_session))
-    local choices=$(cat "$data_file_path" | fzf_path_highlight "${active_paths[@]}" | fzf --ansi --reverse -m)
+    if [[ $# -ne 0 ]]; then
+        local choices=$(cat "$data_file_path" | fzf_path_highlight "${active_paths[@]}" | fzf --ansi --reverse -m --header="$1")
+    else
+        local choices=$(cat "$data_file_path" | fzf_path_highlight "${active_paths[@]}" | fzf --ansi --reverse -m)
+    fi
     readarray -t choices_array <<< "$choices"
     echo "${choices_array[@]}"
 }
 
 fzf_select(){
     local active_paths=($(get_active_fzf_session))
-    local choices=$(cat "$data_file_path" | fzf_path_highlight "${active_paths[@]}" | fzf --ansi --reverse)
+    if [[ $# -ne 0 ]]; then
+        local choices=$(cat "$data_file_path" | fzf_path_highlight "${active_paths[@]}" | fzf --ansi --reverse --header="$1")
+    else
+        local choices=$(cat "$data_file_path" | fzf_path_highlight "${active_paths[@]}" | fzf --ansi --reverse)
+    fi
     echo "$choices"
 }
 
@@ -65,10 +73,11 @@ in
             echo "$(pwd)" >> "$data_file_path"
             echo "Added: $(pwd) -> List..."
         fi
+        exit
         ;;
 
     gotoW)
-        choice=($(fzf_select))
+        choice=($(fzf_select "Create Tmux Window"))
         dirname="$(awk -F "/" '{print $NF}' <<< $choice | tr "." "_")"
         if [ ! -z $choice ]; then
             tmux has-session -t "$dirname" > /dev/null 2>&1 
@@ -83,11 +92,11 @@ in
                 fi
             fi
         fi
+        exit
         ;;
 
     gotoS)
-        choices=($(fzf_multi_select))
-        echo "${choices[@]}"
+        choices=($(fzf_multi_select "Create Tmux Sessions"))
         choice_count=${#choices[@]}
         if [[ $choice_count -eq 1 ]]; then
             dirname="$(awk -F '/' '{print $NF}' <<< $choices | tr "." "_")"
@@ -116,20 +125,29 @@ in
                     fi
                 fi
             fi
-        else
-            for path in ${choices[@]}; do
-                dirname="$(awk -F '/' '{print $NF}' <<< $path | tr "." "_")"
-                tmux has-session -t "$dirname" > /dev/null 2>&1 
-                exitcode=$?
-                if [ 0 -eq $exitcode ]; then
-                    echo "Already session :- $dirname at $path"
-                else
-                    tmux -u new -s "$dirname" -c "$path" -d
-                    tmux -u new-window -t "$dirname" -n "$(echo $SHELL | awk -F '/' '{print $NF}')" -c "$path" -d
-                    echo "Created session :- $dirname at $path"
-                fi
-            done
+        elif [[ $choice_count -gt 1 ]]; then
+            echo "CREATE SESSION ?"
+            printf "%s\n" "${choices[@]}"
+            read -p "Confirm(Y|n):- " confirm
+            if [[ "$confirm" == "y" ]] || [[ "$confirm" == "y" ]] || [[ "$confirm" == "" ]]; then
+                for path in ${choices[@]}; do
+                    dirname="$(awk -F '/' '{print $NF}' <<< $path | tr "." "_")"
+                    tmux has-session -t "$dirname" > /dev/null 2>&1 
+                    exitcode=$?
+                    if [ 0 -eq $exitcode ]; then
+                        echo "Already session :- $dirname at $path"
+                    else
+                        tmux -u new -s "$dirname" -c "$path" -d
+                        tmux -u new-window -t "$dirname" -n "$(echo $SHELL | awk -F '/' '{print $NF}')" -c "$path" -d
+                        echo "Created session :- $dirname at $path"
+                    fi
+                done
+                echo "CREATION PROCESS COMPLETE"
+            else
+                echo "CANCELING THE SESSION CREATION PROCESS"
+            fi
         fi
+        exit
         ;;
 
     tmuxall)
@@ -146,57 +164,83 @@ in
                 echo "Created session :- $dirname at $path"
             fi
         done
+        echo "CREATION PROCESS COMPLETE"
+        exit
         ;;
 
     deleteline)
         cp "$data_file_path" "${data_file_path}.bak"
-        choice=($(fzf_multi_select))
+        choice=($(fzf_multi_select "Delete a Line"))
         if [[ ${#choice[@]} -eq 0 ]]; then
-            echo "No lines selected."
             exit
         fi
-        echo "Deleted lines:"
-        for line in "${choice[@]}"; do
-            echo "$line"
-        done
-        line_numbers=()
-        for selected_line in "${choice[@]}"; do
-            line_number=$(grep -Fnx "$selected_line" "$data_file_path" | cut -d: -f1)
-            if [[ -n $line_number ]]; then
-                line_numbers+=($line_number)
-            fi
-        done
-        for line in $(printf "%s\n" "${line_numbers[@]}" | sort -nr); do
-            sed -i "${line}d" "$data_file_path"
-        done
-        echo "Lines have been deleted."
+        echo "Delete lines:"
+        printf "%s\n" "${choice[@]}"
+        read -p "Confirm(Y|n):- " confirm
+        if [[ "$confirm" == "y" ]] || [[ "$confirm" == "y" ]] || [[ "$confirm" == "" ]]; then
+            line_numbers=()
+            for selected_line in "${choice[@]}"; do
+                line_number=$(grep -Fnx "$selected_line" "$data_file_path" | cut -d: -f1)
+                if [[ -n $line_number ]]; then
+                    line_numbers+=($line_number)
+                fi
+            done
+            for line in $(printf "%s\n" "${line_numbers[@]}" | sort -nr); do
+                sed -i "${line}d" "$data_file_path"
+            done
+            echo "DELETION PROCESS COMPLETE"
+        else
+            echo "CANCELING THE DELETE PROCESS"
+        fi
+        exit
         ;;
 
     killselect)
         active_paths=($(get_active_fzf_session))
-        choices=$(cat "$data_file_path" | fzf_path_highlight "${active_paths[@]}" | fzf --ansi --reverse -m)
-        readarray -t choices_array <<< "$choices"
-        for path in ${choices_array[@]}; do
-            if [[ " ${active_paths[*]} " == *" $path "* ]]; then
-                dirname="$(awk -F '/' '{print $NF}' <<< $path | tr "." "_")"
-                tmux kill-session -t "$dirname"
-                echo "Killed session :- $dirname at $path"
+        choices=$(cat "$data_file_path" | fzf_path_highlight "${active_paths[@]}" | fzf --ansi --reverse -m --header="Select to Kill")
+        if [[ ${#choices} -ne 0 ]]; then
+            readarray -t choices_array <<< "$choices"
+            echo "Active Sessions:-"
+            printf "%s\n" "${choices_array[@]}"
+            read -p "Confirm(Y|n):- " confirm
+            if [[ "$confirm" == "y" ]] || [[ "$confirm" == "y" ]] || [[ "$confirm" == "" ]]; then
+                for path in ${choices_array[@]}; do
+                    if [[ " ${active_paths[*]} " == *" $path "* ]]; then
+                        dirname="$(awk -F '/' '{print $NF}' <<< $path | tr "." "_")"
+                        tmux kill-session -t "$dirname"
+                        echo "Killed session :- $dirname at $path"
+                    else
+                        echo "Not session :- $dirname at $path"
+                    fi
+                done
+                echo "KILLING PROCESS COMPLETE"
             else
-                echo "Not session :- $dirname at $path"
+                echo "CANCELING THE KILLING PROCESS..."
             fi
-        done
+        fi
+        exit
         ;;
 
     killall)
-        tmux kill-session -a > /dev/null 2>&1
-        tmux kill-session > /dev/null 2>&1
-        exitcode=$?
-        if [ 1 -eq $exitcode ]; then
-            echo "No Sessions"
+        active_session=$(tmux list-sessions)
+        echo "Active Sessions:-"
+        echo "$active_session"
+        read -p "Confirm(Y|n):- " confirm
+        if [[ "$confirm" == "y" ]] || [[ "$confirm" == "y" ]] || [[ "$confirm" == "" ]]; then
+            tmux kill-session -a > /dev/null 2>&1
+            tmux kill-session > /dev/null 2>&1
+            exitcode=$?
+            if [ 1 -eq $exitcode ]; then
+                echo "NO SESSIONS"
+            else
+                echo "KILLING PROCESS COMPLETE"
+            fi
         else
-            echo "Killed all Sessions"
+            echo "CANCELING THE KILLING PROCESS..."
         fi
+        exit
         ;;
     *)
         echo "Invalid command..."
+        exit
 esac

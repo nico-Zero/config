@@ -22,3 +22,4 @@ if [ ! -z "$status" ]; then
 else
     echo "Nothing to commit." | bat
 fi
+exit
