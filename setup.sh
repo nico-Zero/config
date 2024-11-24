@@ -107,7 +107,8 @@ echo "y" | sudo pacman -S reflector
 echo "y" | sudo pacman -S vkd3d
 echo "y" | sudo pacman -S man
 echo "y" | sudo pacman -S man-pages
-
+echo "y" | sudo pacman -S $(pacman -Sgq nerd-fonts)
+echo "y" | sudo pacman -S noto-fonts-emoji
 
 read -p "Install Yay (Y|n)? " install_yay
 if [ -z $install_yay ] || [ "${install_yay,,}" == "y"]; then
@@ -227,6 +228,7 @@ git clone https://github.com/Raymo111/i3lock-color.git && cd ~/i3lock-color/ && 
 rm -rf ~/i3lock-color
 wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | sudo bash -s system
 betterlockscreen -u ~/wallpaper/anime-girl-red-eye-tattoo-sword-4k-wallpaper-uhdpaper.com-310@0@j.jpg
+
 
 # installing fonts...
 # 1-67" | getnf
