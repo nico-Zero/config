@@ -87,6 +87,15 @@ function preexec(){
     fi
 }
 
+function tls() {
+    active_session="$(tmux list-sessions 2>/dev/null)"
+    if [[ ${#active_session} -ne 0 ]]; then
+        echo "$active_session"
+    else
+        echo "No Session !!!"
+    fi
+}
+
 # Alias:
 alias pp="shotwell *"
 alias ls="eza --icons --group-directories-first -l --hyperlink"
@@ -94,7 +103,6 @@ alias lss="eza --icons --group-directories-first -l --hyperlink --total-size"
 alias :q="exit"
 alias lsg="lsa | grep"
 alias cht="bash ~/.config/LSD/cht.sh"
-alias tls="tmux ls"
 alias asdf="~/.config/LSD/exit.sh && exit"
 alias cd="z"
 alias cat="bat"

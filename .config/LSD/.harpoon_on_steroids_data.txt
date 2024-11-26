@@ -31,3 +31,4 @@
 /run/media/zero/Nova/Wallpaper
 /run/media/zero/Nova/Lab/ec_councile/Hands-on-Linux-for-DevOps-Cloud-Engineers/lab-terraform
 /run/media/zero/Nova
+/home/zero

@@ -228,8 +228,8 @@ in
             echo "$active_session"
             read -p "Confirm(Y|n):- " confirm
             if [[ "$confirm" == "y" ]] || [[ "$confirm" == "y" ]] || [[ "$confirm" == "" ]]; then
-                tmux kill-session -a > /dev/null 2>&1
-                tmux kill-session > /dev/null 2>&1
+                tmux kill-session -a > /dev/null
+                tmux kill-session > /dev/null
                 echo "KILLING PROCESS COMPLETE"
             else
                 echo "CANCELING THE KILLING PROCESS..."
