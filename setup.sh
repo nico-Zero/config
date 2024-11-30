@@ -109,6 +109,9 @@ echo "y" | sudo pacman -S man
 echo "y" | sudo pacman -S man-pages
 echo "y" | sudo pacman -S $(pacman -Sgq nerd-fonts)
 echo "y" | sudo pacman -S noto-fonts-emoji
+echo "y" | sudo pacman -S power-profiles-daemon
+echo "y" | sudo pacmna -S dunst
+
 
 read -p "Install Yay (Y|n)? " install_yay
 if [ -z $install_yay ] || [ "${install_yay,,}" == "y"]; then
@@ -321,3 +324,12 @@ betterlockscreen -u ~/wallpaper/anime-girl-red-eye-tattoo-sword-4k-wallpaper-uhd
 #
 # grub default setting in -> /etc/default/grub   # change into this dir to chage the grub settings.\
 # and then run "sudo grub-mkconfig -o /boot/grub/grub.cfg" the command in the terminal after saving the grub file.
+#
+#
+# sudo nano /etc/X11/xorg.conf.d/40-libinput.conf
+#Section "InputClass"
+#     Identifier "libinput touchpad"
+#     MatchIsTouchpad "on"
+#     Option "NaturalScrolling" "true"
+# EndSection
+
