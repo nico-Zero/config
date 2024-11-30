@@ -197,7 +197,7 @@ if [ "${install_config,,}" == "y" ]; then
     git config --global user.email "zandaxheart955@gmail.com"
     git config --global user.name "nico-Zero"
     git remote add origin git@github.com:nico-Zero/config.git
-    git fatch
+    git fetch
     git reset origin/main
     git checkout -t origin/main
     git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
