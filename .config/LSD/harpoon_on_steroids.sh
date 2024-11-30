@@ -18,7 +18,7 @@ get_active_fzf_session(){
     while IFS= read -r session; do
         header=$(tmux show-option -t "$session" -qv @header)
         active_session+=("$header")
-    done < <(tmux list-sessions -F '#S')
+    done < <(tmux list-sessions -F '#S' 2>/dev/null)
     readarray -t data <<< "$active_session"
     echo "${active_session[@]}"
 }
