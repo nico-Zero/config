@@ -110,7 +110,14 @@ echo "y" | sudo pacman -S man-pages
 echo "y" | sudo pacman -S $(pacman -Sgq nerd-fonts)
 echo "y" | sudo pacman -S noto-fonts-emoji
 echo "y" | sudo pacman -S power-profiles-daemon
-echo "y" | sudo pacmna -S dunst
+echo "y" | sudo pacman -S dunst
+echo "y" | sudo pacman -S kdenlive
+echo "y" | sudo pacman -S wine
+echo "y" | sudo pacman -S man-db
+echo "y" | sudo pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-jack
+echo "y" | sudo pacman -S wireplumber
+systemctl --user enable pipewire pipewire-pulse wireplumber
+systemctl --user start pipewire pipewire-pulse wireplumber
 
 
 read -p "Install Yay (Y|n)? " install_yay
@@ -257,17 +264,14 @@ betterlockscreen -u ~/wallpaper/anime-girl-red-eye-tattoo-sword-4k-wallpaper-uhd
 # Add This line (UUID=A232F5EE32F5C6F7 /mnt/Nova ntfs defaults  0  2) in /etc/fstab
 # Add This line (SUBSYSTEM=='backlight', RUN+='/usr/bin/chmod 666 /sys/class/backlight/%k/brightness') in /etc/udev/rules.d/99-backlight.rules
 # run 'sudo udevadm control --reload' and 'sudo udevadm trigger'
-# ehco "After grub setup run 'grub-mkconfig -o /path/to/grub.cfg'
 # Restart the terminal.
 # sudo pacman -S dbus libappindicator-gtk3
 # sudo pacman -S xdg-desktop-portal
 # sudo pacman -S ibus
 # sudo pacman -S xscreensaver
 # sudo pacman -S --needed gobject-introspection
-
 # sudo pacman -S arc-gtk-theme
 # sudo pacman -S pavucontrol
-
 
 # Dark mode in i3wm.
 # ~/.config/gtk-3.0/settings.ini)
@@ -322,14 +326,6 @@ betterlockscreen -u ~/wallpaper/anime-girl-red-eye-tattoo-sword-4k-wallpaper-uhd
 # WINEPREFIX="/home/gaben/.local/share/Steam/steamapps/compatdata/751440/pfx" ./install-mf.sh
 # xwinwrap -fs -ni -s -st -sp -b -nf -ov -- mpv --no-border --wid=%WID --loop /path/to/your/video.mp4
 #
+# grub themes in the /boot/grub/themes/ past the theme here
 # grub default setting in -> /etc/default/grub   # change into this dir to chage the grub settings.\
 # and then run "sudo grub-mkconfig -o /boot/grub/grub.cfg" the command in the terminal after saving the grub file.
-#
-#
-# sudo nano /etc/X11/xorg.conf.d/40-libinput.conf
-#Section "InputClass"
-#     Identifier "libinput touchpad"
-#     MatchIsTouchpad "on"
-#     Option "NaturalScrolling" "true"
-# EndSection
-

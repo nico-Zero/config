@@ -50,6 +50,7 @@ bash
 Copy code
 sudo systemctl enable lightdm
 sudo systemctl start lightdm
+
 Step 5: Restart and Test
 Once everything is set up, restart your system to see the changes:
 
