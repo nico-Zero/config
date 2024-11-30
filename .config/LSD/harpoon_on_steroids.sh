@@ -14,7 +14,11 @@ fzf_path_highlight() {
 }
 
 get_active_fzf_session(){
-    local active_session="$(tmux list-sessions -F '#{pane_current_path}' 2>/dev/null)"
+    local active_session=()
+    while IFS= read -r session; do
+        header=$(tmux show-option -t "$session" -qv @header)
+        active_session+=("$header")
+    done < <(tmux list-sessions -F '#S')
     readarray -t data <<< "$active_session"
     echo "${active_session[@]}"
 }
@@ -41,27 +45,29 @@ fzf_select(){
 }
 
 new_session_attach() {
-    tmux -u new -s "$1" -c "$2" -d
-    tmux -u new-window -t "$1" -n "Terminal" -c "$2" -d 
+    tmux -u new -s "$1" -c "$2" -d "tmux set-option -t $1 @header '$2' && exec zsh"
+    tmux -u new-window -t "$1" -n "Terminal" -c "$2" -d
     tmux -u attach-session -t "$1"
 }
 
 new_session_switch() {
-    tmux -u new -s "$1" -c "$2" -d
+    tmux -u new -s "$1" -c "$2" -d  "tmux set-option -t $1 @header '$2' && exec zsh"
     tmux -u new-window -t "$1" -n "Termianl" -c "$2" -d
     tmux -u switch-client -t "$dirname"
 }
 
 nvim_new_session_attach() {
-    tmux -u new -s "$1" -c "$2" -d 'nvim'
+    tmux -u new -s "$1" -c "$2" -d "tmux set-option -t $1 @header '$2' && nvim"
     tmux -u new-window -t "$1" -n "Termianl" -c "$2" -d 
     tmux -u attach-session -t "$1"
+    tmux set-option -t $1 @header "$2"
 }
 
 nvim_new_session_switch() {
-    tmux -u new -s "$1" -c "$2" -d 'nvim'
+    tmux -u new -s "$1" -c "$2" -d  "tmux set-option -t $1 @header '$2' && exec nvim"
     tmux -u new-window -t "$1" -n "Termianl" -c "$2" -d
     tmux -u switch-client -t "$dirname"
+    tmux set-option -t $1 @header "$2"
 }
 
 case "$1"
@@ -137,7 +143,7 @@ in
                     if [ 0 -eq $exitcode ]; then
                         echo "Already session :- $dirname at $path"
                     else
-                        tmux -u new -s "$dirname" -c "$path" -d
+                        tmux -u new -s "$dirname" -c "$path" -d "tmux set-option -t $dirname @header '$path' && exec zsh"
                         tmux -u new-window -t "$dirname" -n "$(echo $SHELL | awk -F '/' '{print $NF}')" -c "$path" -d
                         echo "Created session :- $dirname at $path"
                     fi
@@ -159,7 +165,7 @@ in
             if [ 0 -eq $exitcode ]; then
                 echo "Already session :- $dirname at $path"
             else
-                tmux -u new -s "$dirname" -c "$path" -d
+                tmux -u new -s "$dirname" -c "$path" -d "tmux set-option -t $dirname @header '$path' && exec zsh"
                 tmux -u new-window -t "$dirname" -n "$(echo $SHELL | awk -F '/' '{print $NF}')" -c "$path" -d
                 echo "Created session :- $dirname at $path"
             fi

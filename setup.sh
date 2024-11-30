@@ -1,16 +1,12 @@
 #!/usr/bin/env bash
-
 # Setup for Arch-linux...
-
 function ctrl_c() {
     echo "Exiting script..."
     exit 1
 }
 trap ctrl_c INT
-
 echo "Updating System..."
 sudo pacman -Syu
-
 echo "Install Pre-Req..."
 echo "y" | sudo pacman -S alacritty
 echo "y" | sudo pacman -S screenkey
@@ -118,7 +114,12 @@ echo "y" | sudo pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-jack
 echo "y" | sudo pacman -S wireplumber
 systemctl --user enable pipewire pipewire-pulse wireplumber
 systemctl --user start pipewire pipewire-pulse wireplumber
-
+echo "y" | sudo pacman -S tree
+echo "y" | sudo pacman -S sof-firmware
+echo "y" | sudo pacman -S winetricks
+echo "y" | sudo pacman -S wine-gecko wine-mono lib32-glibc lib32-gcc-libs lib32-freetype lib32-libpng
+echo "y" | sudo pacman -S sdl2 sdl2_image sdl2_mixer sdl2_ttf
+echo "y" | sudo pacman -S lib32-sdl2 lib32-sdl2_image lib32-sdl2_mixer lib32-sdl2_ttf
 
 read -p "Install Yay (Y|n)? " install_yay
 if [ -z $install_yay ] || [ "${install_yay,,}" == "y"]; then
@@ -231,7 +232,7 @@ sudo pacman -S julia
 sudo pacman -S ruby
 
 echo "Install Package from Yay...(Will have to do it manually.)"
-yay -S iriunwebcam-bin brave whatsapp-for-linux signal-desktop ascii-image-converter ani-cli getnf rxvt-unicode also-utils pywal spotify-adblock-git unicode autotiling-rs-git ascii-draw aseprite kotatsu-dl-git rofi-greenclip tokyonight-gtk-theme-git qt5-graphicaleffects geogebra-6-electron tensorrt apvlv dxvk-bin
+yay -S iriunwebcam-bin brave whatsapp-for-linux signal-desktop ascii-image-converter ani-cli getnf rxvt-unicode also-utils pywal spotify-adblock-git unicode autotiling-rs-git ascii-draw aseprite kotatsu-dl-git rofi-greenclip tokyonight-gtk-theme-git qt5-graphicaleffects geogebra-6-electron tensorrt apvlv dxvk-bin dxvk
 
 # Install betterlockscreen into system.
 git clone https://github.com/Raymo111/i3lock-color.git && cd ~/i3lock-color/ && ./install-i3lock-color.sh
