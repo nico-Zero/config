@@ -232,7 +232,9 @@ sudo pacman -S julia
 sudo pacman -S ruby
 
 echo "Install Package from Yay...(Will have to do it manually.)"
-yay -S iriunwebcam-bin brave whatsapp-for-linux signal-desktop ascii-image-converter ani-cli getnf rxvt-unicode also-utils pywal spotify-adblock-git unicode autotiling-rs-git ascii-draw aseprite kotatsu-dl-git rofi-greenclip tokyonight-gtk-theme-git qt5-graphicaleffects geogebra-6-electron tensorrt apvlv dxvk-bin dxvk
+yay -S iriunwebcam-bin brave whatsapp-for-linux signal-desktop ascii-image-converter ani-cli getnf rxvt-unicode also-utils pywal spotify-adblock-git unicode autotiling-rs-git ascii-draw \
+aseprite kotatsu-dl-git rofi-greenclip tokyonight-gtk-theme-git qt5-graphicaleffects geogebra-6-electron tensorrt apvlv dxvk-bin dxvk terraform  \
+aws-cli-v2-bin
 
 # Install betterlockscreen into system.
 git clone https://github.com/Raymo111/i3lock-color.git && cd ~/i3lock-color/ && ./install-i3lock-color.sh
@@ -330,3 +332,7 @@ betterlockscreen -u ~/wallpaper/anime-girl-red-eye-tattoo-sword-4k-wallpaper-uhd
 # grub themes in the /boot/grub/themes/ past the theme here
 # grub default setting in -> /etc/default/grub   # change into this dir to chage the grub settings.\
 # and then run "sudo grub-mkconfig -o /boot/grub/grub.cfg" the command in the terminal after saving the grub file.
+#
+#
+# sudo pacman -Rns $(pacman -Qdtq)
+# to clean up the left overs
