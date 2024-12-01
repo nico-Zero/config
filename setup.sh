@@ -121,6 +121,11 @@ echo "y" | sudo pacman -S wine-gecko wine-mono lib32-glibc lib32-gcc-libs lib32-
 echo "y" | sudo pacman -S sdl2 sdl2_image sdl2_mixer sdl2_ttf
 echo "y" | sudo pacman -S lib32-sdl2 lib32-sdl2_image lib32-sdl2_mixer lib32-sdl2_ttf
 echo "y" | sudo pacman -S gvfs gvfs-mtp
+echo "y" | sudo pacman -S udisks2
+systemctl status udisks2
+echo "y" | sudo pacman -S intel-ucode
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
 
 read -p "Install Yay (Y|n)? " install_yay
 if [ -z $install_yay ] || [ "${install_yay,,}" == "y"]; then
