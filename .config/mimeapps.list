@@ -16,6 +16,16 @@ application/octet-stream=wine-extension-lz.desktop;org.kde.ark.desktop;
 text/javascript=brave-browser.desktop;
 application/vnd.rar=wine-extension-rar.desktop;org.kde.ark.desktop;
 video/ogg=mpv.desktop;
+x-scheme-handler/http=firefox.desktop;
+x-scheme-handler/https=firefox.desktop;
+x-scheme-handler/chrome=firefox.desktop;
+text/html=firefox.desktop;
+application/x-extension-htm=firefox.desktop;
+application/x-extension-html=firefox.desktop;
+application/x-extension-shtml=firefox.desktop;
+application/xhtml+xml=firefox.desktop;
+application/x-extension-xhtml=firefox.desktop;
+application/x-extension-xht=firefox.desktop;
 
 [Default Applications]
 text/plain=nvim.desktop
@@ -40,3 +50,10 @@ application/vnd.adobe.flash.movie=rs.ruffle.Ruffle.desktop
 application/xml=rs.ruffle.Ruffle.desktop
 application/octet-stream=org.kde.ark.desktop
 video/webm=mpv.desktop
+x-scheme-handler/chrome=firefox.desktop
+application/x-extension-htm=firefox.desktop
+application/x-extension-html=firefox.desktop
+application/x-extension-shtml=firefox.desktop
+application/xhtml+xml=firefox.desktop
+application/x-extension-xhtml=firefox.desktop
+application/x-extension-xht=firefox.desktop

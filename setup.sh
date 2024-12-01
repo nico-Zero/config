@@ -120,6 +120,7 @@ echo "y" | sudo pacman -S winetricks
 echo "y" | sudo pacman -S wine-gecko wine-mono lib32-glibc lib32-gcc-libs lib32-freetype lib32-libpng
 echo "y" | sudo pacman -S sdl2 sdl2_image sdl2_mixer sdl2_ttf
 echo "y" | sudo pacman -S lib32-sdl2 lib32-sdl2_image lib32-sdl2_mixer lib32-sdl2_ttf
+echo "y" | sudo pacman -S gvfs gvfs-mtp
 
 read -p "Install Yay (Y|n)? " install_yay
 if [ -z $install_yay ] || [ "${install_yay,,}" == "y"]; then
