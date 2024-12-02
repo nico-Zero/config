@@ -136,6 +136,7 @@ alias srm="nvim ~/.config/LSD/.harpoon_on_steroids_data.txt"
 alias tmuxall="sh ~/.config/LSD/harpoon_on_steroids.sh tmuxall"
 alias tmuxselect="sh ~/.config/LSD/harpoon_on_steroids.sh tmuxselect"
 alias tmuxkill="sh ~/.config/LSD/harpoon_on_steroids.sh killselect"
+alias td="tmux detach"
 
 # Bindkey:
 bindkey '^ ' autosuggest-accept
