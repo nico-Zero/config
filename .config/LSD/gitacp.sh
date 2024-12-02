@@ -9,8 +9,8 @@ if [ ! -z "$status" ]; then
     else
         git status | bat
     fi
-    read -p "message: " message
-    read -p "Confirm (Y|n): " confirm
+    read -e -p "message: " message
+    read -e -p "Confirm (Y|n): " confirm
 
     if [[ "$confirm" == "y" ]] || [[ "$confirm" == "Y" ]] || [[ "$confirm" == "" ]]; then
         git add . && status=$(git status -s) && git commit -m "$message" -m "$status" && git push -u origin main
