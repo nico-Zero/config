@@ -59,6 +59,7 @@ export TF_CPP_MIN_LOG_LEVEL=3
 export CUDA_HOME=/opt/cuda
 export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
 export PATH=$CUDA_HOME/bin:$PATH
+export LESS="--use-color"
 
 
 plugins=(
@@ -143,7 +144,7 @@ bindkey '^ ' autosuggest-accept
 bindkey -s '^f' "yy && clear^M"
 bindkey -s '^[c' "ndir=\`fzf --walker=dir,hidden --walker-root=/ --reverse\` && cd \$ndir && clear || clear ^M"
 bindkey -s '^[n' "ndir=\`fzf --walker=dir,hidden --walker-root=/ --reverse\` && cd \$ndir && clear && nvim || clear ^M"
-bindkey -s '^g' "bash ~/.config/LSD/gitacp.sh^M"
+bindkey -s '^[g' "bash ~/.config/LSD/gitacp.sh^M"
 bindkey -s '^[[1;5P' "cd ~/.config/nvim && nvim^M"
 bindkey -s '^a' "bash ~/.config/LSD/harpoon_on_steroids.sh add^M"
 bindkey -s '^[e' "bash ~/.config/LSD/harpoon_on_steroids.sh gotoW^M"
@@ -154,7 +155,7 @@ bindkey -s '^[C' "bash ~/.config/LSD/harpoon_on_steroids.sh killall^M"
 # bindkey -s '^[h' "bash ~/.config/LSD/cht.sh^M"
 # bindkey -s '^[m' "bash ~/.config/LSD/cht.sh man^M"
 bindkey -s '^[a' "ddgr^M"
-bindkey -s '^[g' "lazygit^M"
+bindkey -s '^g' "lazygit^M"
 bindkey -s '^[t' "toipe^M"
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
