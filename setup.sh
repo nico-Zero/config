@@ -125,6 +125,7 @@ echo "y" | sudo pacman -S udisks2
 systemctl status udisks2
 echo "y" | sudo pacman -S intel-ucode
 sudo grub-mkconfig -o /boot/grub/grub.cfg
+echo "y" | sudo pacman -S tldr
 
 
 read -p "Install Yay (Y|n)? " install_yay
