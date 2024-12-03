@@ -97,6 +97,41 @@ function tls() {
     fi
 }
 
+function quick_tmux_call() {
+    if [[ $# -eq 0 || $1 == "--help" || $1 == "-h" ]]; then
+        echo "-h, --help : Display this help message."
+        echo "\$1 : Name of the tmux session."
+        echo "\$2 : Path to the directory for the session."
+        echo "\$3 : Optional program to start in the session."
+    else
+        local session_name="$1"
+        local dir_path="$2"
+        local program="${3:-}"
+        # Validate session name and directory path
+        if [[ -z "$session_name" || -z "$dir_path" ]]; then
+            echo "Error: Both session name and directory path are required."
+            return 1
+        fi
+        # Check if session already exists
+        if tmux has-session -t "$session_name" 2>/dev/null; then
+            echo "Attaching to existing session '$session_name'."
+        else
+            # Create a new session in detached mode
+            tmux new-session -s "$session_name" -c "$dir_path" -d "$program"
+        fi
+        # Create a new window in the session
+        tmux new-window -t "$session_name:" -n "Terminal" -c "$dir_path"
+        # Attach to the session
+        tmux attach-session -t "$session_name"
+    fi
+}
+
+
+function nconfig(){
+    quick_tmux_call "nvim" "~/.config/nvim/" "nvim"
+}
+
+
 # Alias:
 alias pp="shotwell *"
 alias ls="eza --icons --group-directories-first -l --hyperlink"
@@ -128,7 +163,7 @@ alias cc="clear"
 alias nn="nvim"
 alias ee="exit"
 alias lsf="/usr/bin/ls | fzf"
-alias nc="nvim --cmd 'cd ~/.config/nvim'"
+# alias nc="nvim --cmd 'cd ~/.config/nvim'"
 alias mp="mypy"
 alias pd="bash ~/.config/LSD/fzf_pydocs.sh"
 alias update-pydoc-list="python3 -u /home/zero/.config/LSD/update_pydocs.py"

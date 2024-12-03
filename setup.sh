@@ -238,7 +238,7 @@ sudo pacman -S julia
 sudo pacman -S ruby
 
 echo "Install Package from Yay...(Will have to do it manually.)"
-yay -S iriunwebcam-bin brave whatsapp-for-linux signal-desktop ascii-image-converter ani-cli getnf rxvt-unicode also-utils pywal spotify-adblock-git unicode autotiling-rs-git ascii-draw \
+yay -S iriunwebcam-bin brave whatsie-git signal-desktop ascii-image-converter ani-cli getnf rxvt-unicode also-utils pywal spotify-adblock-git unicode autotiling-rs-git ascii-draw \
 aseprite kotatsu-dl-git rofi-greenclip tokyonight-gtk-theme-git qt5-graphicaleffects geogebra-6-electron tensorrt apvlv dxvk-bin dxvk terraform  \
 aws-cli-v2-bin
 
