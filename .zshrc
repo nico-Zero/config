@@ -119,8 +119,6 @@ function quick_tmux_call() {
             # Create a new session in detached mode
             tmux new-session -s "$session_name" -c "$dir_path" -d "$program"
         fi
-        # Create a new window in the session
-        tmux new-window -t "$session_name:" -n "Terminal" -c "$dir_path"
         # Attach to the session
         tmux attach-session -t "$session_name"
     fi
