@@ -130,7 +130,10 @@ function nconfig(){
 }
 
 function keymap(){
-    bindkey | fzf --ansi --reverse --preview="echo {} | awk '{print \$2}' " | awk '{print $2}' | xclip -selection clipboard
+    value=$(bindkey | fzf --ansi --reverse --preview="echo {} | awk '{print \$2}' ")
+    if [ ! -z $value ]; then
+        echo $value | awk '{print $2}' | xclip -selection clipboard
+    fi
 }
 
 # Alias:
@@ -197,7 +200,8 @@ bindkey '^[[B' history-substring-search-down
 bindkey '^K' history-substring-search-up
 bindkey '^J' history-substring-search-down
 # bindkey -s '^[b' "btop --utf-force^M"
-# bindkey "^i" beginning-of-line
+bindkey -r "^A"
+bindkey "^I" beginning-of-line
 
 # >>> conda initialize >>>
 __conda_setup="$('/home/zero/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
