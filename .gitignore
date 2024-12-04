@@ -3,13 +3,13 @@
 !.gitignore
 !.zshrc
 !README.md
-!note.txt
-!installed_app.txt
 !.Xresources
-!grub.txt
 
 !other/
 !other/**/*
+
+!note/
+!note/**/*
 
 !.icons/
 !.icons/**/*
@@ -40,7 +40,6 @@
 
 !.config/
 !.config/mimeapps.list
-
 
 !.config/nushell/
 !.config/nushell/**/*
