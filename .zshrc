@@ -176,7 +176,6 @@ alias td="tmux detach"
 bindkey '^ ' autosuggest-accept
 bindkey -s '^f' "yy && clear^M"
 bindkey -s '^[c' "ndir=\`fzf --walker=dir,hidden --walker-root=/ --reverse\` && cd \$ndir && clear || clear ^M"
-bindkey -s '^[n' "ndir=\`fzf --walker=dir,hidden --walker-root=/ --reverse\` && cd \$ndir && clear && nvim || clear ^M"
 bindkey -s '^[g' "bash ~/.config/LSD/gitacp.sh^M"
 bindkey -s '^[[1;5P' "cd ~/.config/nvim && nvim^M"
 bindkey -s '^[a' "bash ~/.config/LSD/harpoon_on_steroids.sh add^M"
@@ -194,7 +193,7 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey '^K' history-substring-search-up
 bindkey '^J' history-substring-search-down
-bindkey -s '^[b' "btop --utf-force^M"
+# bindkey -s '^[b' "btop --utf-force^M"
 
 # >>> conda initialize >>>
 __conda_setup="$('/home/zero/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
