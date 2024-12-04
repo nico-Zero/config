@@ -148,9 +148,9 @@ in
                         echo "Created session :- $dirname at $path"
                     fi
                 done
-                echo "CREATION PROCESS COMPLETE"
+                echo "CREATION PROCESS COMPLETE..."
             else
-                echo "CANCELING THE SESSION CREATION PROCESS"
+                echo "CANCELING THE SESSION CREATION PROCESS..."
             fi
         fi
         exit
@@ -170,7 +170,7 @@ in
                 echo "Created session :- $dirname at $path"
             fi
         done
-        echo "CREATION PROCESS COMPLETE"
+        echo "CREATION PROCESS COMPLETE..."
         exit
         ;;
 
@@ -194,9 +194,9 @@ in
             for line in $(printf "%s\n" "${line_numbers[@]}" | sort -nr); do
                 sed -i "${line}d" "$data_file_path"
             done
-            echo "DELETION PROCESS COMPLETE"
+            echo "DELETION PROCESS COMPLETE..."
         else
-            echo "CANCELING THE DELETE PROCESS"
+            echo "CANCELING THE DELETE PROCESS..."
         fi
         exit
         ;;
@@ -219,7 +219,7 @@ in
                         echo "Not a Session :- $dirname at $path"
                     fi
                 done
-                echo "KILLING PROCESS COMPLETE"
+                echo "KILLING PROCESS COMPLETE..."
             else
                 echo "CANCELING THE KILLING PROCESS..."
             fi
@@ -236,12 +236,12 @@ in
             if [[ "$confirm" == "y" ]] || [[ "$confirm" == "y" ]] || [[ "$confirm" == "" ]]; then
                 tmux kill-session -a > /dev/null
                 tmux kill-session > /dev/null
-                echo "KILLING PROCESS COMPLETE"
+                echo "KILLING PROCESS COMPLETE..."
             else
                 echo "CANCELING THE KILLING PROCESS..."
             fi
         else
-            echo "No Active Sessions"
+            echo "No Active Sessions..."
         fi
         exit
         ;;
