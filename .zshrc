@@ -201,7 +201,7 @@ bindkey '^K' history-substring-search-up
 bindkey '^J' history-substring-search-down
 # bindkey -s '^[b' "btop --utf-force^M"
 bindkey -r "^A"
-bindkey "^I" beginning-of-line
+bindkey "\ei" beginning-of-line
 
 # >>> conda initialize >>>
 __conda_setup="$('/home/zero/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
