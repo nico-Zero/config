@@ -216,7 +216,7 @@ in
                         tmux kill-session -t "$dirname"
                         echo "Killed session :- $dirname at $path"
                     else
-                        echo "Not session :- $dirname at $path"
+                        echo "Not a Session :- $dirname at $path"
                     fi
                 done
                 echo "KILLING PROCESS COMPLETE"
