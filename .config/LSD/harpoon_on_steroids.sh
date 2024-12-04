@@ -26,9 +26,11 @@ get_active_fzf_session(){
 fzf_multi_select(){
     local active_paths=($(get_active_fzf_session))
     if [[ $# -ne 0 ]]; then
-        local choices=$(cat "$data_file_path" | fzf_path_highlight "${active_paths[@]}" | fzf --ansi --reverse -m --header="$1")
+        local choices=$(cat "$data_file_path" | fzf_path_highlight "${active_paths[@]}" | fzf --ansi --reverse --preview \
+            "echo 'Session name :-' && echo {} | awk -F '/' '{print \$NF}' | tr '.' '_'" -m --header="$1")
     else
-        local choices=$(cat "$data_file_path" | fzf_path_highlight "${active_paths[@]}" | fzf --ansi --reverse -m)
+        local choices=$(cat "$data_file_path" | fzf_path_highlight "${active_paths[@]}" | fzf --ansi --reverse --preview \
+            "echo 'Session name :-' && echo {} | awk -F '/' '{print \$NF}' | tr '.' '_'" -m)
     fi
     readarray -t choices_array <<< "$choices"
     echo "${choices_array[@]}"
@@ -37,9 +39,11 @@ fzf_multi_select(){
 fzf_select(){
     local active_paths=($(get_active_fzf_session))
     if [[ $# -ne 0 ]]; then
-        local choices=$(cat "$data_file_path" | fzf_path_highlight "${active_paths[@]}" | fzf --ansi --reverse --header="$1")
+        local choices=$(cat "$data_file_path" | fzf_path_highlight "${active_paths[@]}" | fzf --ansi --reverse --preview \
+            "echo 'Session name :-' && echo {} | awk -F '/' '{print \$NF}' | tr '.' '_'" --header="$1")
     else
-        local choices=$(cat "$data_file_path" | fzf_path_highlight "${active_paths[@]}" | fzf --ansi --reverse)
+        local choices=$(cat "$data_file_path" | fzf_path_highlight "${active_paths[@]}" | fzf --ansi --reverse --preview \
+            "echo 'Session name :-' && echo {} | awk -F '/' '{print \$NF}' | tr '.' '_'")
     fi
     echo "$choices"
 }
@@ -203,7 +207,8 @@ in
 
     killselect)
         active_paths=($(get_active_fzf_session))
-        choices=$(cat "$data_file_path" | fzf_path_highlight "${active_paths[@]}" | fzf --ansi --reverse -m --header="Select to Kill")
+        choices=$(cat "$data_file_path" | fzf_path_highlight "${active_paths[@]}" | fzf --ansi --reverse --preview \
+            "echo 'Session name :-' && echo {} | awk -F '/' '{print \$NF}' | tr '.' '_' " -m --header="Select to Kill")
         if [[ ${#choices} -ne 0 ]]; then
             readarray -t choices_array <<< "$choices"
             echo "Active Sessions:-"

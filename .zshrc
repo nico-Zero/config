@@ -129,6 +129,9 @@ function nconfig(){
     quick_tmux_call "nvim" "~/.config/nvim/" "nvim"
 }
 
+function keymap(){
+    bindkey | fzf --ansi --reverse --preview="echo {} | awk '{print \$2}' " | awk '{print $2}' | xclip -selection clipboard
+}
 
 # Alias:
 alias pp="shotwell *"
@@ -194,6 +197,7 @@ bindkey '^[[B' history-substring-search-down
 bindkey '^K' history-substring-search-up
 bindkey '^J' history-substring-search-down
 # bindkey -s '^[b' "btop --utf-force^M"
+# bindkey "^i" beginning-of-line
 
 # >>> conda initialize >>>
 __conda_setup="$('/home/zero/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -226,3 +230,4 @@ eval $(thefuck --alias)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
