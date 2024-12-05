@@ -343,3 +343,7 @@ betterlockscreen -u ~/wallpaper/anime-girl-red-eye-tattoo-sword-4k-wallpaper-uhd
 #
 # sudo pacman -Rns $(pacman -Qdtq)
 # to clean up the left overs
+#
+# sudo pacman -S archlinux-keyring
+# sudo pacman-key --refrace-key
+# sudo pacman -Scc
