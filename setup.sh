@@ -127,6 +127,7 @@ echo "y" | sudo pacman -S intel-ucode
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 echo "y" | sudo pacman -S tldr
 echo "y" | sudo pacman -S cronie
+echo "y" | sudo pacman -S nmtui
 
 
 read -p "Install Yay (Y|n)? " install_yay

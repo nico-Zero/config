@@ -177,6 +177,7 @@ alias tmuxall="sh ~/.config/LSD/harpoon_on_steroids.sh tmuxall"
 alias tmuxselect="sh ~/.config/LSD/harpoon_on_steroids.sh tmuxselect"
 alias tmuxkill="sh ~/.config/LSD/harpoon_on_steroids.sh killselect"
 alias td="tmux detach"
+alias df="df -Ph"
 
 # Bindkey:
 bindkey '^ ' autosuggest-accept
