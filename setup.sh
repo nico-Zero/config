@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Setup for Arch-linux...
+
+
 function ctrl_c() {
     echo "Exiting script..."
     exit 1
@@ -7,135 +9,6 @@ function ctrl_c() {
 trap ctrl_c INT
 echo "Updating System..."
 sudo pacman -Syu
-echo "Install Pre-Req..."
-echo "y" | sudo pacman -S alacritty
-echo "y" | sudo pacman -S screenkey
-echo "y" | sudo pacman -S btop
-echo "y" | sudo pacman -S neovim
-echo "y" | sudo pacman -S eza
-echo "y" | sudo pacman -S vim
-echo "y" | sudo pacman -S fzf
-echo "y" | sudo pacman -S yazi
-echo "y" | sudo pacman -S xclip
-echo "y" | sudo pacman -S unzip
-echo "y" | sudo pacman -S wget
-echo "y" | sudo pacman -S curl
-echo "y" | sudo pacman -S gzip
-echo "y" | sudo pacman -S tar
-echo "y" | sudo pacman -S bash
-echo "y" | sudo pacman -S zsh
-echo "y" | sudo pacman -S sh
-echo "y" | sudo pacman -S firefox
-echo "y" | sudo pacman -S nvtop
-echo "y" | sudo pacman -S fastfetch
-echo "y" | sudo pacman -S glxinfo
-echo "y" | sudo pacman -S entr
-echo "y" | sudo pacman -S figlet
-echo "y" | sudo pacman -S trash-cli
-echo "y" | sudo pacman -S bat
-echo "y" | sudo pacman -S rofi
-echo "y" | sudo pacman -S vlc
-echo "y" | sudo pacman -S libreoffice-still
-echo "y" | sudo pacman -S ddgr
-echo "y" | sudo pacman -S progress
-echo "y" | sudo pacman -S polybar
-echo "y" | sudo pacman -S nitrogen
-echo "y" | sudo pacman -S bluez
-echo "y" | sudo pacman -S bluez-utils
-echo "y" | sudo pacman -S brightnessctl
-echo "y" | sudo pacman -S feh
-echo "y" | sudo pacman -S xorg-xinput
-echo "y" | sudo pacman -S blueman
-echo "y" | sudo pacman -S xsettingsd
-echo "y" | sudo pacman -S thefuck
-echo "y" | sudo pacman -S lazygit
-echo "y" | sudo pacman -S conky
-echo "y" | sudo pacman -S ntfs-3g
-echo "y" | sudo pacman -S qt5ct
-echo "y" | sudo pacman -S lxappearance
-echo "y" | sudo pacman -S xdotool
-echo "y" | sudo pacman -S xorg-xbacklight
-echo "y" | sudo pacman -S gucharmap
-echo "y" | sudo pacman -S gimp
-echo "y" | sudo pacman -S rofi-emoji
-echo "y" | sudo pacman -S rofi-calc
-echo "y" | sudo pacman -S alsa-utils
-echo "y" | sudo pacman -S flameshot
-echo "y" | sudo pacman -S luarocks
-echo "y" | sudo pacman -S obs-studio
-echo "y" | sudo pacman -S xorg-xdpyinfo
-echo "y" | sudo pacman -S acpi
-echo "y" | sudo pacman -S git
-echo "y" | sudo pacman -S tmux
-echo "y" | sudo pacman -S grep
-echo "y" | sudo pacman -S ripgrep
-echo "y" | sudo pacman -S nushell
-echo "y" | sudo pacman -S jq
-echo "y" | sudo pacman -S kitty
-echo "y" | sudo pacman -S man
-echo "y" | sudo pacman -S go
-echo "y" | sudo pacman -S nodejs
-echo "y" | sudo pacman -S zoxide
-echo "y" | sudo pacman -S viu
-echo "y" | sudo pacman -S wezterm
-echo "y" | sudo pacman -S picom
-echo "y" | sudo pacman -S github-cli
-echo "y" | sudo pacman -S gcc clang libc++ cmake ninja libx11 libxcursor mesa-libgl fontconfig
-echo "y" | sudo pacman -Sy python-pluggy python-pycosat python-ruamel-yaml 
-echo "y" | sudo pacman -Sy mesa-demos
-echo "y" | sudo pacman -Sy intel-media-driver
-echo "y" | sudo pacman -S nsxiv
-echo "y" | sudo pacman -S grafana
-echo "y" | sudo pacman -S bc
-echo "y" | sudo pacman -S materia-gtk-theme
-echo "y" | sudo pacman -S papirus-icon-theme
-echo "y" | sudo pacman -S python-pywal
-echo "y" | sudo pacman -S xfce4-clipman-plugin
-echo "y" | sudo pacman -S blueberry
-echo "y" | sudo pacman -S sddm
-echo "y" | sudo pacman -S gvfs
-echo "y" | sudo pacman -S gvfs-mtp gvfs-afc
-echo "y" | sudo pacman -S thunar-volman
-echo "y" | sudo pacman -S cuda cudnn
-echo "y" | sudo pacman -S numactl
-echo "y" | sudo pacman -S ark
-echo "y" | sudo pacman -S reflector
-echo "y" | sudo pacman -S vkd3d
-echo "y" | sudo pacman -S man
-echo "y" | sudo pacman -S man-pages
-echo "y" | sudo pacman -S $(pacman -Sgq nerd-fonts)
-echo "y" | sudo pacman -S noto-fonts-emoji
-echo "y" | sudo pacman -S power-profiles-daemon
-echo "y" | sudo pacman -S dunst
-echo "y" | sudo pacman -S kdenlive
-echo "y" | sudo pacman -S wine
-echo "y" | sudo pacman -S man-db
-echo "y" | sudo pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-jack
-echo "y" | sudo pacman -S wireplumber
-systemctl --user enable pipewire pipewire-pulse wireplumber
-systemctl --user start pipewire pipewire-pulse wireplumber
-echo "y" | sudo pacman -S tree
-echo "y" | sudo pacman -S sof-firmware
-echo "y" | sudo pacman -S winetricks
-echo "y" | sudo pacman -S wine-gecko wine-mono lib32-glibc lib32-gcc-libs lib32-freetype lib32-libpng
-echo "y" | sudo pacman -S sdl2 sdl2_image sdl2_mixer sdl2_ttf
-echo "y" | sudo pacman -S lib32-sdl2 lib32-sdl2_image lib32-sdl2_mixer lib32-sdl2_ttf
-echo "y" | sudo pacman -S gvfs gvfs-mtp
-echo "y" | sudo pacman -S udisks2
-systemctl status udisks2
-echo "y" | sudo pacman -S intel-ucode
-sudo grub-mkconfig -o /boot/grub/grub.cfg
-echo "y" | sudo pacman -S tldr
-echo "y" | sudo pacman -S cronie
-echo "y" | sudo pacman -S nmtui
-
-
-read -p "Install Yay (Y|n)? " install_yay
-if [ -z $install_yay ] || [ "${install_yay,,}" == "y"]; then
-    echo "Install Yay..."
-    sudo pacman -S --needed base-devel git && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
-    cd ~
-fi
 
 echo "Installing Brew..."
 (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> ~/.bashrc
@@ -223,15 +96,10 @@ if [ "${install_config,,}" == "y" ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
     git clone https://github.com/nico-Zero/nvim.git ~/.config/nvim/
     git clone https://github.com/terroo/wallset down-wallset
+    sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k && echo 'source /root/powerlevel10k/powerlevel10k.zsh-theme' >>/root/.zshrc
     cd down-wallset
     sudo sh install.sh
 fi
-
-echo "Install Anaconda..."
-wget -P ~/Downloads/ https://repo.anaconda.com/archive/Anaconda3-2024.06-1-Linux-x86_64.sh
-chmod +x ~/Downloads/Anaconda3-2024.06-1-Linux-x86_64.sh
-bash ~/Downloads/Anaconda3-2024.06-1-Linux-x86_64.sh
-conda init
 
 echo "Installing Package from Pacman..."
 sudo pacman -S lua
@@ -239,11 +107,6 @@ sudo pacman -S cargo
 sudo pacman -S java
 sudo pacman -S julia
 sudo pacman -S ruby
-
-echo "Install Package from Yay...(Will have to do it manually.)"
-yay -S iriunwebcam-bin brave whatsie-git signal-desktop ascii-image-converter ani-cli getnf rxvt-unicode also-utils pywal spotify-adblock-git unicode autotiling-rs-git ascii-draw \
-aseprite kotatsu-dl-git rofi-greenclip tokyonight-gtk-theme-git qt5-graphicaleffects geogebra-6-electron tensorrt apvlv dxvk-bin dxvk terraform  \
-aws-cli-v2-bin
 
 # Install betterlockscreen into system.
 git clone https://github.com/Raymo111/i3lock-color.git && cd ~/i3lock-color/ && ./install-i3lock-color.sh
