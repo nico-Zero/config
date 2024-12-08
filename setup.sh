@@ -160,8 +160,9 @@ betterlockscreen -u ~/wallpaper/anime-girl-red-eye-tattoo-sword-4k-wallpaper-uhd
 # ~/.Xresources
 # Xcursor.theme: Jingyuan
 
-# This is for netural scrolling in i3wm-arch-linux.
+# This is for netural scrolling in i3wm-arch-linux. mouse
 # /etc/X11/xorg.conf.d/40-libinput.conf
+#
 # Section "InputClass"
 #     Identifier "libinput touchpad catchall"
 #     MatchIsTouchpad "on"
@@ -170,8 +171,6 @@ betterlockscreen -u ~/wallpaper/anime-girl-red-eye-tattoo-sword-4k-wallpaper-uhd
 #     Option "NaturalScrolling" "true"  # Optional, if you want natural scrolling
 # EndSection
 # Rorgrongku
-#
-#
 #
 #
 # sudo vim /etc/xdg/reflector/reflector.conf
