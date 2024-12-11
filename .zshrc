@@ -178,10 +178,12 @@ alias td="tmux detach"
 alias df="df -Ph"
 alias hnctl="hostnamectl"
 alias tree="tree | less"
+alias cp="cp -i"
+alias mvb="mv --backup"
 
 # Bindkey:
 bindkey '^ ' autosuggest-accept
-bindkey -s '^f' "yy && clear^M"
+bindkey -s '^[f' "yy && clear^M"
 bindkey -s '^[c' "ndir=\`fzf --walker=dir,hidden --walker-root=/ --reverse\` && cd \$ndir && clear || clear ^M"
 bindkey -s '^[g' "bash ~/.config/LSD/gitacp.sh^M"
 bindkey -s '^[[1;5P' "cd ~/.config/nvim && nvim^M"
@@ -205,7 +207,8 @@ bindkey -r "^A"
 bindkey "\ei" beginning-of-line
 bindkey "^h" backward-word
 bindkey "^l" forward-word
-
+bindkey "^[[1;3D" backward-word
+bindkey "^[[1;3C" forward-word
 
 # >>> conda initialize >>>
 __conda_setup="$('/home/zero/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

@@ -108,9 +108,8 @@ bindsym $mod+r mode "resize"
 # keybindings for different actions: #
 ######################################
 
-
 # pulseaudio controller
-bindsym $mod+F1 exec --no-startup-id pavucontrol
+bindsym $mod+F1 exec --no-startup-id env GTK_THEME=Adwaita-dark pavucontrol
 
 # bluetooth controller
 bindsym $mod+F2 exec --no-startup-id blueman-manager
