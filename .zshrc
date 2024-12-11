@@ -51,16 +51,14 @@ export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 eval $(dbus-launch)
 export DBUS_SESSION_BUS_ADDRESS
-export GTK_IM_MODULE=ibus
-export QT_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
 export TF_ENABLE_ONEDNN_OPTS=0
 export TF_CPP_MIN_LOG_LEVEL=3
 export CUDA_HOME=/opt/cuda
 export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
 export PATH=$CUDA_HOME/bin:$PATH
 export LESS="--use-color"
-
+export GTK_THEME=Materia-dark-compact
+export GTK2_RC_FILES=~/.gtkrc-2.0
 
 plugins=(
     git
@@ -178,6 +176,8 @@ alias tmuxselect="sh ~/.config/LSD/harpoon_on_steroids.sh tmuxselect"
 alias tmuxkill="sh ~/.config/LSD/harpoon_on_steroids.sh killselect"
 alias td="tmux detach"
 alias df="df -Ph"
+alias hnctl="hostnamectl"
+alias tree="tree | less"
 
 # Bindkey:
 bindkey '^ ' autosuggest-accept
@@ -203,6 +203,9 @@ bindkey '^J' history-substring-search-down
 # bindkey -s '^[b' "btop --utf-force^M"
 bindkey -r "^A"
 bindkey "\ei" beginning-of-line
+bindkey "^h" backward-word
+bindkey "^l" forward-word
+
 
 # >>> conda initialize >>>
 __conda_setup="$('/home/zero/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

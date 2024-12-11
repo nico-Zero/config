@@ -1,5 +1,5 @@
 {
-   "checksum": "01c0bdd76908e84d9d2386fec04d6f6b",
+   "checksum": "38ac41abce4de94c4d8e614228c41b4a",
    "roots": {
       "bookmark_bar": {
          "children": [  ],
@@ -551,10 +551,21 @@
             "name": "CodePen: Online Code Editor and Front End Web Developer Community",
             "type": "url",
             "url": "https://codepen.io/"
+         }, {
+            "date_added": "13378225609101465",
+            "date_last_used": "0",
+            "guid": "a18355a4-6282-4353-ad41-7ab3449c563c",
+            "id": "80",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Extensions",
+            "type": "url",
+            "url": "chrome://extensions/shortcuts"
          } ],
          "date_added": "13369643435090832",
          "date_last_used": "0",
-         "date_modified": "13377939151646829",
+         "date_modified": "13378225609101465",
          "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
          "id": "2",
          "name": "Other bookmarks",
