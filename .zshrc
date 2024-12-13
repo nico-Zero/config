@@ -113,18 +113,18 @@ function quick_tmux_call() {
         # Check if session already exists
         if tmux has-session -t "$session_name" 2>/dev/null; then
             echo "Attaching to existing session '$session_name'."
+            # Attach to the session
+            tmux attach-session -t "$session_name"
         else
             # Create a new session in detached mode
-            tmux new-session -s "$session_name" -c "$dir_path" -d "$program"
-        fi
-        # Attach to the session
-        tmux attach-session -t "$session_name"
+            tmux -u new -s "$session_name" -c "$dir_path" "$program -c 'cd $dir_path'"
+       fi
     fi
 }
 
 
 function nconfig(){
-    quick_tmux_call "nvim" "~/.config/nvim/" "nvim"
+    alacritty -e zsh -c "cd ~/.config/nvim/ && nvim"
 }
 
 function keymap(){
@@ -180,6 +180,8 @@ alias hnctl="hostnamectl"
 alias tree="tree | less"
 alias cp="cp -i"
 alias mvb="mv --backup"
+alias nigger="brightnessctl set 0 -q"
+alias fc-list="fc-list | fzf --reverse --multi"
 
 # Bindkey:
 bindkey '^ ' autosuggest-accept
@@ -190,7 +192,7 @@ bindkey -s '^[[1;5P' "cd ~/.config/nvim && nvim^M"
 bindkey -s '^[a' "bash ~/.config/LSD/harpoon_on_steroids.sh add^M"
 bindkey -s '^[e' "bash ~/.config/LSD/harpoon_on_steroids.sh gotoW^M"
 bindkey -s '^[s' "bash ~/.config/LSD/harpoon_on_steroids.sh gotoS^M"
-bindkey -s '^[r' "bash ~/.config/LSD/harpoon_on_steroids.sh deleteline^M"
+bindkey -s '^[d' "bash ~/.config/LSD/harpoon_on_steroids.sh deleteline^M"
 bindkey -s '^[k' "bash ~/.config/LSD/harpoon_on_steroids.sh killselect^M"
 bindkey -s '^[C' "bash ~/.config/LSD/harpoon_on_steroids.sh killall^M"
 # bindkey -s '^[h' "bash ~/.config/LSD/cht.sh^M"
@@ -204,7 +206,8 @@ bindkey '^K' history-substring-search-up
 bindkey '^J' history-substring-search-down
 # bindkey -s '^[b' "btop --utf-force^M"
 bindkey -r "^A"
-bindkey "\ei" beginning-of-line
+bindkey "\eI" beginning-of-line
+bindkey "\eA" end-of-line
 bindkey "^h" backward-word
 bindkey "^l" forward-word
 bindkey "^[[1;3D" backward-word

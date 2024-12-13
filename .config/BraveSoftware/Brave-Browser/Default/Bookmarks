@@ -1,5 +1,5 @@
 {
-   "checksum": "38ac41abce4de94c4d8e614228c41b4a",
+   "checksum": "19af531b04f8bf180d3465fb781f21a4",
    "roots": {
       "bookmark_bar": {
          "children": [  ],
@@ -562,10 +562,21 @@
             "name": "Extensions",
             "type": "url",
             "url": "chrome://extensions/shortcuts"
+         }, {
+            "date_added": "13378385237188543",
+            "date_last_used": "0",
+            "guid": "9905b24e-c322-4c29-b2e7-35587f0e74d5",
+            "id": "82",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Anime Live Wallpapers - DesktopHut",
+            "type": "url",
+            "url": "https://www.desktophut.com/category/anime-live-wallpapers?page=2"
          } ],
          "date_added": "13369643435090832",
          "date_last_used": "0",
-         "date_modified": "13378225609101465",
+         "date_modified": "13378385237188543",
          "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
          "id": "2",
          "name": "Other bookmarks",

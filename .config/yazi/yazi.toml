@@ -12,7 +12,7 @@ image=[
     {run = 'nsxiv "$@"', block = true}
 ]
 pdf=[
-    {run = 'apvlv "$@"', block = true}
+    {run = 'zathura "$@"', block = true}
 ]
 html=[
     {run = 'brave "$@"', block = true}

@@ -26,6 +26,7 @@ application/x-extension-shtml=firefox.desktop;
 application/xhtml+xml=firefox.desktop;
 application/x-extension-xhtml=firefox.desktop;
 application/x-extension-xht=firefox.desktop;
+image/gif=brave-browser.desktop;aseprite.desktop;feh.desktop;
 
 [Default Applications]
 text/plain=nvim.desktop
@@ -35,7 +36,7 @@ image/gif=nsxiv.desktop
 image/bmp=nsxiv.desktop
 image/tiff=nsxiv.desktop
 image/svg+xml=nsxiv.desktop
-application/pdf=apvlv.desktop
+application/pdf=org.pwmt.zathura.desktop
 video/x-matroska=vlc.desktop
 video/mp4=mpv.desktop
 text/html=brave-browser.desktop

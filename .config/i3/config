@@ -117,6 +117,9 @@ bindsym $mod+F2 exec --no-startup-id blueman-manager
 # Toggle screenkey.
 bindsym $mod+F3 exec --no-startup-id ~/.config/i3/scripts/screenkey_toggle
 
+# Color picker
+bindsym $mod+F4 exec --no-startup-id gpick --pick
+
 # start a terminal
 bindsym Mod1+Control+l exec --no-startup-id alacritty
 
@@ -147,8 +150,8 @@ bindsym $mod+Shift+r restart
 # bindsym $mod+F1 exec --no-startup-id xed ~/.config/i3/keybindings
 
 # Backlight control
-#bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +10 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
-#bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -10 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
+# bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +10 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
+# bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -10 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
 # Backlight setting using dunst osc
 bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_up
 bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_down
@@ -359,7 +362,7 @@ set $ws12 "12:"
 exec_always xinput set-prop 14 "libinput Natural Scrolling Enabled" 1
 exec_always xinput set-prop 14 "libinput Tapping Enabled" 1
 
-for_window [class="^((?!Alacritty|Wasistlos|ruffle|mpv|feh|ark|Apvlv|kdenlive|qBittorrent|qbittorrent|Blueberry.py|pavucontrol|Blueman-applet|Xarchiver|xarchiver|nsxiv|Nsxiv| |Navigator|firefox|flameshot|org.wezfurlong.wezterm|yad|Screenkey|Shotwell|kitty|Polkit-gnome-authentication-agent-1|Blueman-manager|Brave-browser|Brave|Navigator|Spotify|Whatsapp-for-linux|Signal|Gimp|obs|matplotlib|Thunar|Xdg-desktop-portal-gtk|vlc).)*$"] move container to workspace $ws10, workspace $ws10
+for_window [class="^((?!Alacritty|org.pwmt.zathura|Zathura|Wasistlos|ruffle|mpv|feh|ark|Apvlv|kdenlive|qBittorrent|qbittorrent|Blueberry.py|pavucontrol|Blueman-applet|Xarchiver|xarchiver|nsxiv|Nsxiv| |Navigator|firefox|flameshot|org.wezfurlong.wezterm|yad|Screenkey|Shotwell|kitty|Polkit-gnome-authentication-agent-1|Blueman-manager|Brave-browser|Brave|Navigator|Spotify|Whatsapp-for-linux|Signal|Gimp|obs|matplotlib|Thunar|Xdg-desktop-portal-gtk|vlc).)*$"] move container to workspace $ws10, workspace $ws10
 for_window [class="Blueman-manager"] floating enable, resize set 1000 800, move position center
 for_window [class="^.*"] border pixel 0
 
@@ -566,10 +569,10 @@ exec --no-startup-id xset s 480 dpms 600 600 600
 # Desktop notifications
 # dunst config used ~/.config/dunst/dunstrc
 # set alternative config if needed:
-#exec --no-startup-id /usr/bin/dunst --config ~/.config/dunst/dunstrc
+exec --no-startup-id /usr/bin/dunst --config ~/.config/dunst/dunstrc
 # may need to run dbus-launch explicitly: 
 #exec --no-startup-id dbus-launch /usr/bin/dunst
-exec --no-startup-id /usr/bin/dunst
+# exec --no-startup-id /usr/bin/dunst
 # alternative if you installed aside with XFCE4:
 # exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 
