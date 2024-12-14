@@ -182,6 +182,7 @@ alias cp="cp -i"
 alias mvb="mv --backup"
 alias nigger="brightnessctl set 0 -q"
 alias fc-list="fc-list | fzf --reverse --multi"
+alias du="du -h"
 
 # Bindkey:
 bindkey '^ ' autosuggest-accept
